@@ -46,10 +46,12 @@ export class SubjectSiteComponent{
     });
   }
 
-  deleteCustomerFromList(subjectId: number): void{
-    this.subjectService.deleteSubject(subjectId).subscribe(data => {
-      this.refreshSubjects();
-    });
+  deleteSubjectFromList(subjectId: number): void{
+    if(confirm('Are you sure?')){
+      this.subjectService.deleteSubject(subjectId).subscribe(data => {
+        this.refreshSubjects();
+      });
+    }
   }
 
 }
