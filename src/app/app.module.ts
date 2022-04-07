@@ -10,6 +10,11 @@ import { MenuComponent } from './menu/menu.component';
 import { SubjectSiteComponent } from './subject-site/subject-site.component';
 import { SubjectFormComponent } from './subject-form/subject-form.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
+import { UserComponent } from './user/user.component';
+import { TeacherFormComponent } from './teacher-form/teacher-form.component';
+import { StudentFormComponent } from './student-form/student-form.component';
+import { TeacherSiteComponent } from './teacher-site/teacher-site.component';
+import { TeacherListComponent } from './teacher-list/teacher-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
     MenuComponent,
     SubjectSiteComponent,
     SubjectFormComponent,
-    SubjectListComponent
+    SubjectListComponent,
+    UserComponent,
+    TeacherFormComponent,
+    StudentFormComponent,
+    TeacherSiteComponent,
+    TeacherListComponent
   ],
   imports: [
     BrowserModule,
