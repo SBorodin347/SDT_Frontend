@@ -1,0 +1,33 @@
+<h1>List of subjects</h1>
+<br>
+<div *ngIf="!teachers || teachers?.length === 0">
+  List of subjects is empty.
+</div>
+
+<table class="table" *ngIf="teachers?.length > 0">
+  <thead>
+  <th>ID</th>
+  <th>NAME</th>
+  <th>SURNAME</th>
+  <th>PASSWORD</th>
+  <th>EMAIL</th>
+  <th>KEYWORD</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let t of teachers">
+    <td>{{t.id}}</td>
+    <td>{{t.firstName}}</td>
+    <td>{{t.lastName}}</td>
+    <td>{{t.password}}</td>
+    <td>{{t.email}}</td>
+    <td>{{t.keyword}}</td>
+    <td>
+      <div>
+        <button (click)="edit(t.id)">Edit Teacher</button>
+        <button (click)="remove(t.id)">Remove Teacher</button>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
