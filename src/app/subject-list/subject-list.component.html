@@ -1,0 +1,28 @@
+<h1>List of subjects</h1>
+<br>
+<div *ngIf="!subjects || subjects?.length === 0">
+  List of subjects is empty.
+</div>
+
+<table class="table" *ngIf="subjects?.length > 0">
+  <thead>
+    <th>ID</th>
+    <th>SUBJECT</th>
+    <th>HOURS/WEEK</th>
+    <th>CREDIT</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of subjects">
+    <td>{{s.id}}</td>
+    <td>{{s.name}}</td>
+    <td>{{s.hours}}</td>
+    <td>{{s.credit}}</td>
+    <td>
+      <div>
+        <button (click)="edit(s.id)">Edit Subject</button>
+        <button (click)="remove(s.id)">Remove Subject</button>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,20 @@
+<button (click)="goBack()">Go Back</button>
+<br><br>
+<form [formGroup]="form">
+  <label>Subject Name
+    <input type="text" formControlName="name">
+  </label>
+  <br>
+  <label>Hours/Week
+    <input type="number" formControlName="hours">
+  </label>
+  <br>
+  <label>Credit
+    <input type="number" formControlName="credit">
+  </label>
+  <br>
+  <button (click)="add()" *ngIf="form.value.id === null">Add Subject</button>
+  <button (click)="edit()" *ngIf="form.value.id !== null">Save Changes</button>
+  <button (click)="remove()">Reset</button>
+</form>
+
