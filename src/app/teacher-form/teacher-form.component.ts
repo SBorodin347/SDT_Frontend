@@ -21,6 +21,9 @@ export class TeacherFormComponent {
   @Output()
   addTeacher = new EventEmitter<Teacher>();
 
+  @Output()
+  editTeacher = new EventEmitter<Teacher>();
+
   form: FormGroup;
 
   constructor(private router: Router) {
@@ -54,6 +57,11 @@ export class TeacherFormComponent {
       this.addTeacher.emit(this.form.value);
       this.form.reset();
     }
+  }
+
+  public edit(): void{
+    this.editTeacher.emit(this.form.value);
+    this.form.reset();
   }
 
   public remove(): void{

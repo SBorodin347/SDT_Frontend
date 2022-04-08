@@ -16,9 +16,9 @@ export class UserComponent{
 
   openNav(n : NAV){
     if(n === NAV.TEACHER)
-      this.router.navigate(['/add-teacher']);
+      this.router.navigate(['/teacher']);
     if(n === NAV.STUDENT)
-      this.router.navigate(['/add-student']);
+      this.router.navigate(['/student']);
   }
 
   goBack(): void{

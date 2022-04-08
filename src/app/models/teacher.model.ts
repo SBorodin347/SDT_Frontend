@@ -19,7 +19,7 @@ export class Teacher{
   }
 }
 
-export class TeacherList{
+export class TeacherList {
   id?: number;
   firstName: string;
   lastName: string;

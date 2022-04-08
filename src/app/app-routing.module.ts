@@ -3,8 +3,8 @@ import {NgModule} from "@angular/core";
 import {MenuComponent} from "./menu/menu.component";
 import {SubjectSiteComponent} from "./subject-site/subject-site.component";
 import {UserComponent} from "./user/user.component";
-import {TeacherFormComponent} from "./teacher-form/teacher-form.component";
-import {StudentFormComponent} from "./student-form/student-form.component";
+import {TeacherSiteComponent} from "./teacher-site/teacher-site.component";
+import {StudentSiteComponent} from "./student-site/student-site.component";
 
 const routes: Routes = [
   {
@@ -20,12 +20,12 @@ const routes: Routes = [
     component: UserComponent
   },
   {
-    path: 'add-teacher',
-    component: TeacherFormComponent
+    path: 'teacher',
+    component: TeacherSiteComponent
   },
   {
-    path: 'add-student',
-    component: StudentFormComponent
+    path: 'student',
+    component: StudentSiteComponent
   }
 ]
 

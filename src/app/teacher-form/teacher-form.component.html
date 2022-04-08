@@ -1,4 +1,6 @@
 <h3>Add Teacher Form</h3>
+<button (click)="goBack()">Go Back</button>
+<br><br>
 <form [formGroup]="form">
   <label>First Name
     <input type="text" formControlName="firstName">
@@ -25,7 +27,8 @@
   </label>
   <br><br>
   <button (click)="add()" *ngIf="form.value.id === null">Add Teacher</button>
+  <button (click)="edit()" *ngIf="form.value.id !== null">Save Changes</button>
   <button (click)="remove()">Reset</button>
 </form>
-<br><br>
-<button (click)="goBack()">Go Back</button>
+
+

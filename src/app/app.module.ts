@@ -15,6 +15,8 @@ import { TeacherFormComponent } from './teacher-form/teacher-form.component';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { TeacherSiteComponent } from './teacher-site/teacher-site.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { StudentSiteComponent } from './student-site/student-site.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { TeacherListComponent } from './teacher-list/teacher-list.component';
     SubjectListComponent,
     UserComponent,
     TeacherFormComponent,
-    StudentFormComponent,
     TeacherSiteComponent,
-    TeacherListComponent
+    TeacherListComponent,
+    StudentFormComponent,
+    StudentListComponent,
+    StudentSiteComponent
   ],
   imports: [
     BrowserModule,
