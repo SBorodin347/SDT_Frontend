@@ -1,0 +1,4 @@
+<app-student-form [student]="activeStudent" (addStudent)="add($event)" (editStudent)="edit($event)"></app-student-form>
+<app-student-list [students]="students" (editStudent)="editStudentFromList($event)" (removeStudent)="deleteStudentFromList($event)"></app-student-list>
+
+

@@ -1,0 +1,34 @@
+<h3>List of students</h3>
+
+<div *ngIf="!students || students?.length === 0">
+  List of students is empty.
+</div>
+
+<table class="table" *ngIf="students?.length > 0">
+  <thead>
+  <th>ID</th>
+  <th>NAME</th>
+  <th>SURNAME</th>
+  <th>PASSWORD</th>
+  <th>EMAIL</th>
+  <th>KEYWORD</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of students">
+    <td>{{s.id}}</td>
+    <td>{{s.firstName}}</td>
+    <td>{{s.lastName}}</td>
+    <td>{{s.password}}</td>
+    <td>{{s.email}}</td>
+    <td>{{s.keyword}}</td>
+    <td>
+      <div>
+        <button (click)="edit(s.id)">Edit Student</button>
+        <button (click)="remove(s.id)">Remove Student</button>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
