@@ -27,6 +27,7 @@
   </label>
   <br><br>
   <button (click)="add()" *ngIf="form.value.id === null">Add Student</button>
+  <button (click)="edit()" *ngIf="form.value.id !== null">Save Changes</button>
   <button (click)="remove()">Reset</button>
 </form>
 
