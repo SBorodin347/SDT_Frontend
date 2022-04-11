@@ -35,7 +35,7 @@ export class StudentFormComponent {
       firstName: new FormControl(null),
       lastName: new FormControl(null),
       password: new FormControl(null),
-      passwordRepeat: new FormControl(null),
+      phone: new FormControl(null),
       email: new FormControl(null),
       keyword: new FormControl(null)
     })
@@ -46,7 +46,7 @@ export class StudentFormComponent {
     this.form.controls.firstName.setValue(student.firstName);
     this.form.controls.lastName.setValue(student.lastName);
     this.form.controls.password.setValue(student.password);
-    this.form.controls.passwordRepeat.setValue(student.passwordRepeat);
+    this.form.controls.phone.setValue(student.phone);
     this.form.controls.email.setValue(student.email);
     this.form.controls.keyword.setValue(student.keyword);
   }

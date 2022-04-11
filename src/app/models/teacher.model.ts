@@ -3,8 +3,8 @@ export class Teacher{
   firstName: string;
   lastName: string;
   password: string;
-  passwordRepeat: string;
   email: string;
+  phone: string;
   keyword: string;
 
 
@@ -13,7 +13,7 @@ export class Teacher{
     this.firstName = teacher.firstName;
     this.lastName = teacher.lastName;
     this.password = teacher.password;
-    this.passwordRepeat = teacher.passwordRepeat;
+    this.phone = teacher.phone;
     this.email = teacher.email;
     this.keyword = teacher.keyword;
   }
@@ -24,7 +24,7 @@ export class TeacherList {
   firstName: string;
   lastName: string;
   password: string;
-  passwordRepeat: string;
+  phone: string;
   email: string;
   keyword: string;
 
@@ -34,7 +34,7 @@ export class TeacherList {
     this.firstName = teacher.firstName;
     this.lastName = teacher.lastName;
     this.password = teacher.password;
-    this.passwordRepeat = teacher.passwordRepeat;
+    this.phone = teacher.phone;
     this.email = teacher.email;
     this.keyword = teacher.keyword;
   }

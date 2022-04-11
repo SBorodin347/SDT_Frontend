@@ -3,7 +3,7 @@ export class Student{
   firstName: string;
   lastName: string;
   password: string;
-  passwordRepeat: string;
+  phone: string;
   email: string;
   keyword: string;
 
@@ -13,7 +13,7 @@ export class Student{
     this.firstName = student.firstName;
     this.lastName = student.lastName;
     this.password = student.password;
-    this.passwordRepeat = student.passwordRepeat;
+    this.phone = student.phone;
     this.email = student.email;
     this.keyword = student.keyword;
   }
@@ -24,7 +24,7 @@ export class StudentList{
   firstName: string;
   lastName: string;
   password: string;
-  passwordRepeat: string;
+  phone: string;
   email: string;
   keyword: string;
 
@@ -34,8 +34,8 @@ export class StudentList{
     this.firstName = student.firstName;
     this.lastName = student.lastName;
     this.password = student.password;
-    this.passwordRepeat = student.passwordRepeat;
     this.email = student.email;
+    this.phone = student.phone;
     this.keyword = student.keyword;
   }
 
