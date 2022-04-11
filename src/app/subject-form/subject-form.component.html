@@ -13,8 +13,8 @@
     <input type="number" formControlName="credit">
   </label>
   <br>
-  <button (click)="add()" *ngIf="form.value.id === null">Add Subject</button>
-  <button (click)="edit()" *ngIf="form.value.id !== null">Save Changes</button>
+  <button [disabled]="form.invalid" (click)="add()" *ngIf="form.value.id === null">Add Subject</button>
+  <button [disabled]="form.invalid" (click)="edit()" *ngIf="form.value.id !== null">Save Changes</button>
   <button (click)="remove()">Reset</button>
 </form>
 

@@ -1,19 +1,36 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Subject, SubjectList} from "../models/subject.model";
 import {SubjectService} from "../../subject.service";
 import {Router} from "@angular/router";
 
+
+enum NAV {SUBJECTS, USERS,HOME}
 @Component({
   selector: 'app-subject-site',
   templateUrl: './subject-site.component.html',
   styleUrls: ['./subject-site.component.css']
 })
+
 export class SubjectSiteComponent{
 
   subjects: SubjectList[] = [];
   activeSubject?: Subject;
 
+  @Input()
+  isActive = false;
+
   constructor(private router: Router, private subjectService: SubjectService) { }
+
+  navig = NAV;
+
+  openNav(n : NAV){
+    if(n === NAV.SUBJECTS)
+      this.router.navigate(['/subjects']);
+    if(n === NAV.USERS)
+      this.router.navigate(['/users']);
+    if(n === NAV.HOME)
+      this.router.navigate(['/']);
+  }
 
   ngOnInit(): void{
     this.refreshSubjects();

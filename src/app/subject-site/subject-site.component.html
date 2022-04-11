@@ -1,2 +1,13 @@
-<app-subject-form [subject]="activeSubject" (addSubject)="add($event)" (editSubject)="edit($event)"></app-subject-form>
-<app-subject-list [subjects]="subjects" (editSubject)="editSubjectFromList($event)" (removeSubject)="deleteSubjectFromList($event)"></app-subject-list>
+<app-header></app-header>
+
+<app-sidebar ></app-sidebar>
+
+<main class="page-wrapper">
+  <div class="main__section">
+<!--    <app-subject-form [subject]="activeSubject" (addSubject)="add($event)" (editSubject)="edit($event)"></app-subject-form>-->
+    <app-subject-list [subjects]="subjects" (editSubject)="editSubjectFromList($event)" (removeSubject)="deleteSubjectFromList($event)"></app-subject-list>
+  </div>
+
+</main>
+
+

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 
-enum NAV {TEACHER, STUDENT}
+enum NAV {TEACHER, STUDENT,HOME,USERS,SUBJECTS}
 
 @Component({
   selector: 'app-user',
@@ -19,7 +19,14 @@ export class UserComponent{
       this.router.navigate(['/teacher']);
     if(n === NAV.STUDENT)
       this.router.navigate(['/student']);
+    if(n === NAV.SUBJECTS)
+      this.router.navigate(['/subjects']);
+    if(n === NAV.USERS)
+      this.router.navigate(['/users']);
+    if(n === NAV.HOME)
+      this.router.navigate(['/']);
   }
+
 
   goBack(): void{
     this.router.navigate(['']);

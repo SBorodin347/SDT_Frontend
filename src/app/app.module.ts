@@ -17,6 +17,8 @@ import { TeacherSiteComponent } from './teacher-site/teacher-site.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentSiteComponent } from './student-site/student-site.component';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { StudentSiteComponent } from './student-site/student-site.component';
     TeacherListComponent,
     StudentFormComponent,
     StudentListComponent,
-    StudentSiteComponent
+    StudentSiteComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
