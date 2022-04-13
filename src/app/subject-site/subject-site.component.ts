@@ -1,19 +1,28 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Subject, SubjectList} from "../models/subject.model";
 import {SubjectService} from "../../subject.service";
 import {Router} from "@angular/router";
 
+
+enum NAV {SUBJECTS, USERS,HOME}
 @Component({
   selector: 'app-subject-site',
   templateUrl: './subject-site.component.html',
   styleUrls: ['./subject-site.component.css']
 })
+
 export class SubjectSiteComponent{
 
   subjects: SubjectList[] = [];
   activeSubject?: Subject;
 
+  @Input()
+  isActive = false;
+  popup = false;
   constructor(private router: Router, private subjectService: SubjectService) { }
+
+  navig = NAV;
+
 
   ngOnInit(): void{
     this.refreshSubjects();
@@ -42,6 +51,7 @@ export class SubjectSiteComponent{
 
   editSubjectFromList(subjectId: number): void{
     this.subjectService.getSubject(subjectId).subscribe(data => {
+      this.popup = true;
       this.activeSubject = data;
     });
   }
@@ -53,5 +63,14 @@ export class SubjectSiteComponent{
       });
     }
   }
+
+  public openPopup(){
+     this.popup = true;
+}
+
+ public closePopup(){
+   this.activeSubject = null;
+    this.popup = false;
+ }
 
 }

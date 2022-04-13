@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {Subject} from "../models/subject.model";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-subject-form',
@@ -32,9 +32,9 @@ export class SubjectFormComponent {
   private createForm(): void{
     this.form = new FormGroup({
       id: new FormControl(null),
-      name: new FormControl(null),
-      hours: new FormControl(null),
-      credit: new FormControl(null)
+      name: new FormControl(null, [Validators.required]),
+      hours: new FormControl(null, [Validators.required]),
+      credit: new FormControl(null, [Validators.max(30), Validators.required])
     })
   }
 
@@ -50,6 +50,9 @@ export class SubjectFormComponent {
       this.addSubject.emit(this.form.value);
       this.form.reset();
     }
+    setTimeout(function () {
+      location.reload();
+    }, 0);
   }
 
   public edit(): void{

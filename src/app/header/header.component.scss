@@ -1,0 +1,35 @@
+@import "src/styles";
+
+header {
+  background-color: $color-bg;
+  border-bottom: 1px solid $color-hr;
+  height: $height-header;
+  @extend %flex-center;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.header-container-logo {
+  @extend %flex-center;
+  width: $width-sidebar;
+  padding: 0 24px;
+  margin: 0;
+}
+
+.header-container-nav{
+  @extend %flex-center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  padding: 0 24px;
+}
+
+
+.logo-wrap {
+  width: 124px;
+  height: $height-header;
+}

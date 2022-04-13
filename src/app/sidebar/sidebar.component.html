@@ -1,0 +1,46 @@
+<aside id="sidebar-left">
+  <nav class="nav-section">
+    <a [ngClass]="{ 'nav-link-active' : isActive('/')}" (click)="openNav(navig.HOME)"class="nav-link">
+      <svg class="nav-icon nav__icon__active">
+        <use href="#hlavna"></use>
+      </svg>
+      <span class="nav-title">Prehľad</span>
+    </a>
+
+    <a [ngClass]="{ 'nav-link-active' : isActive('/subjects')}" (click)="openNav(navig.SUBJECTS)" class="nav-link">
+      <svg class="nav-icon">
+        <use href="#subjects"></use>
+      </svg>
+      <span class="nav-title">Zoznam predmetov</span>
+    </a>
+    <a [ngClass]="{ 'nav-link-active' : isActive('/users')}" (click)="openNav(navig.USERS)"  class="nav-link">
+      <svg class="nav-icon">
+        <use href="#user"></use>
+      </svg>
+      <span class="nav-title">Použivatelia</span>
+    </a>
+    <hr class="hr-custom">
+    <a [ngClass]="{ 'nav-link-active' : isActive('/security')}"  class="nav-link">
+      <svg class="nav-icon">
+        <use href="#security"></use>
+      </svg>
+      <span class="nav-title">Bezpečnosť</span>
+    </a>
+    <a [ngClass]="{ 'nav-link-active' : isActive('/manual')}"  class="nav-link">
+      <svg class="nav-icon">
+        <use href="#manual"></use>
+      </svg>
+      <span class="nav-title">Manual</span>
+    </a>
+  </nav>
+
+  <nav class="nav-section">
+    <a id="settingsButton" class="nav-link">
+      <svg class="nav-icon">
+        <use href="#settingsIcon"></use>
+      </svg>
+      <span class="nav-title">Nastavenia</span>
+    </a>
+  </nav>
+
+</aside>
