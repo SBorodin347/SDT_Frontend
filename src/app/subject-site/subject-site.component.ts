@@ -18,19 +18,11 @@ export class SubjectSiteComponent{
 
   @Input()
   isActive = false;
-
+  popup = false;
   constructor(private router: Router, private subjectService: SubjectService) { }
 
   navig = NAV;
 
-  openNav(n : NAV){
-    if(n === NAV.SUBJECTS)
-      this.router.navigate(['/subjects']);
-    if(n === NAV.USERS)
-      this.router.navigate(['/users']);
-    if(n === NAV.HOME)
-      this.router.navigate(['/']);
-  }
 
   ngOnInit(): void{
     this.refreshSubjects();
@@ -59,6 +51,7 @@ export class SubjectSiteComponent{
 
   editSubjectFromList(subjectId: number): void{
     this.subjectService.getSubject(subjectId).subscribe(data => {
+      this.popup = true;
       this.activeSubject = data;
     });
   }
@@ -70,5 +63,14 @@ export class SubjectSiteComponent{
       });
     }
   }
+
+  public openPopup(){
+     this.popup = true;
+}
+
+ public closePopup(){
+   this.activeSubject = null;
+    this.popup = false;
+ }
 
 }

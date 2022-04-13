@@ -50,6 +50,9 @@ export class SubjectFormComponent {
       this.addSubject.emit(this.form.value);
       this.form.reset();
     }
+    setTimeout(function () {
+      location.reload();
+    }, 0);
   }
 
   public edit(): void{
