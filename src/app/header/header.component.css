@@ -1,13 +1,13 @@
 /*
-Error: File to import not found or unreadable: src/styles.
+Error: File to import not found or unreadable: src/styles/variables.
         on line 1 of header.component.scss
 
-1: @import "src/styles";
-2: 
-3: header {
-4:   background-color: $color-bg;
-5:   border-bottom: 1px solid $color-hr;
-6:   height: $height-header;
+1: @import "src/styles/variables";
+2: @import "src/styles/extends";
+3: 
+4: header {
+5:   @extend %flex-center-flexStart;
+6:   background-color: $color-header;
 
 Backtrace:
 header.component.scss:1
@@ -50,4 +50,4 @@ header.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: src/styles.\A         on line 1 of header.component.scss\A \A 1: @import \"src/styles\";\A 2: \A 3: header {\A 4:   background-color: $color-bg;\A 5:   border-bottom: 1px solid $color-hr;\A 6:   height: $height-header;"; }
+  content: "Error: File to import not found or unreadable: src/styles/variables.\A         on line 1 of header.component.scss\A \A 1: @import \"src/styles/variables\";\A 2: @import \"src/styles/extends\";\A 3: \A 4: header {\A 5:   @extend %flex-center-flexStart;\A 6:   background-color: $color-header;"; }

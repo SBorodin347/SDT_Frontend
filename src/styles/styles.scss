@@ -1,17 +1,5 @@
-//global variables
-$color-bg: #ffffff;
-$color-bg-secondary: #F5F6F7;
-$color-text: #23252E;
-$color-hr: #F5F6F7;
-
-//widths
-$width-sidebar: 266px;
-
-//heights
-$height-header: 62px;
-
-//fonts
-$font-line-height-basic: 18px;
+@import "variables";
+@import "extends";
 
 html {
   --color-text: #23252E;
@@ -20,11 +8,6 @@ html {
   --color-nav-active: #222222;
   --color-indicator-message: #e3e6ec;
   --color-text-primary-message: #222222;
-}
-
-%flex-center {
-  display: flex;
-  align-items: center;
 }
 
 * {
@@ -50,9 +33,6 @@ a {
   text-decoration: none;
 }
 
-svg{
-}
-
 button,
 button:active,
 button:focus {
@@ -74,7 +54,7 @@ textarea {
   width: 0;
 }
 
-.page-wrapper {
+.page-wrap {
   display: flex;
   justify-content: space-between;
   padding-top: $height-header;
@@ -83,7 +63,7 @@ textarea {
 
 main {
   width: 100%;
-  padding: 24px 24px;
+  padding: 20px 12px;
 }
 
 .headline-basic{
@@ -379,7 +359,7 @@ input:focus {
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background: url("x.svg") no-repeat center; }
+  background: url("../x.svg") no-repeat center; }
 
 .btn-close:hover {
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.07);

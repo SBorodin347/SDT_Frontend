@@ -1,11 +1,11 @@
-@import "src/styles";
+@import "src/styles/variables";
+@import "src/styles/extends";
 
 header {
-  background-color: $color-bg;
+  @extend %flex-center-flexStart;
+  background-color: $color-header;
   border-bottom: 1px solid $color-hr;
   height: $height-header;
-  @extend %flex-center;
-  justify-content: flex-start;
   position: fixed;
   top: 0;
   left: 0;
@@ -13,23 +13,23 @@ header {
   z-index: 100;
 }
 
-.header-container-logo {
-  @extend %flex-center;
-  width: $width-sidebar;
+.header-container-aside {
+  @extend %flex-center-spaceBetween;
+  min-width: $width-sidebar; max-width: $width-sidebar;
+  max-height: 100%;
   padding: 0 24px;
-  margin: 0;
+  .header-element-aside{
+    @extend %flex-center-flexStart;
+    .logo-wrap {
+      width: 124px;
+      height: $height-header;
+    }
+  }
 }
 
 .header-container-nav{
-  @extend %flex-center;
-  justify-content: flex-start;
+  @extend %flex-center-spaceBetween;
   height: 100%;
-  width: 100%;
   padding: 0 24px;
-}
-
-
-.logo-wrap {
-  width: 124px;
-  height: $height-header;
+  width: 100%;
 }

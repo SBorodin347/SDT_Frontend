@@ -1,0 +1,66 @@
+@import "src/styles/variables";
+@import "src/styles/extends";
+
+.grid{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.item-overview{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #FFFFFF;
+  padding: 16px;
+  margin: 0 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  &:hover{
+    transition: 0.2s;
+    box-shadow: 0 15px 35px rgb(0 0 0 / 5%);
+  }
+}
+
+.icon-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.svg-icon{
+  width: 28px;
+  height: 28px;
+}
+.color-purple{
+  fill: #6B54EB;
+}
+.color-green{
+  fill: #6B54EB;
+}
+
+.column-grid{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.h3{
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-text;
+  line-height: 22px;
+}
+
+.description{
+  font-size: 14px;
+  line-height: 18px;
+  color: #767C8D;
+}
+
+

@@ -1,4 +1,6 @@
-@import "src/styles";
+@import "src/styles/variables";
+@import "src/styles/extends";
+
 
 #sidebar-left {
   display: flex;
@@ -9,7 +11,7 @@
   padding: ($height-header+20) 20px 20px 20px;
   position: fixed;
   left: 0;
-  background-color: $color-bg;
+  background-color: $color-sidebar;
   transition: 0.3s;
   overflow-y: auto;
   border-right: 1px solid $color-hr;

@@ -1,13 +1,13 @@
 /*
-Error: File to import not found or unreadable: src/styles.
+Error: File to import not found or unreadable: src/styles/variables.
         on line 1 of sidebar.component.scss
 
-1: @import "src/styles";
-2: 
-3: #sidebar-left {
-4:   display: flex;
-5:   flex-direction: column;
-6:   justify-content: space-between;
+1: @import "src/styles/variables";
+2: @import "src/styles/extends";
+3: 
+4: 
+5: #sidebar-left {
+6:   display: flex;
 
 Backtrace:
 sidebar.component.scss:1
@@ -50,4 +50,4 @@ sidebar.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: src/styles.\A         on line 1 of sidebar.component.scss\A \A 1: @import \"src/styles\";\A 2: \A 3: #sidebar-left {\A 4:   display: flex;\A 5:   flex-direction: column;\A 6:   justify-content: space-between;"; }
+  content: "Error: File to import not found or unreadable: src/styles/variables.\A         on line 1 of sidebar.component.scss\A \A 1: @import \"src/styles/variables\";\A 2: @import \"src/styles/extends\";\A 3: \A 4: \A 5: #sidebar-left {\A 6:   display: flex;"; }
