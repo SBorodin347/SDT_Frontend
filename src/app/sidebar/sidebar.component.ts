@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 
-enum NAV {SUBJECTS, USERS,HOME}
+enum NAV {SUBJECTS, USERS,HOME,TEACHER,STUDENT}
 
 @Component({
   selector: 'app-sidebar',
@@ -20,6 +20,15 @@ export class SidebarComponent {
   }
 
   public href: string = "";
+  dropdown = false;
+
+  public openDropdown(){
+    if(this.dropdown!=true){
+      this.dropdown = true;
+    }else{
+      this.dropdown=false;
+    }
+  }
 
   public isActive(s: string){
       if(s == this.href){
@@ -37,6 +46,10 @@ export class SidebarComponent {
       this.router.navigate(['/users']);
     if(n === NAV.HOME)
       this.router.navigate(['/']);
+    if(n === NAV.TEACHER)
+      this.router.navigate(['/teacher'])
+    if(n === NAV.STUDENT)
+      this.router.navigate(['/student'])
   }
 
 }

@@ -4,27 +4,46 @@
       <svg class="nav-icon nav__icon__active">
         <use href="#hlavna"></use>
       </svg>
-      <span class="nav-title">Prehľad</span>
+      <span class="nav-title">Overview</span>
     </a>
 
     <a [ngClass]="{ 'nav-link-active' : isActive('/subjects')}" (click)="openNav(navig.SUBJECTS)" class="nav-link">
       <svg class="nav-icon">
         <use href="#subjects"></use>
       </svg>
-      <span class="nav-title">Zoznam predmetov</span>
+      <span class="nav-title">Subject List</span>
     </a>
-    <a [ngClass]="{ 'nav-link-active' : isActive('/users')}" (click)="openNav(navig.USERS)"  class="nav-link">
+    <a (click)="openDropdown()" class="nav-link">
       <svg class="nav-icon">
         <use href="#user"></use>
       </svg>
-      <span class="nav-title">Použivatelia</span>
+      <span class="nav-title">User Profiles</span>
+      <div  [ngClass]="{ 'shadow' : dropdown==true || isActive('/teacher')==true || isActive('/student')==true}" class="nav-icon-circle">
+        <svg  [ngClass]="{ 'arrow-flip' : dropdown==true || isActive('/teacher')==true || isActive('/student')==true}" class="nav-icon">
+          <use href="#arr"></use>
+        </svg></div>
     </a>
+  <div *ngIf="dropdown==true || isActive('/teacher')  || isActive('/student')">
+    <a (click)="openNav(navig.TEACHER)" [ngClass]="{ 'nav-link-active nav-link-active-sub' : isActive('/teacher')}" class="nav-link">
+      <svg *ngIf="isActive('/teacher')!=true" class="nav-icon">
+        <use href="#"></use>
+      </svg>
+      <span class="nav-title">Teacher</span>
+
+    </a>
+    <a (click)="openNav(navig.STUDENT)" [ngClass]="{ 'nav-link-active nav-link-active-sub' : isActive('/student')}"class="nav-link">
+      <svg *ngIf="isActive('/student')!=true" class="nav-icon">
+        <use href="#"></use>
+      </svg>
+      <span class="nav-title">Student</span>
+    </a>
+  </div>
     <hr class="hr-custom">
     <a [ngClass]="{ 'nav-link-active' : isActive('/security')}"  class="nav-link">
       <svg class="nav-icon">
         <use href="#security"></use>
       </svg>
-      <span class="nav-title">Bezpečnosť</span>
+      <span class="nav-title">Security</span>
     </a>
     <a [ngClass]="{ 'nav-link-active' : isActive('/manual')}"  class="nav-link">
       <svg class="nav-icon">

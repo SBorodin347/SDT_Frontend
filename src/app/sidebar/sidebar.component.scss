@@ -1,6 +1,5 @@
+@import "src/styles/mixins";
 @import "src/styles/variables";
-@import "src/styles/extends";
-
 
 #sidebar-left {
   display: flex;
@@ -52,6 +51,10 @@
   font-weight: 600;
 }
 
+.nav-link-active-sub{
+  margin-left: 28px;
+}
+
 .nav-title {
   color: var(--color-text);
   font-size: 14px;
@@ -61,4 +64,33 @@
   fill: var(--color-text);
   width: 20px;
   height: 20px;
+  transition: 0.3s;
+}
+
+.nav-icon-circle{
+  position: absolute;
+  margin-top: -5px;
+  right: 28px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+}
+.shadow{
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.arrow-flip{
+  transform: rotate(-180deg);
+}
+
+
+/* mobile */
+@media (max-width: 768px) {
+  #sidebar-left {
+    width: 100%;
+  }
 }

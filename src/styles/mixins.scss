@@ -1,10 +1,10 @@
-%flex-center-flexStart {
+@mixin flex-center-flexStart {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-%flex-center-spaceBetween{
+@mixin flex-center-spaceBetween{
   display: flex;
   align-items: center;
   justify-content: space-between;

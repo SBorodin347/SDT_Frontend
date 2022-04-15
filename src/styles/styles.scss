@@ -1,5 +1,5 @@
 @import "variables";
-@import "extends";
+@import "mixins";
 
 html {
   --color-text: #23252E;
@@ -31,6 +31,8 @@ a:hover,
 a:visited,
 a {
   text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
 button,
@@ -49,6 +51,11 @@ input,
 textarea {
   outline: none;
 }
+
+details {
+  display: block;
+}
+
 
 .element::-webkit-scrollbar {
   width: 0;
@@ -89,7 +96,7 @@ main {
                                                    font-size: 14px;
                                                    font-weight: 600;
                                                    line-height: 20px;
-                                                   padding: 10px 16px;
+                                                   padding: 8px 16px;
                                                    position: relative;
                                                    text-align: center;
                                                    text-decoration: none;
@@ -133,8 +140,9 @@ label {
 .headline-font{
   color: #23252E;
   font-size: 28px;
-  font-weight: 700;
-  line-height: 48px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 12px;
 }
 
 .hr-custom{
@@ -269,12 +277,12 @@ label {
   animation: 0.4s show ease;
 }
 input {
-  width: 100%;
-  padding: 12px 12px;
-  background: #ffff;
-  border: 1px solid #E6E5E5;
-  border-radius: 8px;
-  margin: 8px 0 20px 0; }
+  min-width: 250px;
+  padding: 10px 12px;
+  border: none;
+  background: #F5F5F5;
+  border-radius: 6px;
+ }
 input:focus {
   background: #fff;
   border: 1.5px solid #B6CBFE;

@@ -1,8 +1,8 @@
 @import "src/styles/variables";
-@import "src/styles/extends";
+@import "src/styles/mixins";
 
 header {
-  @extend %flex-center-flexStart;
+  @include flex-center-flexStart;
   background-color: $color-header;
   border-bottom: 1px solid $color-hr;
   height: $height-header;
@@ -14,12 +14,12 @@ header {
 }
 
 .header-container-aside {
-  @extend %flex-center-spaceBetween;
+  @include flex-center-spaceBetween;
   min-width: $width-sidebar; max-width: $width-sidebar;
   max-height: 100%;
   padding: 0 24px;
   .header-element-aside{
-    @extend %flex-center-flexStart;
+    @include flex-center-flexStart;
     .logo-wrap {
       width: 124px;
       height: $height-header;
@@ -28,7 +28,7 @@ header {
 }
 
 .header-container-nav{
-  @extend %flex-center-spaceBetween;
+  @include flex-center-spaceBetween;
   height: 100%;
   padding: 0 24px;
   width: 100%;
