@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
@@ -19,6 +18,7 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { StudentSiteComponent } from './student-site/student-site.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AutoFocus} from "../auto-focus.directive";
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     StudentListComponent,
     StudentSiteComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    AutoFocus
   ],
   imports: [
     BrowserModule,

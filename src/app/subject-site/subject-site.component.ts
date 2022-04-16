@@ -1,7 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import {Subject, SubjectList} from "../models/subject.model";
 import {SubjectService} from "../../subject.service";
 import {Router} from "@angular/router";
+import {TeacherList} from "../models/teacher.model";
+import {TeacherService} from "../../teacher.service";
 
 
 enum NAV {SUBJECTS, USERS,HOME}
@@ -14,24 +16,39 @@ enum NAV {SUBJECTS, USERS,HOME}
 export class SubjectSiteComponent{
 
   subjects: SubjectList[] = [];
+  teachers: TeacherList[] = [];
   activeSubject?: Subject;
-
-  @Input()
-  isActive = false;
   popup = false;
-  constructor(private router: Router, private subjectService: SubjectService) { }
+
+  constructor(private router: Router, private subjectService: SubjectService, private teacherService: TeacherService) { }
 
   navig = NAV;
 
+  public openPopup(){
+    this.popup = true;
+  }
+
+  public closePopup(){
+    this.activeSubject = null;
+    this.popup = false;
+  }
 
   ngOnInit(): void{
     this.refreshSubjects();
+    this.refreshTeachers();
   }
 
   refreshSubjects(): void{
     this.subjectService.getSubjects().subscribe(data => {
       console.log('Prislo:',data);
       this.subjects = data;
+    });
+  }
+
+  refreshTeachers(): void{
+    this.teacherService.getTeachers().subscribe(data => {
+      console.log('Prislo:',data);
+      this.teachers = data;
     });
   }
 
@@ -64,13 +81,5 @@ export class SubjectSiteComponent{
     }
   }
 
-  public openPopup(){
-     this.popup = true;
-}
-
- public closePopup(){
-   this.activeSubject = null;
-    this.popup = false;
- }
 
 }

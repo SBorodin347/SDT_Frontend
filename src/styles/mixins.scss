@@ -1,3 +1,5 @@
+@import "variables";
+
 @mixin flex-center-flexStart {
   display: flex;
   align-items: center;
@@ -8,4 +10,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@mixin input {
+  padding: 10px 12px;
+  border-radius: $border-radius;
+  font-size: 14px;
+  border: none;
+}
+
+@mixin button {
+  padding: 10px 16px;
+  border-radius: $border-radius;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  cursor: pointer;
 }

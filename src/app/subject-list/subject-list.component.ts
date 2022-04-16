@@ -8,6 +8,7 @@ import {SubjectList} from "../models/subject.model";
 })
 export class SubjectListComponent{
 
+
   constructor() { }
 
   @Input()

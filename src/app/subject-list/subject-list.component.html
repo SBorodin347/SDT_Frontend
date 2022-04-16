@@ -7,15 +7,21 @@
 
 <table id="table" *ngIf="subjects?.length > 0">
   <thead>
-    <th>Názov predmetu</th>
-    <th>Rozsah hodín</th>
-    <th>Počet kreditov</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Hours</th>
+    <th>Teacher</th>
+    <th>Credits</th>
+    <th>Adding date</th>
   <th></th>
   </thead>
   <tbody>
   <tr *ngFor="let s of subjects">
     <td>{{s.name}}</td>
     <td>{{s.hours}}</td>
+    <td>{{s.hours}}</td>
+    <td>{{s.teacherFirstName}} {{s.teacherLastName}}</td>
+    <td>{{s.credit}}</td>
     <td>{{s.credit}}</td>
     <td>
       <div>

@@ -16,7 +16,7 @@
   background: #FFFFFF;
   padding: 16px;
   margin: 0 12px;
-  border-radius: 6px;
+  border-radius: $border-radius;
   cursor: pointer;
   &:hover{
     transition: 0.2s;
@@ -34,7 +34,7 @@
   background: #FFFFFF;
   padding: 24px;
   margin: 0 12px;
-  border-radius: 6px;
+  border-radius: $border-radius;
 }
 
 .icon-wrap{
@@ -72,19 +72,7 @@
   justify-content: flex-start;
 }
 
-.h3{
-  font-size: 15px;
-  font-weight: 500;
-  color: $color-text;
-  line-height: 22px;
-}
 
-.h4{
-  font-size: 15px;
-  font-weight: 400;
-  color: #767C8D;
-  line-height: 22px;
-}
 
 
 .description{
@@ -108,6 +96,6 @@
   justify-content: center;
   width: 24px;
   height: 24px;
-  border-radius: 6px;
+  border-radius: $border-radius;
   background-color: #0A99FF;
 }

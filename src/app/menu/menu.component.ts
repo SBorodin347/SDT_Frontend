@@ -11,4 +11,8 @@ export class MenuComponent {
 
   constructor(private router: Router) { }
 
+  goSubjects(){
+    this.router.navigate(['/subjects']);
+  }
+
 }
