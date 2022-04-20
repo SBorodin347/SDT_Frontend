@@ -18,7 +18,8 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { StudentSiteComponent } from './student-site/student-site.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { AutoFocus} from "../auto-focus.directive";
+import { LoginFormComponent } from "./login-form/login-form.component";
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AutoFocus} from "../auto-focus.directive";
     StudentSiteComponent,
     HeaderComponent,
     SidebarComponent,
-    AutoFocus
+    LoginFormComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

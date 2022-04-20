@@ -13,10 +13,11 @@
 }
 
 @mixin input {
-  padding: 10px 12px;
+  padding: 12px 14px;
   border-radius: $border-radius;
   font-size: 14px;
   border: none;
+  font-family: $font-family;
 }
 
 @mixin button {
@@ -32,6 +33,6 @@
   touch-action: manipulation;
   vertical-align: middle;
   white-space: nowrap;
-  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-family: $font-family;
   cursor: pointer;
 }

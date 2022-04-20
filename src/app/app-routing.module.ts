@@ -5,10 +5,15 @@ import {SubjectSiteComponent} from "./subject-site/subject-site.component";
 import {UserComponent} from "./user/user.component";
 import {TeacherSiteComponent} from "./teacher-site/teacher-site.component";
 import {StudentSiteComponent} from "./student-site/student-site.component";
+import {LoginPageComponent} from "./login-page/login-page.component";
 
 const routes: Routes = [
   {
     path: '',
+    component: LoginPageComponent
+  },
+  {
+    path: 'home',
     component: MenuComponent
   },
   {
