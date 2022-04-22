@@ -1,2 +1,77 @@
-<button (click)="openNav(navig.SUBJECTS)">Subjects</button>
-<button (click)="openNav(navig.USERS)">User Management</button>
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="page-wrap">
+  <main>
+    <div class="grid">
+
+      <div class="grow">
+        <div (click)="goSubjects()" class="item-overview">
+        <div class="icon-wrap">
+          <svg class="svg-icon color-purple">
+            <use href="#fac"></use>
+          </svg>
+        </div>
+        <div class="column-grid">
+          <span class="h3">New subject</span>
+          <span class="description">You can create it now</span>
+        </div>
+      </div>
+      </div>
+      <div class="grow">
+        <div class="item-overview">
+        <div class="icon-wrap">
+          <svg class="svg-icon color-blue">
+            <use href="#useradd"></use>
+          </svg>
+        </div>
+        <div class="column-grid">
+          <span class="h3">New user</span>
+          <span class="description">You can create it now</span>
+        </div>
+      </div>
+      </div>
+      <div class="grow">
+        <div class="item-overview ">
+        <div class="icon-wrap">
+          <svg class="svg-icon color-green">
+            <use href="#stack"></use>
+          </svg>
+        </div>
+        <div class="column-grid">
+          <span class="h3">Faculties</span>
+          <span class="description">Only viewing is available</span>
+        </div>
+      </div>
+      </div>
+      <div class="grow">
+        <div class="item-overview item-disabled">
+        <div class="icon-wrap">
+          <svg id="x" class="svg-icon color-orange">
+            <use  href="#faculty"></use>
+          </svg>
+        </div>
+        <div class="column-grid">
+          <span class="h3">New course</span>
+          <span class="description">You have no permission</span>
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+    <div class="grid">
+      <div class="container-overview">
+       <div class="headline-font">Overview</div>
+        <div class="h4">Current version: 1.2</div>
+
+<!--        <div class="pin">-->
+<!--          <svg  class="check-icon">-->
+<!--            <use  href="#circle"></use>-->
+<!--          </svg>-->
+<!--        </div> -->
+      </div>
+    </div>
+  </main>
+</div>
+
+

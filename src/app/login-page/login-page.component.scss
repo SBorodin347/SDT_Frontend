@@ -1,0 +1,188 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+$width-login-page-left: 600px;
+
+$bluebell: #fff;
+
+.loading {
+  display: flex;
+  justify-content: center;
+
+  div {
+    width: 10px;
+    height: 10px;
+    margin: 10px 4px;
+    background: $bluebell;
+    border-radius: 50%;
+    animation: 0.9s bounce infinite alternate;
+
+    &:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+  }
+}
+
+@keyframes bounce {
+  to {
+    opacity: 0.3;
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+.success-green{
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  background-color: #3EAD56;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.warning-red{
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #FF5454;
+  /*Устанавливаем время и имя анимации*/
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.left-section{
+  background-color: #23252E;
+  width: $width-login-page-left;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  transition: 0.3s;
+  overflow-y: auto;
+  z-index: 1;
+  padding: 80px;
+}
+
+.h1{
+  color: $color-text;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 600;
+}
+
+.login-heading{
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.org-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-section{
+  //padding-left: $width-login-page-left;
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form{
+
+}
+
+
+.logo{
+  position: absolute;
+  margin-left: 28px;
+  margin-top: 16px;
+  left: 0;
+  top: 0;
+  width: 160px;
+  height: 60px;
+}
+
+.company{
+  @include button;
+  padding: 6px 16px;
+  border-radius: 24px;
+  background-color: #353845;
+  color: #fff;
+  border: none;
+  //position: absolute;
+  font-weight: 600;
+  //right: 0;
+  //top: 0;
+  //margin-top: 32px;
+  //margin-right: 36px;
+  //margin-left: 94px;
+  margin-right: 12px;
+}
+
+.position{
+  width: 440px;
+  position: absolute;
+  left: 100px;
+}
+
+.bol{
+  @include button;
+  padding: 10px 16px;
+  border-radius: 24px;
+  background-color: #353845;
+  color: #fff;
+  border: none;
+  position: absolute;
+  font-weight: 600;
+  right: 0;
+  top: 0;
+  margin-top: 32px;
+  margin-right: 36px;
+  margin-left: 94px;
+}
+
+.link{
+  @include button;
+  padding: 6px 16px;
+  border-radius: 24px;
+  background-color: #fff;
+  color: $color-text;
+  border: 2px solid #F5F6F7;
+  letter-spacing: 0.1px;
+  font-weight: 500;
+width: 100%;
+}

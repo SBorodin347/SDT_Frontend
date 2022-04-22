@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Student, StudentList} from "./app/models/student.model";
+import {Student, StudentList} from "../models/student.model";
+import {Option} from "@angular/cli/models/interface";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
+  private token;
+
   private apiUrl = 'http://localhost:8080/api/students';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) {
+    this.token = this.auth.getToken();
+  }
 
   getStudents(): Observable<StudentList[]>{
     return this.http.get<StudentList[]>(`${this.apiUrl}`);

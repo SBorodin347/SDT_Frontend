@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Student} from "../models/student.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {LoginFormComponent} from "../login-form/login-form.component";
+import {LoginPageComponent} from "../login-page/login-page.component";
 
 @Component({
   selector: 'app-student-form',

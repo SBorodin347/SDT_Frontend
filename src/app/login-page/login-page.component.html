@@ -1,0 +1,36 @@
+<div *ngIf="warning==true" class="warning-red">We couldn’t find an account matching the username and password you entered. Please check your username and password and try again.</div>
+<div  *ngIf="success==true"  class="success-green">
+  <div class="loading">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<div>
+<!--  <div class="left-section">-->
+<!--&lt;!&ndash;       <div style="margin-bottom: 48px" class="h1">Welcome to eDuck</div>&ndash;&gt;-->
+<!--&lt;!&ndash;       <div  class="h1">Let's begin</div>&ndash;&gt;-->
+<!--    <svg class="logo">-->
+<!--      <use  href="#logotype-white"></use>-->
+<!--    </svg>-->
+<!--   <button class="bol">eDuck / UMB</button>-->
+<!--    <img class="position" width="420px"  src="https://i.ibb.co/t3xrpwY/casual-life-3d-blue-graduation-hat-in-the-air.png">-->
+<!--  </div>-->
+  <div class="login-section">
+    <div class="login-form">
+          <svg class="logo">
+            <use href="#logotype-white"></use>
+          </svg>
+      <div class="h1 login-heading">Sign in to eDuck</div>
+     <div style="text-align: center; margin-bottom: 16px" class="h5">Please ensure you are visiting the correct url </div>
+     <div class="org-info">
+       <button class="company">{{getOrganizationTitle()}}</button>      <button class="link"><span style="color: #2BAC47; margin-right: 2px">https://</span>{{getOrganizationTitle().toLocaleLowerCase()}}.educk.sk</button>
+     </div>
+      <hr style="margin-bottom: 24px; margin-top: 24px" class="hr-custom">
+      <div style="width: 360px">
+        <app-login-form></app-login-form>
+      </div>
+
+    </div>
+  </div>
+</div>

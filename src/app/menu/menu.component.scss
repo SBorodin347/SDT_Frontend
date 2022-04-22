@@ -1,0 +1,132 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+.grid{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 20px 0;
+}
+
+.grow{
+  margin: 0 12px;
+  width: calc(25% - 24px);
+}
+
+.item-overview{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 16px;
+  border-radius: $border-radius;
+  cursor: pointer;
+  &:hover{
+    transition: 0.2s;
+    -webkit-box-shadow: 0 15px 35px rgb(0 0 0 / 5%);
+    box-shadow: 0 15px 35px rgb(0 0 0 / 5%);
+    z-index: 1;
+  }
+
+}
+.item-disabled{
+  cursor: not-allowed;
+}
+.container-overview{
+  width: 100%;
+  background: #FFFFFF;
+  padding: 24px;
+  margin: 0 12px;
+  border-radius: $border-radius;
+}
+
+.icon-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.svg-icon{
+  width: 28px;
+  height: 28px;
+}
+.color-purple{
+  fill: #6B54EB;
+}
+.color-blue{
+  fill: #2A81FA;
+}
+
+.color-orange{
+  fill: #9EA0A1;  //FF7256
+}
+
+.color-green{
+  fill: #49B325;
+}
+
+.column-grid{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.description{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 18px;
+  color: #767C8D;
+}
+
+.title-container{
+  padding: 16px 12px;
+}
+
+.check-icon{
+  width: 16px;
+  height: 16px;
+}
+
+.pin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: $border-radius;
+  background-color: #0A99FF;
+}
+
+/* tablet */
+@media (min-width: 1024px) and (max-width: 1240px)  {
+  .grow{
+    margin: 0 12px;
+    width: calc(50% - 24px);
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .grow{
+    margin: 0 12px;
+    width: calc(50% - 24px);
+  }
+
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .grow{
+    margin: 0 12px;
+    width: calc(100% - 24px);
+  }
+
+}

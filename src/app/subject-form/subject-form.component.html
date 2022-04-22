@@ -1,20 +1,39 @@
-<button (click)="goBack()">Go Back</button>
-<br><br>
-<form [formGroup]="form">
-  <label>Subject Name
-    <input type="text" formControlName="name">
-  </label>
-  <br>
-  <label>Hours/Week
-    <input type="number" formControlName="hours">
-  </label>
-  <br>
-  <label>Credit
-    <input type="number" formControlName="credit">
-  </label>
-  <br>
-  <button (click)="add()" *ngIf="form.value.id === null">Add Subject</button>
-  <button (click)="edit()" *ngIf="form.value.id !== null">Save Changes</button>
-  <button (click)="remove()">Reset</button>
-</form>
+
+
+  <div class="h2"> Subject</div>
+<hr style="margin: 20px 0" class="hr-custom">
+   <form [formGroup]="form">
+    <label>Title </label>
+     <input class="input-primary" type="text" formControlName="name" >
+    <br>
+     <label>Teacher</label>
+     <select  formControlName="teacherId" >
+       <option [hidden]="true" [disabled]="true" [ngValue]="null">🕵️&nbsp; Select a teacher...</option>
+       <option title="teacher" value="{{t.id}}" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
+     </select>
+     <br>
+     <div style="display: inline-flex; justify-content: space-between; align-items: center;">
+         <label style="width: 48%;">Hours/Week
+         <input  class="input-primary" type="number" formControlName="hours">
+         </label>
+  <label style="width: 48%;">Credit
+  <input   class="input-primary" type="number" formControlName="credit">
+       </label>
+     </div>
+
+
+   <hr style=" margin: 20px -32px 14px -32px" class="hr-custom">
+    <br>
+     <div style="width: 500px; margin: -32px; background: #FCFCFC; border-radius: 0 0 12px 12px; padding: 24px 32px 30px 32px">
+       <div style="text-align: right;">
+         <button class="btn-cancel" (click)="closePopup()">Cancel</button>
+         <button class="btn-main" [disabled]="form.invalid" (click)="add()" *ngIf="form.value.id === null">Continue</button>
+         <button class="btn-main"  [disabled]="form.invalid" (click)="edit()" *ngIf="form.value.id !== null">Save Changes</button>
+         <!--  <button (click)="remove()">Reset</button>-->
+       </div>
+     </div>
+
+  </form>
+
+
 
