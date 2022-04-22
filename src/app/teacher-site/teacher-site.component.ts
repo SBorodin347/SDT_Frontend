@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Teacher, TeacherList} from "../models/teacher.model";
 import {Router} from "@angular/router";
-import {TeacherService} from "../../teacher.service";
+import {TeacherService} from "../services/teacher.service";
 
 @Component({
   selector: 'app-teacher-site',

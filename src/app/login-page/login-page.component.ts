@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as myGlobals from '../globals';
 
 @Component({
   selector: 'app-login-page',
@@ -9,9 +10,25 @@ export class LoginPageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  getOrganizationTitle(): string{
+    return myGlobals.organization_title;
   }
 
-  organization_title: string = "UMB";
+  warning = false;
+  success = false;
 
+  showWarning(){
+    this.warning = true;
+  }
+
+  clearWarning(){
+    this.warning = false;
+  }
+
+  showSuccess(){
+    this.success = true;
+  }
+
+  ngOnInit(): void {
+  }
 }

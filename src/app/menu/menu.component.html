@@ -1,11 +1,11 @@
 <app-header></app-header>
-<!-- ===== LEFT SIDEBAR STARTS HERE ===== -->
-
 <app-sidebar></app-sidebar>
 <div class="page-wrap">
   <main>
     <div class="grid">
-      <div (click)="goSubjects()" class="item-overview">
+
+      <div class="grow">
+        <div (click)="goSubjects()" class="item-overview">
         <div class="icon-wrap">
           <svg class="svg-icon color-purple">
             <use href="#fac"></use>
@@ -16,7 +16,9 @@
           <span class="description">You can create it now</span>
         </div>
       </div>
-      <div class="item-overview">
+      </div>
+      <div class="grow">
+        <div class="item-overview">
         <div class="icon-wrap">
           <svg class="svg-icon color-blue">
             <use href="#useradd"></use>
@@ -27,7 +29,9 @@
           <span class="description">You can create it now</span>
         </div>
       </div>
-      <div class="item-overview">
+      </div>
+      <div class="grow">
+        <div class="item-overview ">
         <div class="icon-wrap">
           <svg class="svg-icon color-green">
             <use href="#stack"></use>
@@ -38,7 +42,9 @@
           <span class="description">Only viewing is available</span>
         </div>
       </div>
-      <div class="item-overview item-disabled">
+      </div>
+      <div class="grow">
+        <div class="item-overview item-disabled">
         <div class="icon-wrap">
           <svg id="x" class="svg-icon color-orange">
             <use  href="#faculty"></use>
@@ -49,6 +55,8 @@
           <span class="description">You have no permission</span>
         </div>
       </div>
+      </div>
+
     </div>
 
     <div class="grid">

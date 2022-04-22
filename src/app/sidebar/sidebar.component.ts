@@ -45,7 +45,7 @@ export class SidebarComponent {
     if(n === NAV.USERS)
       this.router.navigate(['/users']);
     if(n === NAV.HOME)
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     if(n === NAV.TEACHER)
       this.router.navigate(['/teacher'])
     if(n === NAV.STUDENT)

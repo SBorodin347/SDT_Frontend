@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { MenuComponent } from './menu/menu.component';
 import { SubjectSiteComponent } from './subject-site/subject-site.component';
 import { SubjectFormComponent } from './subject-form/subject-form.component';
@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginFormComponent } from "./login-form/login-form.component";
 import { LoginPageComponent } from './login-page/login-page.component';
+import {AuthHeaderInterceptor} from "./interceptors/auth-header.interceptor";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,11 @@ import { LoginPageComponent } from './login-page/login-page.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthHeaderInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

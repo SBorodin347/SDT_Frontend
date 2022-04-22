@@ -1,9 +1,9 @@
 import {Component, Input, Output} from '@angular/core';
 import {Subject, SubjectList} from "../models/subject.model";
-import {SubjectService} from "../../subject.service";
+import {SubjectService} from "../services/subject.service";
 import {Router} from "@angular/router";
 import {TeacherList} from "../models/teacher.model";
-import {TeacherService} from "../../teacher.service";
+import {TeacherService} from "../services/teacher.service";
 
 
 enum NAV {SUBJECTS, USERS,HOME}

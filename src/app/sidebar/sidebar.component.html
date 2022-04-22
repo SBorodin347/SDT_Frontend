@@ -1,6 +1,6 @@
 <aside id="sidebar-left">
   <nav class="nav-section">
-    <a [ngClass]="{ 'nav-link-active' : isActive('/home')}" (click)="openNav(navig.HOME)"class="nav-link">
+    <a [ngClass]="{ 'nav-link-active' : isActive('/')}" (click)="openNav(navig.HOME)"class="nav-link">
       <svg class="nav-icon nav__icon__active">
         <use href="#hlavna"></use>
       </svg>
@@ -23,19 +23,25 @@
           <use href="#arr"></use>
         </svg></div>
     </a>
-  <div *ngIf="dropdown==true || isActive('/teacher')  || isActive('/student')">
+  <div class="sidebar-drop" *ngIf="dropdown==true || isActive('/teacher')  || isActive('/student')">
     <a (click)="openNav(navig.TEACHER)" [ngClass]="{ 'nav-link-active nav-link-active-sub' : isActive('/teacher')}" class="nav-link">
-      <svg *ngIf="isActive('/teacher')!=true" class="nav-icon">
-        <use href="#"></use>
+      <svg  class="navi-icon">
+        <use href="#navi"></use>
       </svg>
       <span class="nav-title">Teacher</span>
 
     </a>
     <a (click)="openNav(navig.STUDENT)" [ngClass]="{ 'nav-link-active nav-link-active-sub' : isActive('/student')}"class="nav-link">
-      <svg *ngIf="isActive('/student')!=true" class="nav-icon">
-        <use href="#"></use>
+      <svg [ngClass]="{ 'navi-drag' : isActive('/student')}" class="navi-icon">
+        <use href="#navi"></use>
       </svg>
       <span class="nav-title">Student</span>
+    </a>
+    <a (click)="openNav(navig.STUDENT)" [ngClass]="{ 'nav-link-active nav-link-active-sub' : isActive('/student')}"class="nav-link">
+      <svg [ngClass]="{ 'navi-drag' : isActive('/student')}" class="navi-icon">
+        <use href="#navi"></use>
+      </svg>
+      <span class="nav-title">Referent</span>
     </a>
   </div>
     <hr class="hr-custom">

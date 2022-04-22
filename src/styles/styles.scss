@@ -192,27 +192,28 @@ label {
   display: block;
   padding: 32px;
   background: #fff;
-  margin-top: 36px;
-  margin-bottom: 36px;
+margin: 36px auto;
   position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
   border-radius: 12px;
   width: 500px;
-  animation-duration: 0.50s;  /* Время работы анимации */
+  animation-duration: 0.4s;  /* Время работы анимации */
   animation-fill-mode: both;  /* Поведение анимации */
-  animation-name: fadeInDown; /* Имя анимации */
+  animation-name: fadeInDown;
 }
 
-@keyframes fadeInDown { /* Сама анимация */
-  0% {                /* Старт анимации */
-    opacity: 0;
-    transform: translate3d(-50%, 20%, 0px);
+@keyframes fadeInDown {
+  0% {
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
   }
-  100% {              /* в финале анимации - финал это заданная 0.55s */
-    opacity: 1;
-    left: 50%;
-    transform: translate(-50%, 0);
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
   }
 }
 
@@ -284,8 +285,12 @@ label {
   line-height: 16px; }
 
 .input-error {
-  margin: 8px 0 4px 0;
-  border: 1.5px solid #F90000; }
+  background: #fff;
+  //box-shadow: 0 0 0 2px #5B667D;
+  //box-shadow: 0 0 0 1.5px #73ADFA, 0 0 0 4.5px #E6EEFE;
+  box-shadow: 0 0 0 1.5px #F70000;
+  transition: 0.15s;
+}
 
 .input-small-error {
   margin: 8px 0 20px 0;
@@ -314,6 +319,20 @@ label {
 .btn-close:hover {
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.07);
   transition: 0.3s; }
+
+.input-primary-icon{
+  @include input;
+  width: 100%;
+  margin: 10px 0 24px 0;
+  padding-left:40px;
+  background: #F5F6F7;
+  &:focus{
+    background: #fff;
+    box-shadow: 0 0 0 1.5px #2A81FA;
+    transition: 0.15s;
+  }
+}
+
 .input-primary{
   @include input;
   width: 100%;
@@ -329,6 +348,14 @@ label {
     box-shadow: 0 0 0 1.5px #2A81FA;
     transition: 0.15s;
   }
+}
+
+.focus{
+  background: #fff;
+  //box-shadow: 0 0 0 2px #5B667D;
+  //box-shadow: 0 0 0 1.5px #73ADFA, 0 0 0 4.5px #E6EEFE;
+  box-shadow: 0 0 0 1.5px #F70000;
+  transition: 0.15s;
 }
 
 
@@ -394,5 +421,17 @@ select:hover{
   top: 39px;
   width: 20px;
   height: 20px;
+}
+
+
+/* mobile */
+@media (max-width: 768px) {
+  .page-wrap{
+    height: auto;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    padding-top: $height-header;
+  }
 }
 
