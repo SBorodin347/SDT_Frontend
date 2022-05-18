@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-teacher-form',
   templateUrl: './teacher-form.component.html',
-  styleUrls: ['./teacher-form.component.css']
+  styleUrls: ['./teacher-form.component.scss']
 })
 export class TeacherFormComponent {
 

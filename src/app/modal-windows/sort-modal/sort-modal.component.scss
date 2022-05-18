@@ -1,0 +1,61 @@
+@import "src/styles/variables";
+
+.modal-sort-act{
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  margin-top: 14px;
+  margin-left: -10px;
+  background-color: $color-bg;
+  border-radius: $border-radius;
+  padding: 12px;
+  -webkit-box-shadow: 0 10px 55px rgb(0 0 0 / 12%);
+  box-shadow: 0 10px 55px rgb(0 0 0 / 12%);
+  border: 1px solid #F5F5F7;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: fadeInDown;
+}
+
+.btn-sort{
+  width: 100%;
+  display: flex;
+  padding: 4px 32px 4px 4px;
+  align-items: center;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  color: #5E647A;
+  stroke: #5B6178;
+  &:hover{
+    color: #000000;
+    stroke: #000000;
+  }
+}
+
+.btn-sort-active{
+  color: $color-primary;
+  stroke: $color-primary;
+  &:hover{
+    color: $color-primary;
+    stroke: $color-primary;
+  }
+}
+
+.arrow-up{
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.hr-modal-sort{
+  width: 100%;
+  border: 0;
+  height: 1.5px;
+  margin-top: -2px;
+  margin-bottom: -6px;
+  background: #F4F4F6;
+}

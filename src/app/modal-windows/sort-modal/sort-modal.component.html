@@ -1,0 +1,15 @@
+<div class="modal-sort-act">
+  <button [ngClass]="{'btn-sort-active': sortType === 'asc'}" (click)="sortByAsc.emit()" class="btn-sort">
+    <svg class="arrow-up">
+      <use xlink:href="#arrowup"></use>
+    </svg>Sort Ascending</button>
+  <button [ngClass]="{'btn-sort-active': sortType === 'desc'}" (click)="sortByDesc.emit()" class="btn-sort">
+    <svg class="arrow-up">
+      <use xlink:href="#arrowdown"></use>
+    </svg>Sort Descending</button>
+  <hr class="hr-modal-sort">
+  <button class="btn-sort">
+    <svg class="arrow-up">
+      <use xlink:href="#arrowleft"></use>
+    </svg>Hide Column</button>
+</div>

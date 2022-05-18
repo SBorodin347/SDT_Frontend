@@ -4,7 +4,7 @@
 .grid{
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 20px;
@@ -12,24 +12,24 @@
 }
 
 .grow{
-  margin: 0 12px;
-  width: calc(25% - 24px);
+  width: calc(25% - 20px);
 }
 
 .item-overview{
   width: 100%;
   display: flex;
   align-items: center;
-  background: #FFFFFF;
+  //background: #F7F7F8;
   padding: 16px;
   border-radius: $border-radius;
   cursor: pointer;
-  &:hover{
-    transition: 0.2s;
-    -webkit-box-shadow: 0 15px 35px rgb(0 0 0 / 5%);
-    box-shadow: 0 15px 35px rgb(0 0 0 / 5%);
-    z-index: 1;
-  }
+  border: 1px solid #F0F0F0;
+  //&:hover{/.
+  //  transition: 0.2s;,cg fv
+  //  -webkit-box-shadow: 0 15px 35px rgb(0 0 0 / 5%);
+  //  box-shadow: 0 15px 35px rgb(0 0 0 / 5%);
+  //  z-index: 1;
+  //}
 
 }
 .item-disabled{
@@ -49,26 +49,32 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  margin-right: 12px;
+  background-color: #FFB404;
+  border-radius: 6px;
+  margin-right: 16px;
 }
 
 .svg-icon{
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
 }
 .color-purple{
-  fill: #6B54EB;
+  stroke: #fff;
+  //fill: #6B54EB;
 }
 .color-blue{
-  fill: #2A81FA;
+  visibility: hidden;
+  //fill: #2A81FA;
 }
 
 .color-orange{
-  fill: #9EA0A1;  //FF7256
+  visibility: hidden;
+  //fill: #9EA0A1;  //FF7256
 }
 
 .color-green{
-  fill: #49B325;
+  visibility: hidden;
+  //fill: #49B325;
 }
 
 .column-grid{
@@ -81,7 +87,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 18px;
   color: #767C8D;
 }
@@ -108,7 +114,6 @@
 /* tablet */
 @media (min-width: 1024px) and (max-width: 1240px)  {
   .grow{
-    margin: 0 12px;
     width: calc(50% - 24px);
   }
 
@@ -116,8 +121,7 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .grow{
-    margin: 0 12px;
-    width: calc(50% - 24px);
+    width: calc(50% - 12px);
   }
 
 }
@@ -125,8 +129,7 @@
 /* mobile */
 @media (max-width: 768px) {
   .grow{
-    margin: 0 12px;
-    width: calc(100% - 24px);
+    width: 100%;
   }
 
 }

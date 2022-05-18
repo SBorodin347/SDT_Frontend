@@ -1,20 +1,35 @@
 //colors
-$color-bg: #F5F6F7;
-$color-primary: #2A83FA;
-$color-sidebar: #ffffff;
-$color-header: #ffffff;
-$color-bg-secondary: #F5F6F7;
-$color-text: #23252E;
-$color-hr: #F5F6F7;
+$color-bg: #fff;
+$color-primary: #2A81FA;
+$color-sidebar: #1B1D1F;
+$color-header: #F4F4F5;
+$color-header-search-input: #333334;
+$color-bg-secondary: #F4F4F5;  // F4F4F5
+$color-hr: #F0F0F0;
+$color-table-border: #EEEEEE;
+$color-table-border-line: #F2F2F2;
+$color-hr-strong: #E9E9E9;
+//colors text
+//$color-text: #23252E;
+$color-text: #1B1D1F; // 1B1D1F
+$color-text-link-sidebar: #757D85;
+$color-text-link-sidebar-active: #FCFCFC;
+$color-bg-link-sidebar-active: #272B31;
+$color-bg-link-sidebar-hover: #212529;
+
+//paddings
+$padding-side: 36px;
+
+//wraps
+$main-wrap: 28px $padding-side;
 
 //widths
-$width-sidebar: 266px;
+$width-sidebar: 256px;
 
 //heights
 $height-header: 72px;
 
 //fonts
-$font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
 $font-line-height-basic: 18px;
 
 //borders

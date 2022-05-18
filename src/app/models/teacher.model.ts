@@ -7,7 +7,6 @@ export class Teacher{
   phone: string;
   keyword: string;
 
-
   constructor(teacher: Teacher) {
     this.id = teacher.id;
     this.firstName = teacher.firstName;

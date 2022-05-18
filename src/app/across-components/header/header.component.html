@@ -1,0 +1,122 @@
+<header xmlns="http://www.w3.org/1999/html">
+  <div class="header-wrap">
+    <div>
+
+         <div class="filter">
+            <input   class="input-sea header-search-input" style="padding: 12px 12px 12px 40px;margin-right: 14px; border: none; box-shadow: none" type="text" placeholder="Search...">
+            <svg class="icon">
+              <use href="#search"></use>
+            </svg>
+            <!--    <button (click)="componentOne.openPopup()" class="btn-main">New subject</button>-->
+          </div>
+    </div>
+       <div (click)="openMenu()" [ngClass]="{'active-menu': menu}" class="but">    <svg class="menu-icon">
+            <use href="#menu"></use>
+          </svg></div>
+        <nav *ngIf="menu" class="navigation-drop">
+          <a class="gopro">
+            <svg style="fill: #fff" class="nav-icon">
+              <use href="#star"></use>
+            </svg>
+            <span style="color: #fff; font-weight: 500" class="nav-title">Upgrade account</span>
+          </a>
+          <hr style="width: 100%" class="hr-custom">
+          <a class="nav-link">
+             <svg class="nav-icon">
+               <use href="#organ"></use>
+             </svg>
+             <span class="nav-title">Mentions</span>
+           </a>
+           <a routerLink="/organization" class="nav-link">
+             <svg  class="nav-icon">
+               <use href="#uni"></use>
+             </svg>
+             <span class="nav-title">Organization</span>
+    <!--         <div class="badge-organization" >12</div>-->
+           </a>
+          <a class="nav-link">
+            <svg  class="nav-icon">
+              <use href="#document"></use>
+            </svg>
+            <span class="nav-title">Documents</span>
+          </a>
+          <hr style="width: 100%" class="hr-custom">
+          <a class="nav-link">
+            <span class="nav-title">Account Settings</span>
+          </a>
+          <a (click)="logout()" class="nav-link">
+            <span class="nav-title">Log Out</span>
+          </a>
+        </nav>
+  </div>
+
+<!--  <section class="header-container-aside">-->
+<!--    <div class="header-element-aside">-->
+<!--      <svg class="logo-wrap">-->
+<!--        <use href="#logotype"></use>-->
+<!--      </svg>-->
+<!--    </div>-->
+
+<!--    <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">-->
+<!--      <path d="M22 12H3" stroke="#F4F4F4"></path>-->
+<!--      <g stroke="#808191">-->
+<!--        <path d="M22 4H13"></path>-->
+<!--        <path opacity=".301" d="M22 20H13"></path>-->
+<!--      </g>-->
+<!--      <path d="M7 7l-5 5 5 5" stroke="#F4F4F4"></path>-->
+<!--    </svg>-->
+<!--  </section>-->
+<!--  <section class="header-container-nav">-->
+<!--    <div class="filter">-->
+<!--      <input   class="input-sea header-search-input" style="padding: 10px 12px 10px 40px;margin-right: 14px; border: none; box-shadow: none" type="text" placeholder="Search...">-->
+<!--      <svg class="icon">-->
+<!--        <use href="#search"></use>-->
+<!--      </svg>-->
+<!--      &lt;!&ndash;    <button (click)="componentOne.openPopup()" class="btn-main">New subject</button>&ndash;&gt;-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <div id="header-search">&ndash;&gt;-->
+<!--&lt;!&ndash;      <input class="input-search" placeholder="Search">&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    <div>-->
+
+<!--      <div (click)="openMenu()" [ngClass]="{'active-menu': menu}" class="but">    <svg class="menu-icon">-->
+<!--        <use href="#menu"></use>-->
+<!--      </svg></div>-->
+<!--    </div>-->
+<!--    <nav *ngIf="menu" class="navigation-drop">-->
+<!--      <a class="gopro">-->
+<!--        <svg style="fill: #fff" class="nav-icon">-->
+<!--          <use href="#star"></use>-->
+<!--        </svg>-->
+<!--        <span style="color: #fff; font-weight: 500" class="nav-title">Upgrade account</span>-->
+<!--      </a>-->
+<!--      <hr style="width: 100%" class="hr-custom">-->
+<!--      <a class="nav-link">-->
+<!--         <svg class="nav-icon">-->
+<!--           <use href="#organ"></use>-->
+<!--         </svg>-->
+<!--         <span class="nav-title">Mentions</span>-->
+<!--       </a>-->
+<!--       <a routerLink="/organization" class="nav-link">-->
+<!--         <svg  class="nav-icon">-->
+<!--           <use href="#uni"></use>-->
+<!--         </svg>-->
+<!--         <span class="nav-title">Organization</span>-->
+<!--&lt;!&ndash;         <div class="badge-organization" >12</div>&ndash;&gt;-->
+<!--       </a>-->
+<!--      <a class="nav-link">-->
+<!--        <svg  class="nav-icon">-->
+<!--          <use href="#document"></use>-->
+<!--        </svg>-->
+<!--        <span class="nav-title">Documents</span>-->
+<!--      </a>-->
+<!--      <hr style="width: 100%" class="hr-custom">-->
+<!--      <a class="nav-link">-->
+<!--        <span class="nav-title">Account Settings</span>-->
+<!--      </a>-->
+<!--      <a (click)="logout()" class="nav-link">-->
+<!--        <span class="nav-title">Log Out</span>-->
+<!--      </a>-->
+<!--    </nav>-->
+<!--  </section>-->
+</header>

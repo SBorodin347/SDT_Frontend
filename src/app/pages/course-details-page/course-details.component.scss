@@ -1,0 +1,61 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+
+
+.teacher-avatar{
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 0 8px;
+}
+
+.back-circle{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #F5F6F7;
+  margin-right: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover{
+    transition: 0.3s;
+    background: #F1F2F3;
+  }
+}
+
+.img-arrow{
+  content: url("../../../img/arrowd.svg");
+  width: 14px;
+  height: 14px;
+  vertical-align: sub;
+  margin-right: 2px;
+}
+
+
+.vl{
+  margin: 0 12px;
+  height: 20px;
+  border-left: 1px solid $color-hr-strong;
+}
+
+.course-code{
+  display: flex;
+  align-items: center;
+  color: $color-text;
+  //font-weight: 500;
+  border: 1px dashed #DBDBDB;
+  background: #F8F9FA;
+ //background: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+}
+
+.copy-icon{
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,80 @@
+<aside class="sidebar-left">
+  <nav class="nav-section">
+    <svg class="logo">
+      <use href="#logotype"></use>
+    </svg>
+    <a [ngClass]="{'nav-link-active' : activeLink == 'home'}" (click)="navigation(routeTo.HOME)" class="nav-link">
+      <svg class="nav-icon">
+        <use href="#home"></use>
+      </svg>
+      <span class="nav-title">Home</span>
+    </a>
+    <a [ngClass]="{'nav-link-active' : activeLink == 'courses'}" (click)="navigation(routeTo.COURSES)" class="nav-link">
+      <svg class="nav-icon">
+        <use href="#folders"></use>
+      </svg>
+      <span class="nav-title">Courses</span>
+    </a>
+    <a *ngxPermissionsOnly="[ROLE.ADMIN]" (mouseenter)="userHover=true" (mouseleave)="userHover=false" (click)="openDropdown()" class="nav-link">
+      <svg class="nav-icon">
+        <use href="#school"></use>
+      </svg>
+      <span class="nav-title">Accounts</span>
+      <a *ngIf="userHover" href="/user"  class="nav-icon-plus">
+        <svg class="nav-icon">
+          <use href="#userplus"></use>
+        </svg>
+      </a>
+      <div [ngClass]="{ 'shadow' : dropdown==true || dropLinkActive() == true}" class="nav-icon-circle">
+        <svg [ngClass]="{ 'arrow-flip' : dropdown==true || dropLinkActive() == true}" class="nav-icon">
+          <use href="#arr"></use>
+        </svg></div>
+    </a>
+  <div class="sidebar-drop" *ngIf="dropdown==true || dropLinkActive() == true">
+    <a (click)="navigation(routeTo.TEACHER)" [ngClass]="{ 'nav-link-active nav-link-active-sub' : activeLink == 'teachers'}" class="nav-link-secondary">
+      <svg [ngClass]="{ 'navi-drag' : activeLink == 'teachers'}" class="navi-icon">
+        <use href="#navi"></use>
+      </svg>
+      <span class="nav-title">Teacher</span>
+    </a>
+    <a (click)="navigation(routeTo.STUDENT)" [ngClass]="{ 'nav-link-active nav-link-active-sub' : activeLink == 'students'}" class="nav-link-secondary">
+      <svg [ngClass]="{ 'navi-drag' : activeLink == 'students'}" class="navi-icon">
+        <use href="#navi"></use>
+      </svg>
+      <span class="nav-title">Student</span>
+    </a>
+    <a (click)="navigation(routeTo.REFERENT)" [ngClass]="{ 'nav-link-active nav-link-active-sub' : activeLink == 'referents'}" class="nav-link-secondary">
+      <svg [ngClass]="{ 'navi-drag' : activeLink == 'referents'}" class="navi-icon">
+        <use href="#navi"></use>
+      </svg>
+      <span class="nav-title">Referent</span>
+    </a>
+  </div>
+    <a [ngClass]="{'nav-link-active' : activeLink == 'security'}" (click)="navigation(routeTo.SECURITY)" class="nav-link">
+      <svg class="nav-icon">
+        <use href="#lock"></use>
+      </svg>
+      <span class="nav-title">Security</span>
+    </a>
+    <a routerLink="/organization" [ngClass]="{ 'nav-link-active' : isActive('/manual')}"  class="nav-link">
+      <svg class="nav-icon">
+        <use href="#manu"></use>
+      </svg>
+      <span class="nav-title">Manual</span>
+    </a>
+    <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 24px; margin-top: 4px"><hr style="background: #292C2F" class="hr-custom"> </div>
+    <div style="padding-left: 10px; padding-right: 10px" class="subdesc"> EXT LINKS </div>
+    <a class="nav-link">
+      <i class="custom-link-icon"></i>
+      <span class="nav-title">Help Ukraine</span>
+    </a>
+  </nav>
+  <nav class="nav-section">
+    <a class="nav-link">
+      <svg class="nav-icon">
+        <use href="#settings"></use>
+      </svg>
+      <span class="nav-title">Settings</span>
+    </a>
+  </nav>
+</aside>

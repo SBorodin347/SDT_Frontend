@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Student, StudentList} from "../models/student.model";
-import {Option} from "@angular/cli/models/interface";
-import {AuthService} from "./auth.service";
+import {AuthService} from "./authentication/auth.service";
 
 @Injectable({
   providedIn: 'root'

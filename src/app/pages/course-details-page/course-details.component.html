@@ -1,0 +1,36 @@
+<app-header></app-header>
+<app-sidebar [activeLink]="'courses'"></app-sidebar>
+<main >
+
+  <div *ngIf="detailedSubject!=null" class="main-wrap">
+    <div class="breadcrumbs">
+      <a (click)="goHome()" class="crumb-link" >Home</a>
+      <i class="crumb-arrow"></i>
+      <a (click)="goCourses()" class="crumb-link">Courses</a>
+      <i class="crumb-arrow"></i>
+      <a  [href]="currentPageUrl" class="crumb-link crumb-link-active">{{detailedSubject.name}}</a>
+    </div>
+   <div style="margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between" >
+<!--     <button (click)="goCourses()" class="back-circle"><i class="img-arrow"></i></button>-->
+
+     <span style="margin-right: 8px;" class="h1">{{detailedSubject.name}}</span>
+
+     <button *ngxPermissionsOnly="['ROLE_ADMIN', 'ROLE_REFERENT']" [routerLink]="['/courses', detailedSubject.id,'edit']" class="btn-secondary">Edit course</button>
+   </div>
+    <div style="display: flex; align-items: center; margin-bottom: 32px">
+
+      <span  class="h4">Taught by</span> <div><img  class="teacher-avatar"src="https://www.fpv.umb.sk/app/accountJpegPhoto.php?ID=9457&width=202" ></div>
+      <span class="h3">{{detailedSubject.teacherFirstName + " " + detailedSubject.teacherLastName}}</span>
+      <div class="vl"></div>
+      <span  class="h4">Last update: {{detailedSubject.lastChangeDate}}</span>
+      <div class="vl"></div>
+      <svg *ngIf="detailedSubject.status == subjectStatus.APPROVED" class="copy-icon">
+        <use xlink:href="#checked"></use>
+      </svg>
+      <svg *ngIf="detailedSubject.status == subjectStatus.REFUSED" class="copy-icon">
+        <use xlink:href="#nonechecked"></use>
+      </svg>
+    </div>
+    <hr class="hr-custom" style="margin-bottom: 28px">
+    </div>
+</main>

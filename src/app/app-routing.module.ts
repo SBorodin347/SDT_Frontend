@@ -1,12 +1,17 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {MenuComponent} from "./menu/menu.component";
-import {SubjectSiteComponent} from "./subject-site/subject-site.component";
-import {UserComponent} from "./user/user.component";
-import {TeacherSiteComponent} from "./teacher-site/teacher-site.component";
-import {StudentSiteComponent} from "./student-site/student-site.component";
-import {LoginPageComponent} from "./login-page/login-page.component";
+import {CoursePageComponent} from "./pages/course-page/course-page.component";
+import {TeacherPageComponent} from "./pages/teacher-page/teacher-page.component";
+import {StudentPageComponent} from "./pages/student-page/student-page.component";
+import {LoginPageComponent} from "./pages/login-page/login-page.component";
 import {AuthGuard} from "./interceptors/auth.guards";
+import {OrganizationPageComponent} from "./pages/organization-page/organization-page.component";
+import {CourseDetailsComponent} from "./pages/course-details-page/course-details.component";
+import {SecurityPageComponent} from "./pages/security-page/security-page.component";
+import {CourseNewEditPageComponent} from "./pages/course-new-edit-page/course-new-edit-page.component";
+import {ReferentPageComponent} from "./pages/referent-page/referent-page.component";
+import {UserNewEditPageComponent} from "./pages/user-new-edit-page/user-new-edit-page.component";
 
 const routes: Routes = [
   {
@@ -16,27 +21,61 @@ const routes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
-    component: MenuComponent
+    component: MenuComponent,
   },
   {
-    path: 'subjects',
+    path: '',
     canActivate: [AuthGuard],
-    component: SubjectSiteComponent
+    children: [
+      {
+        path: 'courses',
+        component: CoursePageComponent,
+      },
+      {
+        path: 'courses/:id',
+        component: CourseDetailsComponent,
+      }
+    ]
   },
   {
-    path: 'users',
+    path: 'courses/:id/edit',
     canActivate: [AuthGuard],
-    component: UserComponent
+    component: CourseNewEditPageComponent
   },
   {
-    path: 'teacher',
+    path: 'course',
     canActivate: [AuthGuard],
-    component: TeacherSiteComponent
+    component: CourseNewEditPageComponent
   },
   {
-    path: 'student',
+    path: 'user',
     canActivate: [AuthGuard],
-    component: StudentSiteComponent
+    component: UserNewEditPageComponent
+  },
+  {
+    path: 'students',
+    canActivate: [AuthGuard],
+    component: StudentPageComponent
+  },
+  {
+    path: 'teachers',
+    canActivate: [AuthGuard],
+    component: TeacherPageComponent
+  },
+  {
+    path: 'referents',
+    canActivate: [AuthGuard],
+    component: ReferentPageComponent
+  },
+  {
+    path: 'organization',
+    canActivate: [AuthGuard],
+    component: OrganizationPageComponent
+  },
+  {
+    path: 'security',
+    canActivate: [AuthGuard],
+    component: SecurityPageComponent
   }
 ]
 

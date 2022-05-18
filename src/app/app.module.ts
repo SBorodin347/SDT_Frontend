@@ -6,54 +6,79 @@ import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { MenuComponent } from './menu/menu.component';
-import { SubjectSiteComponent } from './subject-site/subject-site.component';
-import { SubjectFormComponent } from './subject-form/subject-form.component';
-import { SubjectListComponent } from './subject-list/subject-list.component';
-import { UserComponent } from './user/user.component';
+import { CoursePageComponent } from './pages/course-page/course-page.component';
+import { CourseFormComponent } from './forms/course-form/course-form.component';
+import { SubjectListComponent } from './course-list/subject-list.component';
 import { TeacherFormComponent } from './teacher-form/teacher-form.component';
 import { StudentFormComponent } from './student-form/student-form.component';
-import { TeacherSiteComponent } from './teacher-site/teacher-site.component';
-import { TeacherListComponent } from './teacher-list/teacher-list.component';
-import { StudentListComponent } from './student-list/student-list.component';
-import { StudentSiteComponent } from './student-site/student-site.component';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { LoginFormComponent } from "./login-form/login-form.component";
-import { LoginPageComponent } from './login-page/login-page.component';
+import { TeacherPageComponent } from './pages/teacher-page/teacher-page.component';
+import { StudentPageComponent } from './pages/student-page/student-page.component';
+import { HeaderComponent } from './across-components/header/header.component';
+import { SidebarComponent } from './across-components/sidebar/sidebar.component';
+import { LoginFormComponent } from "./forms/login-form/login-form.component";
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {AuthHeaderInterceptor} from "./interceptors/auth-header.interceptor";
+import { OrganizationPageComponent } from './pages/organization-page/organization-page.component';
+import {TableModule} from "@sebgroup/ng-components";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {BooksFilterPipe} from "./shared/subject-filter.pipe";
+import { CourseDetailsComponent } from './pages/course-details-page/course-details.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { SecurityPageComponent } from './pages/security-page/security-page.component';
+import {ErrorInterceptor} from "./interceptors/error.interceptor";
+import { SortModalComponent } from './modal-windows/sort-modal/sort-modal.component';
+import { CourseNewEditPageComponent } from './pages/course-new-edit-page/course-new-edit-page.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { ReferentPageComponent } from './pages/referent-page/referent-page.component';
+import { UserNewEditPageComponent } from './pages/user-new-edit-page/user-new-edit-page.component';
+import { UserFormComponent } from './forms/user-form/user-form.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    SubjectSiteComponent,
-    SubjectFormComponent,
-    SubjectListComponent,
-    UserComponent,
-    TeacherFormComponent,
-    TeacherSiteComponent,
-    TeacherListComponent,
-    StudentFormComponent,
-    StudentListComponent,
-    StudentSiteComponent,
-    HeaderComponent,
-    SidebarComponent,
-    LoginFormComponent,
-    LoginPageComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    declarations: [
+        AppComponent,
+        MenuComponent,
+        CoursePageComponent,
+        CourseFormComponent,
+        SubjectListComponent,
+        TeacherFormComponent,
+        TeacherPageComponent,
+        StudentFormComponent,
+        StudentPageComponent,
+        HeaderComponent,
+        SidebarComponent,
+        LoginFormComponent,
+        LoginPageComponent,
+        OrganizationPageComponent,
+        BooksFilterPipe,
+        CourseDetailsComponent,
+        SecurityPageComponent,
+        SortModalComponent,
+        SortModalComponent,
+        CourseNewEditPageComponent,
+        UserListComponent,
+        ReferentPageComponent,
+        UserNewEditPageComponent,
+        UserFormComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TableModule,
+        NgbModule,
+        NgxPermissionsModule.forRoot()
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthHeaderInterceptor,
     multi: true,
-  }],
-  bootstrap: [AppComponent]
+  },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
+
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

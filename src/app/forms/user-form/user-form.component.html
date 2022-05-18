@@ -1,0 +1,74 @@
+<form [formGroup]="form">
+  <div class="section-input">
+    <div style="display: flex; align-items: center"><i class="icon-role"></i> <div class="subtitle">Type</div></div>
+    <div class="radio-toolbar">
+      <input  formControlName="roleId" (click)="switchRadio(1)" type="radio" id="radioApple"  [value]="1" >
+      <label for="radioApple">
+        <div class="icon-block-active">
+          <i class="icon-admin"></i>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <span class="h3">Administrator</span>
+          <span class="description">You can create it now</span>
+        </div>
+       <div [ngClass]="{'radio-circle-active' : activeRadio == 1}" class="radio-circle"></div>
+      </label>
+
+
+      <input formControlName="roleId" (click)="switchRadio(4)" type="radio" id="referent"  [value]="2" >
+      <label for="referent">
+        <div class="icon-block-active">
+          <i class="icon-admin"></i>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <span class="h3">Referent</span>
+          <span class="description">You can create it now</span>
+        </div>
+        <div [ngClass]="{'radio-circle-active' : activeRadio == 4}" class="radio-circle"></div></label>
+
+      <input formControlName="roleId" (click)="switchRadio(2)" type="radio" id="teacher"  [value]="3">
+      <label for="teacher">
+        <div class="icon-block-active">
+                  <i class="icon-admin"></i>
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <span class="h3">Teacher</span>
+          <span class="description">You can create it now</span>
+        </div>
+        <div [ngClass]="{'radio-circle-active' : activeRadio == 2}" class="radio-circle"></div></label>
+
+
+      <input formControlName="roleId" (click)="switchRadio(3)" type="radio" id="student"  [value]="4" >
+      <label for="student">
+        <div class="icon-block-active">
+        </div>
+        <div style="display: flex; flex-direction: column">
+          <span class="h3">Student</span>
+          <span class="description">You can create it now</span>
+        </div>
+        <div [ngClass]="{'radio-circle-active' : activeRadio == 3}" class="radio-circle"></div></label>
+
+    </div>
+
+  </div>
+  <div class="section-input-parts">
+    <div style="display: flex; align-items: center; margin-bottom: 8px"><i class="icon-key"></i> <div class="subtitle">Privacy Information</div></div> <div></div>
+    <div > <label>Username</label>
+      <input formControlName="username" placeholder="Username" class="input-primary" type="text"  ></div>
+    <div> <label>Password</label>
+      <input formControlName="passwordHash" placeholder="Password" type="password" class="input-primary"></div>
+  </div>
+  <div class="section-input-parts">
+    <div style="display: flex; align-items: center; margin-bottom: 8px"><i class="icon-id"></i> <div class="subtitle">Personal Information</div></div> <div></div>
+    <div > <label>First name</label>
+      <input formControlName="firstName" placeholder="First name" class="input-primary" type="text"  ></div>
+    <div> <label>Last name</label>
+      <input formControlName="lastName" placeholder="Last name" type="text" class="input-primary"  ></div>
+    <div> <label>Phone number</label>
+      <input formControlName="phone" placeholder="Phone number" type="text" class="input-primary" ></div>
+    <div> <label>Email</label>
+      <input formControlName="email" placeholder="Email" type="text" class="input-primary"  ></div>
+  </div>
+
+ <div style="display: flex; justify-content: space-between; align-items: center"><button class="btn-secondary">Cancel</button> <button (click)="add()" class="btn-main">Create</button></div>
+</form>
