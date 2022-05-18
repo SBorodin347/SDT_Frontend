@@ -15,12 +15,12 @@
       </svg>
       <span class="nav-title">Courses</span>
     </a>
-    <a *ngxPermissionsOnly="[ROLE.ADMIN]" (mouseenter)="userHover=true" (mouseleave)="userHover=false" (click)="openDropdown()" class="nav-link">
+    <a *ngxPermissionsOnly="[ROLE.ADMIN]" [ngClass]="{'nav-link-active' : activeLink == 'user'}" (mouseenter)="userHover=true" (mouseleave)="userHover=false" (click)="openDropdown()" class="nav-link">
       <svg class="nav-icon">
         <use href="#school"></use>
       </svg>
       <span class="nav-title">Accounts</span>
-      <a *ngIf="userHover" href="/user"  class="nav-icon-plus">
+      <a *ngIf="userHover || activeLink == 'user'" [routerLink]="'/user'" class="nav-icon-plus">
         <svg class="nav-icon">
           <use href="#userplus"></use>
         </svg>

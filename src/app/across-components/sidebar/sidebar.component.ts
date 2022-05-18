@@ -37,7 +37,7 @@ export class SidebarComponent {
   }
 
   public dropLinkActive(): boolean{
-    if(this.activeLink == 'teachers' || this.activeLink == 'students' || this.activeLink == 'referents'){
+    if(this.activeLink == 'teachers' || this.activeLink == 'students' || this.activeLink == 'referents' || this.activeLink == 'user'){
       return true;
     }
   }

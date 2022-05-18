@@ -3,7 +3,7 @@ import {CourseService} from "../../services/course/course.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Course} from "../../models/course.model";
 import {ActivatedRoute} from "@angular/router";
-import {map, Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {UserList} from "../../models/user.model";
 import {UserService} from "../../services/user/user.service";
 

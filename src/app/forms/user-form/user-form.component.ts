@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
-import {User} from "../../models/user.model";
+import {ROLE, User} from "../../models/user.model";
 import {UserService} from "../../services/user/user.service";
+import {count} from "rxjs";
+
 
 @Component({
   selector: 'app-user-form',
@@ -10,12 +12,17 @@ import {UserService} from "../../services/user/user.service";
 })
 export class UserFormComponent implements OnInit {
 
+  numberOfAdmins: number;
+
   constructor(private userService: UserService) {
     this.createForm();
   }
 
-
   ngOnInit(): void {
+    this.userService.getUsersByRoleName(ROLE.ADMIN).subscribe(data=>{
+        this.numberOfAdmins = data.length;
+      }
+    )
     this.form.controls.roleId.setValue(1);
   }
 
