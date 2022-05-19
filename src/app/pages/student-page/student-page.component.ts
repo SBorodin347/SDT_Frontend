@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
-import {StudentService} from "../../services/student.service";
-import {Student, StudentList} from "../../models/student.model";
+import {UserService} from "../../services/user/user.service";
+import {ROLE, User, UserList} from "../../models/user.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-student-page',
@@ -10,47 +11,63 @@ import {Student, StudentList} from "../../models/student.model";
 })
 export class StudentPageComponent {
 
-  students: StudentList[] = [];
-  activeStudent?: Student;
+  students: UserList[] = [];
+  activeStudent?: User;
 
-  constructor(private router: Router, private studentService: StudentService) { }
+  private subscription: Subscription = new Subscription();
+
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void{
+    this.currentPageUrl = this.router.url;
     this.refreshStudents();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  public currentPageUrl: string;
+  stringFormatter(str: string): string{
+    return str.slice(0).charAt(1).toUpperCase() + str.slice(2).toLowerCase();
+  }
+
   refreshStudents(): void{
-    this.studentService.getStudents().subscribe(data => {
+    this.userService.getUsersByRoleName(ROLE.STUDENT).subscribe(data => {
       this.students = data;
     });
   }
 
-  add(student: Student): void{
-    this.studentService.createStudent(student).subscribe(data => {
-      this.refreshStudents();
-    });
+  goCreate(): void{
+    this.router.navigate(['/user']);
   }
 
-  edit(student: Student): void{
-    if(student.id !== undefined){
-      this.studentService.updateStudent(student.id, student).subscribe(data => {
-        this.refreshStudents();
-      });
-    }
-  }
-
-  editStudentFromList(teacherId: number): void{
-    this.studentService.getStudent(teacherId).subscribe(data => {
-      this.activeStudent = data;
-    });
-  }
-
-  deleteStudentFromList(teacherId: number): void{
-    if(confirm('Are you sure?')){
-      this.studentService.deleteStudent(teacherId).subscribe(data => {
-        this.refreshStudents();
-      });
-    }
-  }
+  // add(student: Student): void{
+  //   this.studentService.createStudent(student).subscribe(data => {
+  //     this.refreshStudents();
+  //   });
+  // }
+  //
+  // edit(student: Student): void{
+  //   if(student.id !== undefined){
+  //     this.studentService.updateStudent(student.id, student).subscribe(data => {
+  //       this.refreshStudents();
+  //     });
+  //   }
+  // }
+  //
+  // editStudentFromList(teacherId: number): void{
+  //   this.studentService.getStudent(teacherId).subscribe(data => {
+  //     this.activeStudent = data;
+  //   });
+  // }
+  //
+  // deleteStudentFromList(teacherId: number): void{
+  //   if(confirm('Are you sure?')){
+  //     this.studentService.deleteStudent(teacherId).subscribe(data => {
+  //       this.refreshStudents();
+  //     });
+  //   }
+  // }
 
 }

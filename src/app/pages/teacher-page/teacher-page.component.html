@@ -1,7 +1,29 @@
 <app-header></app-header>
 <app-sidebar [activeLink]="'teachers'"></app-sidebar>
+
 <main>
   <div class="main-wrap">
-    zoznam ucitelov <span style="font-weight: 500; color: #2BAC47">#todo</span>
+    <div class="breadcrumbs">
+      <a class="crumb-link" routerLink="/user">Accounts</a>
+      <i class="crumb-arrow"></i>
+      <a routerLink="/teachers" class="crumb-link crumb-link-active">{{stringFormatter(currentPageUrl)}}</a>
+    </div>
+    <div style="display:flex;   margin-bottom: 24px;
+justify-content: space-between; align-items: center">  <div class="h1">{{stringFormatter(currentPageUrl)}}</div> <div style="display:flex;"> </div></div>
+    <div style="display:flex; margin-bottom: 24px; justify-content: space-between; align-items: center">
+
+      <div class="flex-center">
+        <button (click)="goCreate()" style=" margin: 0; display: flex; align-items: center; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
+          New user</button ><button class="btn-part"> <svg class="btn-part-icon">
+        <use xlink:href="#arrow"></use>
+      </svg> </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-wrap">
+    <div class="container">
+      <app-user-list [users]="teachers" *ngIf="teachers?.length > 0"></app-user-list>
+    </div>
   </div>
 </main>
