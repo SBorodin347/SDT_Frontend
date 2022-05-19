@@ -9,8 +9,6 @@ import { MenuComponent } from './menu/menu.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { CourseFormComponent } from './forms/course-form/course-form.component';
 import { SubjectListComponent } from './course-list/subject-list.component';
-import { TeacherFormComponent } from './teacher-form/teacher-form.component';
-import { StudentFormComponent } from './student-form/student-form.component';
 import { TeacherPageComponent } from './pages/teacher-page/teacher-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { HeaderComponent } from './across-components/header/header.component';
@@ -42,9 +40,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
         CoursePageComponent,
         CourseFormComponent,
         SubjectListComponent,
-        TeacherFormComponent,
         TeacherPageComponent,
-        StudentFormComponent,
         StudentPageComponent,
         HeaderComponent,
         SidebarComponent,
