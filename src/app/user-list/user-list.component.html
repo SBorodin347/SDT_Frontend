@@ -1,1 +1,29 @@
-<p>user-list works!</p>
+
+<div *ngIf="users?.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          First name
+        </th>
+        <th>
+          Last name
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of users">
+      <td>{{item.id}}</td>
+      <td>{{item.firstName}}</td>
+      <td>{{item.lastName}}</td>
+      <td >
+        <div style="background-color: #F5F5F5; width: 28px; height: 28px; display: flex; margin-left: auto;">
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
