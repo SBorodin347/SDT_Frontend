@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {Teacher, TeacherList} from "../../models/teacher.model";
 import {Router} from "@angular/router";
-import {TeacherService} from "../../services/teacher.service";
+import {UserService} from "../../services/user/user.service";
+import {ROLE, User, UserList} from "../../models/user.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-teacher-page',
@@ -10,50 +11,69 @@ import {TeacherService} from "../../services/teacher.service";
 })
 export class TeacherPageComponent {
 
-  teachers: TeacherList[] = [];
-  activeTeacher?: Teacher;
+  teachers: UserList[] = [];
+  activeTeacher?: User;
+  popup: boolean = false;
+  tab: number = 1;
+  public searchString = '';
 
-  constructor(private router: Router, private teacherService: TeacherService) { }
+  private subscription: Subscription = new Subscription();
+
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void{
+    this.currentPageUrl = this.router.url;
     this.refreshTeachers();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  public currentPageUrl: string;
+  stringFormatter(str: string): string{
+    return str.slice(0).charAt(1).toUpperCase() + str.slice(2).toLowerCase();
+  }
+
   refreshTeachers(): void{
-    this.teacherService.getTeachers().subscribe(data => {
+    this.userService.getUsersByRoleName(ROLE.TEACHER).subscribe(data => {
       console.log('Prislo:',data);
       this.teachers = data;
     });
   }
 
-  add(teacher: Teacher): void{
-    this.teacherService.createTeacher(teacher).subscribe(data => {
+  add(teacher: User): void{
+    this.userService.createUser(teacher).subscribe(data => {
       this.refreshTeachers();
     });
   }
 
-  edit(teacher: Teacher): void{
-    if(teacher.id !== undefined){
-      this.teacherService.updateTeacher(teacher.id, teacher).subscribe(data => {
-        this.refreshTeachers();
-      });
-    }
+  goCreate(): void{
+    this.router.navigate(['/user']);
   }
 
-  editTeacherFromList(teacherId: number): void{
-    this.teacherService.getTeacher(teacherId).subscribe(data => {
-      this.activeTeacher = data;
-    });
-  }
+  // edit(teacher: User): void{
+  //   if(teacher.id !== undefined){
+  //     this.userService.updateUser(teacher.id, teacher).subscribe(data => {
+  //       this.refreshTeachers();
+  //     });
+  //   }
+  // }
 
-  deleteTeacherFromList(teacherId: number): void{
-    if(confirm('Are you sure?')){
-      this.teacherService.deleteTeacher(teacherId).subscribe(data => {
-        this.refreshTeachers();
-      });
-    }
-  }
-
+  // editTeacherFromList(teacherId: number): void{
+  //   this.teacherService.getTeacher(teacherId).subscribe(data => {
+  //     this.activeTeacher = data;
+  //   });
+  // }
+  //
+  // deleteTeacherFromList(teacherId: number): void{
+  //   if(confirm('Are you sure?')){
+  //     this.teacherService.deleteTeacher(teacherId).subscribe(data => {
+  //       this.refreshTeachers();
+  //     });
+  //   }
+  // }
+  //
 
 
 }
