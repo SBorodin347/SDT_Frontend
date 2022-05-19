@@ -32,6 +32,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { ReferentPageComponent } from './pages/referent-page/referent-page.component';
 import { UserNewEditPageComponent } from './pages/user-new-edit-page/user-new-edit-page.component';
 import { UserFormComponent } from './forms/user-form/user-form.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+
 
 @NgModule({
     declarations: [
@@ -58,7 +60,8 @@ import { UserFormComponent } from './forms/user-form/user-form.component';
         UserListComponent,
         ReferentPageComponent,
         UserNewEditPageComponent,
-        UserFormComponent
+        UserFormComponent,
+        ProfilePageComponent,
     ],
   imports: [
     BrowserModule,

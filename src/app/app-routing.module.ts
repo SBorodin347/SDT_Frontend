@@ -14,6 +14,7 @@ import {ReferentPageComponent} from "./pages/referent-page/referent-page.compone
 import {UserNewEditPageComponent} from "./pages/user-new-edit-page/user-new-edit-page.component";
 import {NgxPermissionsGuard} from "ngx-permissions";
 import {ROLE} from "./models/user.model";
+import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,11 @@ const routes: Routes = [
         redirectTo: '/',
       }
     }
+  },
+  {
+    path: 'profile',
+    canActivate: [AuthGuard],
+    component: ProfilePageComponent,
   },
   {
     path: 'students',
