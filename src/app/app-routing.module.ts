@@ -12,6 +12,8 @@ import {SecurityPageComponent} from "./pages/security-page/security-page.compone
 import {CourseNewEditPageComponent} from "./pages/course-new-edit-page/course-new-edit-page.component";
 import {ReferentPageComponent} from "./pages/referent-page/referent-page.component";
 import {UserNewEditPageComponent} from "./pages/user-new-edit-page/user-new-edit-page.component";
+import {NgxPermissionsGuard} from "ngx-permissions";
+import {ROLE} from "./models/user.model";
 
 const routes: Routes = [
   {
@@ -49,8 +51,14 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    canActivate: [AuthGuard],
-    component: UserNewEditPageComponent
+    canActivate: [NgxPermissionsGuard],
+    component: UserNewEditPageComponent,
+    data: {
+      permissions: {
+        only: [ROLE.ADMIN, ROLE.REFERENT],
+        redirectTo: '/',
+      }
+    }
   },
   {
     path: 'students',

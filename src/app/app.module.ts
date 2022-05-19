@@ -23,7 +23,7 @@ import {TableModule} from "@sebgroup/ng-components";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {BooksFilterPipe} from "./shared/subject-filter.pipe";
 import { CourseDetailsComponent } from './pages/course-details-page/course-details.component';
-import { NgxPermissionsModule } from 'ngx-permissions';
+import {NgxPermissionsModule, NgxPermissionsRestrictStubModule} from 'ngx-permissions';
 import { SecurityPageComponent } from './pages/security-page/security-page.component';
 import {ErrorInterceptor} from "./interceptors/error.interceptor";
 import { SortModalComponent } from './modal-windows/sort-modal/sort-modal.component';
@@ -60,17 +60,18 @@ import { UserFormComponent } from './forms/user-form/user-form.component';
         UserNewEditPageComponent,
         UserFormComponent
     ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterModule,
-        AppRoutingModule,
-        HttpClientModule,
-        TableModule,
-        NgbModule,
-        NgxPermissionsModule.forRoot()
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule,
+    TableModule,
+    NgbModule,
+    NgxPermissionsModule.forRoot(),
+    NgxPermissionsRestrictStubModule
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthHeaderInterceptor,

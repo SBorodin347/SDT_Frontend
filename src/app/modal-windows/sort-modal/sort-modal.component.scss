@@ -1,6 +1,8 @@
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .modal-sort-act{
+  @include small-modal;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -8,15 +10,6 @@
   position: absolute;
   margin-top: 14px;
   margin-left: -10px;
-  background-color: $color-bg;
-  border-radius: $border-radius;
-  padding: 12px;
-  -webkit-box-shadow: 0 10px 55px rgb(0 0 0 / 12%);
-  box-shadow: 0 10px 55px rgb(0 0 0 / 12%);
-  border: 1px solid #F5F5F7;
-  animation-duration: 0.2s;
-  animation-fill-mode: both;
-  animation-name: fadeInDown;
 }
 
 .btn-sort{

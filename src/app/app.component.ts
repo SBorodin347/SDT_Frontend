@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NgxPermissionsService} from "ngx-permissions";
+import {HttpClient} from "@angular/common/http";
+import {AuthService} from "./services/authentication/auth.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Educk';
+
+  constructor(private permissionService: NgxPermissionsService, private auth: AuthService) {
+  }
+  ngOnInit() {
+    this.permissionService.loadPermissions(this.auth.getUserRoles());
+  }
 }

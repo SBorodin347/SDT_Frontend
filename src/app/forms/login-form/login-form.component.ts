@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit {
   @ViewChild('passNameField') passwordInput: ElementRef;
 
   public goHome(){
-    this.router.navigate(['']);
+    this.router.navigate(['']).then(() => location.reload());
   }
 
   focus = false;

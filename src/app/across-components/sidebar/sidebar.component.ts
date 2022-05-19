@@ -19,7 +19,6 @@ export class SidebarComponent {
   }
 
   ngOnInit() {
-    this.permissionsService.loadPermissions(this.auth.getUserRoles());
     this.href = this.router.url;
   }
 

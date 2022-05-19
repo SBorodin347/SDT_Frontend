@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import { FormControl, FormGroup} from "@angular/forms";
 import {ROLE, User} from "../../models/user.model";
 import {UserService} from "../../services/user/user.service";
-import {count} from "rxjs";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -12,18 +12,35 @@ import {count} from "rxjs";
 })
 export class UserFormComponent implements OnInit {
 
+  private subscription: Subscription = new Subscription();
   numberOfAdmins: number;
+  numberOfTeachers: number;
+  numberOfStudents: number;
+  numberOfReferents: number;
+  ROLE = ROLE;
 
   constructor(private userService: UserService) {
     this.createForm();
   }
 
   ngOnInit(): void {
-    this.userService.getUsersByRoleName(ROLE.ADMIN).subscribe(data=>{
+    this.form.controls.roleId.setValue(1); //default radio
+    this.subscription.add(this.userService.getUsersByRoleName(ROLE.ADMIN).subscribe(data=>{
         this.numberOfAdmins = data.length;
-      }
-    )
-    this.form.controls.roleId.setValue(1);
+    }));
+    this.subscription.add(this.userService.getUsersByRoleName(ROLE.TEACHER).subscribe(data=>{
+      this.numberOfTeachers = data.length;
+    }));
+    this.subscription.add(this.userService.getUsersByRoleName(ROLE.STUDENT).subscribe(data=>{
+      this.numberOfStudents = data.length;
+    }));
+    this.subscription.add(this.userService.getUsersByRoleName(ROLE.REFERENT).subscribe(data=>{
+      this.numberOfReferents = data.length;
+    }));
+  }
+
+  ngOnDestroy(): void{
+    this.subscription.unsubscribe();
   }
 
   form: FormGroup
@@ -49,9 +66,7 @@ export class UserFormComponent implements OnInit {
 
   add(){
     if(this.form.valid){
-      this.userService.createUser(this.form.value).subscribe(data => {
-        console.log(data);
-      })
+      this.userService.createUser(this.form.value).subscribe();
     }
     this.form.reset();
   }

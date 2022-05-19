@@ -15,7 +15,7 @@
       </svg>
       <span class="nav-title">Courses</span>
     </a>
-    <a *ngxPermissionsOnly="[ROLE.ADMIN]" [ngClass]="{'nav-link-active' : activeLink == 'user'}" (mouseenter)="userHover=true" (mouseleave)="userHover=false" (click)="openDropdown()" class="nav-link">
+    <a *ngxPermissionsOnly="[ROLE.ADMIN, ROLE.REFERENT]" [ngClass]="{'nav-link-active' : activeLink == 'user'}" (mouseenter)="userHover=true" (mouseleave)="userHover=false" (click)="openDropdown()" class="nav-link">
       <svg class="nav-icon">
         <use href="#school"></use>
       </svg>

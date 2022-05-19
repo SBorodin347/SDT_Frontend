@@ -72,7 +72,6 @@ export class SubjectListComponent {
      }
    }
 
-  //default sort A = Z
   column1 = true;
   public hideColumn1(){
     this.column1 = !this.column1;

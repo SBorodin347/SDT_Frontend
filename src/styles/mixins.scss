@@ -1,22 +1,22 @@
 @import "variables";
 
-@mixin flex-start{
+@mixin flex-center {
   display: flex;
   align-items: center;
 }
 
 @mixin flex-center-start {
-  @include flex-start;
+  @include flex-center;
   justify-content: flex-start;
 }
 
 @mixin flex-center-spaceBetween{
-  @include flex-start;
+  @include flex-center;
   justify-content: space-between;
 }
 
 @mixin flex-center-center{
-  @include flex-start;
+  @include flex-center;
   justify-content: center;
 }
 
@@ -58,4 +58,16 @@
   line-height: 20px;
   margin-bottom: 2px;
   cursor: pointer;
+}
+
+@mixin small-modal{
+  background-color: $color-bg;
+  border-radius: $border-radius;
+  -webkit-box-shadow: 0 10px 55px rgb(0 0 0 / 12%);
+  box-shadow: 0 10px 55px rgb(0 0 0 / 12%);
+  padding: 12px;
+  border: 1px solid #F5F5F7;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: fadeInDown;
 }

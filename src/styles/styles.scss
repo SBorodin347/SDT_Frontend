@@ -18,7 +18,6 @@ html {
 html,
 body {
   font-family: 'Inter', sans-serif;
-  height: 100%;
   -moz-osx-font-smoothing: grayscale;
   //-webkit-font-smoothing: antialiased;
 }
@@ -41,7 +40,6 @@ button,
 button:active,
 button:focus {
  //font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-
   outline: none;
 }
 
@@ -115,9 +113,9 @@ details {
 }
 
 
-.element::-webkit-scrollbar {
-  width: 0;
-}
+//.element::-webkit-scrollbar {
+//  width: 0;
+//}
 
 
 main {
@@ -130,6 +128,10 @@ main {
 }
 
 .flex-center{
+  @include flex-center;
+}
+
+.flex-center-spaceBetween{
   @include flex-center-spaceBetween;
 }
 
@@ -644,6 +646,7 @@ select option{
   line-height: 20px;
   font-size: 16px;
   font-weight: 500;
+  color: $color-text;
 }
 
 

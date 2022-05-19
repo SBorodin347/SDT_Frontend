@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
 import {Router} from "@angular/router";
+import {NgxPermissionsService} from "ngx-permissions";
+import {AuthService} from "../services/authentication/auth.service";
 
 @Component({
   selector: 'app-menu',
@@ -9,10 +11,11 @@ import {Router} from "@angular/router";
 
 export class MenuComponent {
 
-  constructor(private router: Router) { }
-
-  goSubjects(){
-    this.router.navigate(['/subjects']);
+  constructor(private permissionService: NgxPermissionsService, private auth: AuthService) {
   }
+  ngOnInit() {
+    this.permissionService.loadPermissions(this.auth.getUserRoles());
+  }
+
 
 }
