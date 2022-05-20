@@ -10,19 +10,33 @@
       <i class="crumb-arrow"></i>
       <a   class="crumb-link crumb-link-active">New course</a>
     </div>
-    <div style="margin-bottom: 16px" class="h1">New course</div>
+    <div style="margin-bottom: 16px" class="h1">Edit course</div>
     <form [formGroup]="form">
-    <div  class="section-input-parts">
-      <div style="display: flex; align-items: center; margin-bottom: 8px"><i class="icon-done"></i> <div class="subtitle">Basic Information</div></div> <div></div>
-      <label>Title
-      <input class="input-primary" type="text" formControlName="name"></label>
-      <label>Teacher
-      <select  formControlName="teacherId">
-        <option [hidden]="true" [disabled]="true" [ngValue]="null">🕵️&nbsp; Select a teacher...</option>
-        <option  [ngValue]="t.id" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
-      </select></label>
-
-     </div>
+      <div  class="section-input-parts">
+        <div style="display: flex; align-items: center; margin-bottom: 8px"><i class="icon-done"></i> <div class="subtitle">Basic Information</div></div> <div></div>
+        <label>Title
+          <input class="input-primary" type="text" formControlName="name"></label>
+        <label>Teacher
+          <select  formControlName="teacherId">
+            <option [hidden]="true" [disabled]="true" [ngValue]="null">🕵️&nbsp; Select a teacher...</option>
+            <option  [ngValue]="t.id" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
+          </select></label>
+        <label>Hours
+          <input class="input-primary" type="number" formControlName="hours">
+        </label>
+        <label>Credits
+          <input class="input-primary" type="number" formControlName="credit"></label>
+        <label>Status
+          <select  formControlName="status" name="Status">
+            <option></option>
+          </select>
+        </label>
+        <br>
+        <div class="course-status" >
+          <button *ngIf="id" class="btn-main">Edit</button>
+          <button *ngIf="!id" class="btn-main">Add</button>
+        </div>
+      </div>
     </form>
   </div>
 </main>

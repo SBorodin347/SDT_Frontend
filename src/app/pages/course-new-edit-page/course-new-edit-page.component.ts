@@ -38,6 +38,7 @@ export class CourseNewEditPageComponent implements OnInit {
           this.form.controls.teacherId.setValue(Number(params.teacherId))
         }));
     }
+
   }
 
   ngOnDestroy(): void{
@@ -69,7 +70,8 @@ export class CourseNewEditPageComponent implements OnInit {
     this.form.controls.name.setValue(course.name),
     this.form.controls.teacherId.setValue(course.teacherId),
     this.form.controls.hours.setValue(course.hours),
-    this.form.controls.credit.setValue(course.credit)
+    this.form.controls.credit.setValue(course.credit),
+    this.form.controls.status.setValue(course.status);
   }
 
   edit(subject: Course): void{

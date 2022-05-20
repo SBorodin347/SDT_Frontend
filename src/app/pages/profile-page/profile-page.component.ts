@@ -23,20 +23,27 @@ export class ProfilePageComponent implements OnInit {
 
   form: FormGroup;
   incorrectPassword: boolean = false;
+  incorrectFirstName: boolean = false;
   info: boolean = true;
   success: boolean = false;
   errorMessage: string = '';
 
   private createForm(): void {
     this.form = new FormGroup({
-      currentPassword: new FormControl(null, [Validators.required]),
-      newPassword: new FormControl(null, [Validators.required]),
-      confirmPassword: new FormControl(null, [Validators.required]),
+      newPassword1: new FormControl(null, [Validators.required]),
+      newPassword2: new FormControl(null, [Validators.required]),
+      firstName: new FormControl(null, [Validators.required]),
+      lastName: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required]),
+      phone: new FormControl(null, [Validators.required]),
     })
   }
 
   private fillForm(user: User): void{
-    this.form.controls.newPassword.setValue(user.firstName);
+    this.form.controls.firstName.setValue(user.firstName);
+    this.form.controls.lastName.setValue(user.lastName);
+    this.form.controls.email.setValue(user.email);
+    this.form.controls.phone.setValue(user.phone);
   }
 
 

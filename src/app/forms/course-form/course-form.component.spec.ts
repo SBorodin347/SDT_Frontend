@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CourseFormComponent } from './subject-form.component';
+import { CourseFormComponent } from './course-form.component';
 
 describe('SubjectFormComponent', () => {
   let component: CourseFormComponent;
