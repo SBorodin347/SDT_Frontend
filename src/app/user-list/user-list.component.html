@@ -3,22 +3,31 @@
   <table>
     <thead>
       <tr>
+        <th style="width: 10px; padding: 12px 0 12px 16px">
+          <label class="checkbox-custom">
+            <input (click)="checkedBox()"  type="checkbox">
+            <span ></span>
+          </label>
+        </th>
         <th>
-          Id
+          <span [ngClass]="{'th-column-active': sortByNameVisible}" class="th-column" (click)="showNameSorting()">Last name
+          <svg class="icon-sort"><use xlink:href="#switcher"></use></svg></span>
+          <app-sort-modal *ngIf="sortByNameVisible" [sortType]="sortByNameType" (sortByAsc)="sortByNameAsc()" (sortByDesc)="sortByNameDesc()" ></app-sort-modal>
         </th>
         <th>
           First name
         </th>
-        <th>
-          Last name
-        </th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of users">
-      <td>{{item.id}}</td>
-      <td>{{item.firstName}}</td>
+      <td style="padding: 16px 0 16px 16px">     <label class="checkbox-custom">
+        <input [checked]="isChecked" (change)="check(item.id)" type="checkbox" >
+        <span></span>
+      </label> </td>
       <td>{{item.lastName}}</td>
+      <td>{{item.firstName}}</td>
       <td >
         <div style="background-color: #F5F5F5; width: 28px; height: 28px; display: flex; margin-left: auto;">
         </div>

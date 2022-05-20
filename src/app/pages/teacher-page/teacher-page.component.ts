@@ -13,9 +13,7 @@ export class TeacherPageComponent {
 
   teachers: UserList[] = [];
   activeTeacher?: User;
-  popup: boolean = false;
-  tab: number = 1;
-  public searchString = '';
+  public currentPageUrl: string;
 
   private subscription: Subscription = new Subscription();
 
@@ -30,7 +28,6 @@ export class TeacherPageComponent {
     this.subscription.unsubscribe();
   }
 
-  public currentPageUrl: string;
   stringFormatter(str: string): string{
     return str.slice(0).charAt(1).toUpperCase() + str.slice(2).toLowerCase();
   }
@@ -42,38 +39,10 @@ export class TeacherPageComponent {
     });
   }
 
-  add(teacher: User): void{
-    this.userService.createUser(teacher).subscribe(data => {
-      this.refreshTeachers();
-    });
-  }
-
   goCreate(): void{
     this.router.navigate(['/user']);
   }
 
-  // edit(teacher: User): void{
-  //   if(teacher.id !== undefined){
-  //     this.userService.updateUser(teacher.id, teacher).subscribe(data => {
-  //       this.refreshTeachers();
-  //     });
-  //   }
-  // }
-
-  // editTeacherFromList(teacherId: number): void{
-  //   this.teacherService.getTeacher(teacherId).subscribe(data => {
-  //     this.activeTeacher = data;
-  //   });
-  // }
-  //
-  // deleteTeacherFromList(teacherId: number): void{
-  //   if(confirm('Are you sure?')){
-  //     this.teacherService.deleteTeacher(teacherId).subscribe(data => {
-  //       this.refreshTeachers();
-  //     });
-  //   }
-  // }
-  //
 
 
 }

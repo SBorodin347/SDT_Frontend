@@ -13,6 +13,7 @@ export class ReferentPageComponent implements OnInit {
 
   referents: UserList[] = [];
   activeReferent?: User;
+  public currentPageUrl: string;
 
   private subscription: Subscription = new Subscription();
 
@@ -27,7 +28,6 @@ export class ReferentPageComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  public currentPageUrl: string;
   stringFormatter(str: string): string{
     return str.slice(0).charAt(1).toUpperCase() + str.slice(2).toLowerCase();
   }

@@ -5,7 +5,7 @@ import {NgxPermissionsService} from "ngx-permissions";
 import {AuthService} from "../../services/authentication/auth.service";
 import {ROLE} from "../../models/user.model";
 
-enum NAV {COURSES, USERS, HOME, REFERENT, TEACHER, STUDENT, SECURITY, PROFILE}
+enum NAV {COURSES, USERS, HOME, REFERENT, TEACHER, STUDENT, SECURITY, PROFILE, MANUAL}
 
 
 
@@ -63,5 +63,7 @@ export class SidebarComponent {
       this.router.navigate(['/security']);
     if(n == NAV.PROFILE)
       this.router.navigate(['/profile']);
+    if(n == NAV.MANUAL)
+      this.router.navigate(['/organization']);
   }
 }

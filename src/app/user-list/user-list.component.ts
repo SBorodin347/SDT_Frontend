@@ -11,6 +11,9 @@ export class UserListComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  sortByNameVisible: boolean = false;
+  sortByNameType: string = '';
+
   @Input()
   users: UserList[] = [];
   user: User;
@@ -50,6 +53,31 @@ export class UserListComponent implements OnInit {
     if(this.isChecked){
       return 'selected-row';
     }
+  }
+
+  resetSorts(): void{
+    this.sortByNameType = '';
+  }
+
+  public sortByNameAsc(): void{
+    this.resetSorts();
+    this.sortByNameVisible = false;
+    this.sortByNameType = 'asc';
+    this.users.sort(function(a,b){
+      return a.lastName.localeCompare(b.lastName);
+    })
+  }
+  public sortByNameDesc(): void{
+    this.resetSorts();
+    this.sortByNameVisible = false;
+    this.sortByNameType = 'desc';
+    this.users.sort(function(a,b){
+      return b.lastName.localeCompare(a.lastName);
+    })
+  }
+
+  public showNameSorting(): void{
+    this.sortByNameVisible = !this.sortByNameVisible;
   }
 
 }

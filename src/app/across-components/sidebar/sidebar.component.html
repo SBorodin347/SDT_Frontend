@@ -64,7 +64,7 @@
       <span class="nav-title">Profile</span>
     </a>
 
-    <a routerLink="/organization" [ngClass]="{ 'nav-link-active' : isActive('/manual')}"  class="nav-link">
+    <a [ngClass]="{ 'nav-link-active' : activeLink == 'manual'}" (click)="navigation(routeTo.MANUAL)"  class="nav-link">
       <svg class="nav-icon">
         <use href="#manu"></use>
       </svg>
@@ -72,7 +72,7 @@
     </a>
     <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 24px; margin-top: 4px"><hr style="background: #292C2F" class="hr-custom"> </div>
     <div style="padding-left: 10px; padding-right: 10px" class="subdesc"> EXT LINKS </div>
-    <a class="nav-link">
+    <a class="nav-link" href="https://helpukraine.center" target="_blank">
       <i class="custom-link-icon"></i>
       <span class="nav-title">Help Ukraine</span>
     </a>

@@ -8,20 +8,27 @@
       <i class="crumb-arrow"></i>
       <a routerLink="/referents" class="crumb-link crumb-link-active">{{stringFormatter(currentPageUrl)}}</a>
     </div>
-    <div style="display:flex;   margin-bottom: 24px;
-justify-content: space-between; align-items: center">  <div class="h1">{{stringFormatter(currentPageUrl)}}</div> <div style="display:flex;"> </div></div>
-    <div style="display:flex; margin-bottom: 24px; justify-content: space-between; align-items: center">
 
-      <div class="flex-center">
-        <button (click)="goCreate()" style=" margin: 0; display: flex; align-items: center; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
+    <div class="flex-center-spaceBetween" style=" margin-bottom: 24px;">  <div class="h1">{{stringFormatter(currentPageUrl)}}</div> <div style="display:flex;"> <button style="margin-right: 8px;" class="btn-icon">
+      <svg  class="btn-icon-svg">
+        <use href="#cloud"></use>
+      </svg>
+    </button> <button class="btn-icon">
+      <svg class="btn-icon-svg">
+        <use href="#download"></use>
+      </svg>
+    </button>  </div></div>
+
+    <div class="flex-center-spaceBetween" style="margin-bottom: 24px;">
+      <div class="flex-center"></div>
+      <div class="flex-center-spaceBetween">
+        <button (click)="goCreate()" style=" margin: 0; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
           New user</button ><button class="btn-part"> <svg class="btn-part-icon">
         <use xlink:href="#arrow"></use>
       </svg> </button>
       </div>
     </div>
-  </div>
 
-  <div class="main-wrap">
     <div class="container">
       <app-user-list [users]="referents" *ngIf="referents?.length > 0"></app-user-list>
     </div>

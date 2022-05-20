@@ -649,6 +649,14 @@ select option{
   color: $color-text;
 }
 
+.title{
+  font-family: 'Inter', sans-serif;
+  line-height: 30px;
+  font-size: 26px;
+  font-weight: 600;
+  color: $color-text;
+}
+
 
 /* mobile */
 @media (max-width: 768px) {
