@@ -33,7 +33,7 @@ export class ReferentPageComponent implements OnInit {
   }
 
   refreshReferent(): void{
-    this.userService.getUsersByRoleName(ROLE.STUDENT).subscribe(data => {
+    this.userService.getUsersByRoleName(ROLE.REFERENT).subscribe(data => {
       this.referents = data;
     });
   }
