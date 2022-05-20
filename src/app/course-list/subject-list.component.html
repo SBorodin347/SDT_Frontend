@@ -49,13 +49,12 @@
       <td *ngIf="column1" (click)="openDetailsOfSubject(item.id)" >{{item.name}}</td>
       <td>{{item.teacherFirstName}} {{item.teacherLastName}}</td>
       <td>{{item.creationDate}}</td>
-      <td>{{item.hours}}
-
-      </td>
+      <td>{{item.hours}}</td>
       <td>
         <div style="display:flex; align-items: center">
-          <div class="credit" >
-            {{item.credit}}K</div>
+          <div class="credit">
+            {{item.credit}}K
+          </div>
         </div>
       </td>
       <td >
@@ -64,11 +63,21 @@
          {{capitalString(item.status)}}</div>
         </div>
       </td >
+
+      <td >
+        <div style="display:flex; align-items: center">
+          <div class="course-status" >
+            <button class="btn-main" (click)="goToEditSubject(item.id)">Edit</button>
+          </div>
+        </div>
+      </td >
+    <!---
       <td >
         <div style="background-color: #F5F5F5; width: 28px; height: 28px; display: flex; margin-left: auto;">
         </div>
       </td>
     </tr>
+    -->
     </tbody>
   </table>
 <!--  <ngb-pagination-->

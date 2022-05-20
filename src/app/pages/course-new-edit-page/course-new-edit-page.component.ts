@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import {CourseService} from "../../services/course/course.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Course} from "../../models/course.model";
@@ -14,11 +14,15 @@ import {UserService} from "../../services/user/user.service";
 })
 export class CourseNewEditPageComponent implements OnInit {
 
+
+
     constructor(private courseService: CourseService, private activateRoute: ActivatedRoute, public activatedRoute: ActivatedRoute,
               private userService: UserService) {
     this.id = activateRoute.snapshot.params['id'];
     this.createForm();
   }
+
+
 
   id?: number;
   private subscription: Subscription = new Subscription();
@@ -69,7 +73,8 @@ export class CourseNewEditPageComponent implements OnInit {
     this.form.controls.name.setValue(course.name),
     this.form.controls.teacherId.setValue(course.teacherId),
     this.form.controls.hours.setValue(course.hours),
-    this.form.controls.credit.setValue(course.credit)
+    this.form.controls.credit.setValue(course.credit),
+    this.form.controls.status.setValue(course.status)
   }
 
   edit(subject: Course): void{
@@ -78,5 +83,6 @@ export class CourseNewEditPageComponent implements OnInit {
       });
     }
   }
+
 
 }

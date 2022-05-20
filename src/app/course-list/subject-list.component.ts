@@ -176,5 +176,9 @@ export class SubjectListComponent {
     }
   }
 
+  public goToEditSubject(id: any){
+    this.router.navigate(['/courses/edit/', id]);
+  }
+
 }
 

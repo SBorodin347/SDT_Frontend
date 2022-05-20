@@ -15,6 +15,8 @@ export class CourseFormComponent {
   form: FormGroup;
   startedCourse: Course;
 
+
+
   @Output()
   closePopup = new EventEmitter<any>();
 

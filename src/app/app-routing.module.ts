@@ -41,7 +41,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'courses/:id/edit',
+    path: 'courses/edit/:id',
     canActivate: [AuthGuard],
     component: CourseNewEditPageComponent
   },

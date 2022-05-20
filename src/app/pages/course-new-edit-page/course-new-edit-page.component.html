@@ -10,7 +10,7 @@
       <i class="crumb-arrow"></i>
       <a   class="crumb-link crumb-link-active">New course</a>
     </div>
-    <div style="margin-bottom: 16px" class="h1">New course</div>
+    <div style="margin-bottom: 16px" class="h1">Edit course</div>
     <form [formGroup]="form">
     <div  class="section-input-parts">
       <div style="display: flex; align-items: center; margin-bottom: 8px"><i class="icon-done"></i> <div class="subtitle">Basic Information</div></div> <div></div>
@@ -21,7 +21,20 @@
         <option [hidden]="true" [disabled]="true" [ngValue]="null">🕵️&nbsp; Select a teacher...</option>
         <option  [ngValue]="t.id" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
       </select></label>
+      <label>Hours
+        <input class="input-primary" type="number" formControlName="hours">
+      </label>
+      <label>Credits
+        <input class="input-primary" type="number" formControlName="credit"></label>
+      <select  formControlName="status">
+        <option>APPROVED</option>
+        <option>REFUSED</option>
+      </select>
 
+      <br>
+      <div class="course-status" >
+        <button class="btn-main">Edit</button>
+      </div>
      </div>
     </form>
   </div>
