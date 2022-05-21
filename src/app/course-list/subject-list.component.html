@@ -79,19 +79,19 @@
       </td>
 
 <!-- COLUMN 2 -->
-      <td *ngIf="column1" (click)="openDetailsOfSubject(item.id)" >{{item.name}}</td>
+      <td *ngIf="column1" [routerLink]="'/courses/'+item.id" >{{item.name}}</td>
 
 <!-- COLUMN 3 -->
-      <td>{{item.teacherFirstName}} {{item.teacherLastName}}</td>
+      <td [routerLink]="'/courses/'+item.id">{{item.teacherFirstName}} {{item.teacherLastName}}</td>
 
 <!-- COLUMN 4 -->
-      <td>{{item.creationDate}}</td>
+      <td [routerLink]="'/courses/'+item.id">{{item.creationDate}}</td>
 
 <!-- COLUMN 5 -->
-      <td>{{item.hours}}</td>
+      <td [routerLink]="'/courses/'+item.id">{{item.hours}}</td>
 
 <!-- COLUMN 6 -->
-      <td>
+      <td [routerLink]="'/courses/'+item.id">
         <div class="flex-center">
           <div class="credit" >
             {{item.credit}}K</div>
@@ -99,7 +99,7 @@
       </td>
 
 <!-- COLUMN 7 -->
-      <td>
+      <td [routerLink]="'/courses/'+item.id">
         <div class="flex-center">
         <div [ngClass]="badge(item.status)" class="course-status" >
          {{capitalString(item.status)}}</div>
@@ -107,7 +107,7 @@
       </td>
 
 <!-- EMPTY COLUMN 8 -->
-      <td>
+      <td [routerLink]="'/courses/'+item.id">
       </td>
 
     </tr>
