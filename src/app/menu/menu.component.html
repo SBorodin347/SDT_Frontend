@@ -1,9 +1,39 @@
 <app-sidebar [activeLink]="'home'"></app-sidebar>
 <app-header ></app-header>
-<main>
-<div class="main-wrap">
-  Tu je hlavna
-</div>
+<main >
+  <app-clock></app-clock>
+  <div class="main-wrap">
+    <div class="breadcrumbs">
+      <a class="crumb-link" routerLink="/">Home</a>
+    </div>
+    <!--    <hr style="margin-bottom: 28px" class="hr-custom">-->
+    <div>
+      <div class="section-input">
+
+
+          <div class="section-part">
+            <label class="subtitle">Courses</label><br><br>
+            <div>Check out our courses and sign to anything you like!</div><br>
+            <button class="btn-main" style="width: 25%; float: right;">Go to</button>
+          </div>
+
+        <div class="section-part">
+          <label class="subtitle">Security</label><br><br>
+          <div>Always stay secured! Change password here</div><br>
+          <button class="btn-main" style="width: 25%; float: right;">Go to</button>
+        </div>
+
+        <div class="section-part">
+          <label class="subtitle">Manual</label><br><br>
+          <div>Are you lost? Find out more here!</div><br>
+          <button class="btn-main" style="width: 25%; float: right;">Go to</button>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
 </main>
 
 
