@@ -11,11 +11,7 @@ import {AuthService} from "../services/authentication/auth.service";
 
 export class MenuComponent {
 
-  constructor(private permissionService: NgxPermissionsService, private auth: AuthService) {
+  constructor() {
   }
-  ngOnInit() {
-    this.permissionService.loadPermissions(this.auth.getUserRoles());
-  }
-
 
 }

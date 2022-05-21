@@ -39,12 +39,12 @@ export class LoginFormComponent implements OnInit {
   focus = false;
   user: User;
 
-
   onSubmit() {
     if(this.form.valid) {
       this.auth.login(this.form.value).subscribe(data => {
         this.page.clearWarning();
         this.page.showSuccess();
+        this.permissionsService.loadPermissions(data.body.roles);
         setTimeout(this.goHome.bind(this), 2000);
       }, error => {this.page.showWarning(), this.form.controls.password.reset()});
     } else{

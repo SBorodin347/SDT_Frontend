@@ -2,9 +2,9 @@ import {Pipe, PipeTransform} from "@angular/core";
 import {Course} from "../models/course.model";
 
 @Pipe({
-  name: 'booksFilterByTitle'
+  name: 'courseFilterByName'
 })
-export class BooksFilterPipe implements PipeTransform{
+export class CourseFilterByNamePipe implements PipeTransform{
   transform(subjects: Course[], search: string): Course[] {
     if (!search.trim()){
       return subjects;

@@ -12,6 +12,7 @@ export class Course {
   lastChangeDate: Date;
   isLocked: boolean;
   teacherId: number;
+  select: boolean;
 
   constructor(subject: Course) {
     this.id = subject.id;
@@ -25,6 +26,7 @@ export class Course {
     this.lastChangeDate = subject.lastChangeDate;
     this.isLocked = subject.isLocked;
     this.teacherId = subject.teacherId;
+    this.select = subject.select;
   }
 }
 
@@ -40,6 +42,7 @@ export class CoursesList {
   lastChangeDate: Date;
   isLocked: boolean;
   teacherId: number;
+  select: boolean;
 
   constructor(subject: CoursesList) {
     this.id = subject.id;
@@ -53,6 +56,7 @@ export class CoursesList {
     this.lastChangeDate = subject.lastChangeDate;
     this.isLocked = subject.isLocked;
     this.teacherId = subject.teacherId;
+    this.select = subject.select;
   }
 
 }

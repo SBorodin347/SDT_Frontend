@@ -51,6 +51,11 @@ const routes: Routes = [
     component: CourseNewEditPageComponent
   },
   {
+    path: 'profile',
+    canActivate: [AuthGuard],
+    component: ProfilePageComponent
+  },
+  {
     path: 'user',
     canActivate: [NgxPermissionsGuard],
     component: UserNewEditPageComponent,
@@ -60,11 +65,6 @@ const routes: Routes = [
         redirectTo: '/',
       }
     }
-  },
-  {
-    path: 'profile',
-    canActivate: [AuthGuard],
-    component: ProfilePageComponent,
   },
   {
     path: 'students',

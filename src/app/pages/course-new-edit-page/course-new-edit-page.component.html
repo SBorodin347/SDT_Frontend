@@ -4,9 +4,9 @@
 <main>
   <div class="main-wrap">
     <div class="breadcrumbs">
-      <a class="crumb-link" >Home</a>
+      <a [routerLink]="'/'" class="crumb-link" >Home</a>
       <i class="crumb-arrow"></i>
-      <a class="crumb-link">Courses</a>
+      <a [routerLink]="'/courses'" class="crumb-link">Courses</a>
       <i class="crumb-arrow"></i>
       <a   class="crumb-link crumb-link-active">New course</a>
     </div>
@@ -21,7 +21,6 @@
         <option [hidden]="true" [disabled]="true" [ngValue]="null">🕵️&nbsp; Select a teacher...</option>
         <option  [ngValue]="t.id" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
       </select></label>
-
      </div>
     </form>
   </div>

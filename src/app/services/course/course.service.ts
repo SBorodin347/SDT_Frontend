@@ -31,6 +31,10 @@ export class CourseService {
     return this.http.put<Course>(`${this.apiUrl}/${subjectId}`, subject);
   }
 
+  lockSubjectById(subjectId: number): Observable<void>{
+    return this.http.put<void>(`${this.apiUrl}/lock/${subjectId}`, undefined);
+  }
+
   deleteSubject(subjectId: number): Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}/${subjectId}`);
   }

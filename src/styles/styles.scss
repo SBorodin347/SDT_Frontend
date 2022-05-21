@@ -24,6 +24,7 @@ body {
 
 body {
   background-color: $color-bg;
+  line-height: 1.5;
   margin: 0 auto;
 }
 
@@ -135,6 +136,10 @@ main {
   @include flex-center-spaceBetween;
 }
 
+.flex-column{
+  @include flex-column;
+}
+
 .h1{
   color: $color-text;
   font-size: 32px;
@@ -188,6 +193,7 @@ main {
   box-sizing: border-box;
   color: $color-text;
   display: flex;
+  align-items: center;
   font-weight: 500;
   position: relative;
   transition: 0.2s;
@@ -230,6 +236,7 @@ main {
   font-weight: 600;
   position: relative;
   transition: 0.1s;
+  z-index: 10;
   &:hover{
     background-color: #378BFA;
   }
@@ -290,13 +297,12 @@ table tr th{
   font-size: 14px;
   padding: 12px 18px;
   border-bottom: 1.2px solid $color-table-border; //  #F2F2F2
-
 }
 
 //table tr:nth-child(even){background-color: #fff;}
 
 table tr td {
-  padding: 16px 18px;
+  padding: 14px 18px;
   font-size: 14px;
   transition: 0.2s;
   border-bottom: 1px solid $color-table-border-line;
@@ -319,11 +325,13 @@ tbody tr{
 }
 
 table {
+  table-layout: fixed;
   border-left: 1px solid $color-table-border;
   border-right: 1px solid $color-table-border;
   border-top: 1px solid $color-table-border;
-  //border-bottom: 1px solid $color-table-border;
-  border-radius: $border-radius;
+  border-top: 1px solid $color-table-border;
+  border-top-right-radius: $border-radius;
+  border-top-left-radius: $border-radius;
   color: $color-text;
   border-collapse: separate;
   border-spacing: 0;
@@ -343,12 +351,12 @@ table tr th {
 
 /* top-left border-radius */
 table tr:first-child th:first-child {
-  border-top-left-radius: $border-radius;
+  border-top-left-radius: $border-radius - 1;
 }
 
 /* top-right border-radius */
 table tr:first-child th:last-child {
-  border-top-right-radius: $border-radius;
+  border-top-right-radius: $border-radius - 2;
 }
 
 //table tr:first-child th:first-child {
@@ -360,14 +368,20 @@ table tr:first-child th:last-child {
 //  border-bottom-right-radius: $border-radius;
 //}
 
-/* bottom-left border-radius */
-table tr:last-child td:first-child {
-  border-bottom-left-radius: $border-radius;
-}
+///* bottom-left border-radius */
+//table tr:last-child td:first-child {
+//  border-bottom-left-radius: $border-radius;
+//}
+//
+///* bottom-right border-radius */
+//table tr:last-child td:last-child {
+//  border-bottom-right-radius: $border-radius;
+//}
 
-/* bottom-right border-radius */
-table tr:last-child td:last-child {
-  border-bottom-right-radius: $border-radius;
+.showing{
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-name: fadeInDown;
 }
 
 #col-btn {
@@ -572,9 +586,6 @@ select:required:invalid {
 option[value=""][disabled] {
   display: none;
 }
-option {
-  color: red;
-}
 
 select{
   -webkit-appearance: none;
@@ -670,15 +681,28 @@ select option{
 /* Importing Bootstrap SCSS file. */
 //@import '~bootstrap/scss/bootstrap';
 
+.pagination-section{
+  @include flex-center-spaceBetween;
+  background: #fff;
+  padding: 12px 16px;
+  width: 100%;
+  border-left: 1px solid $color-table-border;
+  border-right: 1px solid $color-table-border;
+  border-bottom: 1px solid $color-table-border;
+  border-bottom-left-radius: $border-radius+2;
+  border-bottom-right-radius: $border-radius+2;
+}
+
 .pagination {
   display: flex;
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .page-link {
-  font-size: 14px;
-  padding: 6px 12px;
+  font-size: 13px;
+  padding: 4px 11px;
   line-height: 20px;
   border-radius: 6px;
   position: relative;
@@ -691,7 +715,7 @@ select option{
   }
 
   &:hover {
-    padding: 6px 12px;
+    padding: 4px 11px;
     line-height: 20px;
     z-index: 2;
     color: #000000;
@@ -712,18 +736,17 @@ select option{
 .page-item {
 
   &:not(:first-child) .page-link {
-    margin-left: 8px;
+    margin-left: 4px;
   }
 
   &.active .page-link {
     z-index: 3;
-    background-color: #F5F6F7;
+    background-color: #F5F5F5;
     color: $color-text;
     font-weight: 500;
   }
 
   &.disabled .page-link {
-    color: #9EA0A1;
     pointer-events: none;
     background-color: #fff;
   }
@@ -732,11 +755,13 @@ select option{
 
 .input-sea{
   @include input;
-  padding-left: 40px;
-  width: 100%;
+  border-radius: 8px;
+  padding: 11px 14px 11px 40px;
+  width: 260px;
   background-color: #fff;
+  border: 1px solid #E9E9E9;
  //box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px, 0 0 0 1px $color-hr-strong;
-  box-shadow:  0 0 0 1px $color-hr-strong; //e5e5e5
+ // box-shadow:  0 0 0 1px $color-hr-strong; //e5e5e5
   //border: 1px solid $color-hr-strong;
   //box-shadow: 0 0 0 1px #E9E9E9;
   transition: 0.2s;
@@ -744,6 +769,7 @@ select option{
     box-shadow: 0 0 0 1px #E0E0E0;
   }
 }
+
 
 
 
@@ -847,9 +873,12 @@ select option{
   height: 16px;
 }
 
-.btn-secondary{
+
+.btn-onlyicon{
   @include button;
-  background: $color-bg;
+  background: #FCFCFC;
+  padding: 10px 10px;
+  line-height: 18px;
   border: 1px solid #E9E9E9;
   color: $color-text;
   display: flex;
@@ -857,6 +886,61 @@ select option{
   transition: 0.3s;
   &:hover{
     background-color: #FCFCFC;
+  }
+}
+
+.btn-secondary{
+  @include button;
+  background: #FCFCFC;
+  padding: 10px 16px;
+  line-height: 18px;
+  border: 1px solid #E9E9E9;
+  color: $color-text;
+  display: flex;
+  font-weight: 500;
+  transition: 0.3s;
+  &:hover{
+    background-color: #FCFCFC;
+  }
+}
+
+.icon-delete-block{
+  @include flex-center-center;
+  width: 40px;
+  height: 40px;
+  background-color: #FFF0F2;
+  border-radius: 8px;
+}
+
+
+.trash-icon{
+  content: url("~src/img/trash.svg");
+  width: 14px;
+  height: 17px;
+}
+
+.lock-icon{
+  content: url("~src/img/locked.svg");
+  width: 18px;
+  height: 18px;
+}
+
+.btn-remove{
+  @include button;
+  background: #FCFCFC;
+  padding: 10px 16px;
+  line-height: 18px;
+  border: 1px solid #E9E9E9;
+  color: #E60224;
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  transition: 0.3s;
+  &:hover{
+    background-color: #F8F8F8;
+  }
+  &:active{
+    background-color: #F2F2F2;
   }
 }
 

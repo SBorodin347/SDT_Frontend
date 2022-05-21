@@ -1,7 +1,10 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {COURSE_STATUS, CoursesList} from "../models/course.model";
 import {CoursePageComponent} from "../pages/course-page/course-page.component";
 import {Router} from "@angular/router";
+import jsPDF, {CellConfig} from 'jspdf';
+import html2canvas from 'html2canvas';
+import {getLocaleDateTimeFormat} from "@angular/common";
 
 @Component({
   selector: 'app-course-list',
@@ -9,47 +12,128 @@ import {Router} from "@angular/router";
   styleUrls: ['./subject-list.component.scss']
 })
 
-export class SubjectListComponent {
+export class SubjectListComponent implements OnInit{
 
-  constructor(public componentOne: CoursePageComponent, private router: Router){};
+  constructor(public componentOne: CoursePageComponent, private router: Router){
+  };
 
-  sortByNameVisible: boolean = false;
-  sortByTeacherVisible: boolean = false;
-  sortByDateVisible: boolean = false;
-  sortByNameType: string = '';
-  sortByTeacherType: string = '';
-  sortByDateType: string = '';
-  reset = false;
-  pageSize = 16;
-  page = 1;
+  ngOnInit(){
+    this.courses.map(((item, index)=> {
+      this.courses.push(Object.assign({},item,{select: false}))
+    }))
+  }
+
+  sortByNameVisible: boolean = false
+  sortByTeacherVisible: boolean = false
+  sortByDateVisible: boolean = false
+  sortByNameType: string = ''
+  sortByTeacherType: string = ''
+  sortByDateType: string = ''
+  reset = false
+  pageSize = 16
+  page = 1
+  list = []
+  deletedList = []
+  lockedList = []
+  exportedCourses = []
+  notificationRemoving = false
+  column1 = true
+  parentSelector: boolean = false
 
   @Input()
   searchString;
+
 
   @Input()
   courses: CoursesList[] = [];
 
   @Output()
-  editCourse: EventEmitter<number> = new EventEmitter<number>();
+  lockCourse: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  openSettings: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output()
+  closeSettings: EventEmitter<any> = new EventEmitter<any>();
 
   @Output()
   removeCourse: EventEmitter<number> = new EventEmitter<number>();
 
-  public avatarColor(char: string){
-    let c = char.charAt(0).toUpperCase();
-    if(c == 'A' || c == 'B' || c == 'D' || c == 'E' || c == 'F' || c == 'G'){
-      return '#F98E54';
+  public countOfPages(): number{
+    return Math.ceil(this.courses.length / this.pageSize);
+  }
+
+  public courseWordFormatter(): string{
+    if(this.deletedList?.length==1){
+      return "course";
+    }else return "courses";
+  }
+
+
+  private static _createHeadersForPdfTable(keys: string[]) {
+    const result: CellConfig[] = [];
+    for (let i = 0; i < keys.length; i += 1) {
+      result.push({
+        name: keys[i],
+        prompt: keys[i],
+        width: 42,
+        align: 'center',
+        padding: 8
+      });
     }
-    if(c == 'H' || c == 'V' || c == 'I' || c == 'J' || c == 'K' || c == 'L'){
-      return '#92A4EF';
+    return result;
+  }
+
+  private _getDataForPdfTable() {
+    const data = [];
+    this.exportedCourses = this.courses.filter(function(course) {
+      return course.select == true;
+    });
+    for (let i = 0; i < this.exportedCourses.length; i++) {
+      data.push({
+        Title: this.exportedCourses[i].name,
+        First: this.exportedCourses[i].teacherFirstName,
+        Last: this.exportedCourses[i].teacherLastName,
+        Creation: this.exportedCourses[i].creationDate,
+        Hours: this.exportedCourses[i].hours.toString(),
+        Credits: this.exportedCourses[i].credit.toString(),
+      });
     }
-    if(c == 'M' || c == 'N' || c == 'N' || c == 'O' || c == 'P' || c == 'Q'){
-      return '#57C27D';
-    }
-    if(c == 'R' || c == 'S' || c == 'T' || c == 'U' || c == 'V' || c == 'W'){
-      return '#8AC4E5';
+    return data;
+  }
+
+  public openPDF(): void {
+    const fileName = 'ExportedCourses';
+    const doc = new jsPDF();
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(14);
+    doc.text('Exported courses', 10, 20);
+    doc.table(10, 35, this._getDataForPdfTable(), SubjectListComponent._createHeadersForPdfTable([
+      'Title', 'First', 'Last', 'Creation', 'Hours', 'Credits'
+    ]), { autoSize: false });
+    doc.save(fileName);
+  }
+
+  public deleteCourses(){
+    this.deletedList = this.courses.filter(function(course) {
+      return course.select == true;
+    });
+    for(const c of this.deletedList){
+       this.removeCourse.emit(c.id);
     }
   }
+
+  public lockCourses(){
+    this.lockedList = this.courses.filter(function(course) {
+      return course.select == true;
+    });
+    for(const c of this.lockedList){
+      this.lockCourse.emit(c.id);
+    }
+  }
+
 
   public badge(status: COURSE_STATUS){
     if(status == COURSE_STATUS.APPROVED){
@@ -63,16 +147,6 @@ export class SubjectListComponent {
     }
   }
 
-   isChecked = false;
-   checkedBox(){
-     if(!this.isChecked){
-       this.isChecked = true;
-     }else{
-       this.isChecked = false;
-     }
-   }
-
-  column1 = true;
   public hideColumn1(){
     this.column1 = !this.column1;
   }
@@ -85,7 +159,7 @@ export class SubjectListComponent {
     this.resetSorts();
     this.sortByNameVisible = false;
     this.sortByNameType = 'asc';
-    this.courses.sort(function(a,b){
+    this.list.sort(function(a,b){
       return a.name.localeCompare(b.name);
     })
   }
@@ -93,7 +167,7 @@ export class SubjectListComponent {
     this.resetSorts();
     this.sortByNameVisible = false;
     this.sortByNameType = 'desc';
-    this.courses.sort(function(a,b){
+    this.list.sort(function(a,b){
       return b.name.localeCompare(a.name);
     })
   }
@@ -102,7 +176,7 @@ export class SubjectListComponent {
     this.resetSorts();
     this.sortByTeacherVisible = false;
     this.sortByTeacherType = 'asc';
-    this.courses.sort(function(a,b){
+    this.list.sort(function(a,b){
       return a.teacherLastName.localeCompare(b.teacherLastName);
     })
   }
@@ -110,7 +184,7 @@ export class SubjectListComponent {
     this.resetSorts();
     this.sortByTeacherVisible = false;
     this.sortByTeacherType = 'desc';
-    this.courses.sort(function(a,b){
+    this.list.sort(function(a,b){
       return b.teacherLastName.localeCompare(a.teacherLastName);
     })
   }
@@ -118,7 +192,7 @@ export class SubjectListComponent {
     this.resetSorts();
     this.sortByDateVisible = false;
     this.sortByDateType = 'asc';
-    this.courses.sort((a, b) => {
+    this.list.sort((a, b) => {
       return Date.parse(a.creationDate) - Date.parse(b.creationDate);
     })
   }
@@ -126,7 +200,7 @@ export class SubjectListComponent {
     this.resetSorts();
     this.sortByDateVisible = false;
     this.sortByDateType = 'desc';
-    this.courses.sort((a, b) => {
+    this.list.sort((a, b) => {
       return Date.parse(b.creationDate) - Date.parse(a.creationDate);
     })
   }
@@ -149,32 +223,44 @@ export class SubjectListComponent {
     }
   }
 
-  firstChar(str: string){
-    return str.charAt(0);
-  }
-
-  edit(subjectId: number): void{
-    this.editCourse.emit(subjectId);
-  }
-
-  remove(subjectId: number): void{
-    this.removeCourse.emit(subjectId);
-  }
-
   openDetailsOfSubject(id: number){
     this.router.navigate(['/courses/'+id]);
   }
 
-  check(id: number){
-    let checkbox = document.getElementById(id.toString());
-    checkbox.classList.toggle('selected-row');
+  showRemovingNotification(){
+    this.notificationRemoving = true;
+    setTimeout(()=>{
+      this.notificationRemoving = false;
+    }, 2000)
   }
 
-  selectedRow(){
-    if(this.isChecked){
-      return 'selected-row';
+
+  public uncheck(){
+    for(const c of this.courses){
+      c.select = false;
+    }
+    this.parentSelector = false;
+  }
+
+  onChange($event){
+    const id = $event.target.value;
+    const isChecked = $event.target.checked;
+    this.openSettings.emit();
+    this.courses = this.courses.map((d) => {
+      if(d.id == id){
+        d.select = isChecked;
+        this.parentSelector = false;
+        return d;
+      }
+      if(id == -1){
+        d.select = this.parentSelector;
+        return d;
+      }
+      return d;
+    });
+    if(this.courses.every(course => course.select == false || course.select == undefined)){
+      this.closeSettings.emit();
     }
   }
-
 }
 

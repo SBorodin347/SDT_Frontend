@@ -19,28 +19,45 @@
   <svg  class="btn-icon-svg">
     <use href="#cloud"></use>
   </svg>
-</button> <button class="btn-icon">
+</button> <button (click)="openPDF()" class="btn-icon">
   <svg class="btn-icon-svg">
     <use href="#download"></use>
   </svg>
 </button>  </div></div>
-  <div class="flex-center-spaceBetween" style="margin-bottom: 24px;">
-   <div class="flex-center">
-     <button (click)="switchTab(1)" [ngClass]="{'button-tab-active': tab == 1}" class="button-tab">All courses</button>
-     <button (click)="switchTab(2)" [ngClass]="{'button-tab-active': tab == 2}" class="button-tab">Approved</button>
-     <button (click)="switchTab(3)" [ngClass]="{'button-tab-active': tab == 3}" class="button-tab">Refused<span *ngIf="refusedCourses?.length != 0" class="warning-circle">{{refusedCourses.length}}</span></button>
-   </div>
-    <div class="flex-center-spaceBetween">
-      <button (click)="openPopup()" style=" margin: 0; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
-        New course</button ><button class="btn-part"> <svg class="btn-part-icon">
-      <use xlink:href="#arrow"></use>
-    </svg> </button>
+  <div class="flex-center-spaceBetween" style="margin-bottom: 20px; ">
+    <div class="flex-center">
+
+      <button style="margin-right: 12px" class="btn-secondary">Filters</button>
+      <div class="filter">
+        <svg class="icon">
+          <use href="#search"></use>
+        </svg>
+        <input class="input-sea"  type="text" placeholder="Search subject by title" [(ngModel)]="searchString">
+      </div>
     </div>
+<!--   <div class="flex-center">-->
+<!--     <button (click)="switchTab(1)" [ngClass]="{'button-tab-active': tab == 1}" class="button-tab">All courses</button>-->
+<!--     <button (click)="switchTab(2)" [ngClass]="{'button-tab-active': tab == 2}" class="button-tab">Approved</button>-->
+<!--     <button (click)="switchTab(3)" [ngClass]="{'button-tab-active': tab == 3}" class="button-tab">Refused<span *ngIf="refusedCourses?.length != 0" class="warning-circle">{{refusedCourses.length}}</span></button>-->
+<!--   </div>-->
+    <div style="gap: 12px" class=" flex-center-spaceBetween">
+      <div style="gap: 16px" *ngIf="toolbarVisible" class="showing flex-center-spaceBetween">
+        <button (click)="exportCourse()" class="btn-secondary">Export</button>
+        <div style="border-left: 1px solid #E3E3E3; width: 1px; height: 36px"></div>
+        <button (click)="deleteCourse()" class=" btn-remove"><i class="trash-icon"></i>Remove</button>
+      </div>
+      <div *ngIf="!toolbarVisible" class="flex-center-spaceBetween">
+      <button (click)="openPopup()" style=" margin: 0; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
+        New course</button ><button class="btn-part"> <svg class="btn-part-icon"><use xlink:href="#arrow"></use></svg> </button></div>
+<!--    <div class="modal-btn">-->
+<!--    </div>-->
+    </div>
+
   </div>
       <div class="container">
-        <app-course-list *ngIf="allCourses?.length > 0 && tab == 1" [courses]="allCourses" [searchString]="searchString" (editCourse)="editCourseFromList($event)" (removeCourse)="deleteCourseFromList($event)"></app-course-list>
-        <app-course-list *ngIf="approvedCourses?.length > 0 && tab == 2" [courses]="approvedCourses" [searchString]="searchString" (editCourse)="editCourseFromList($event)" (removeCourse)="deleteCourseFromList($event)"></app-course-list>
-        <app-course-list *ngIf="refusedCourses?.length > 0 && tab == 3" [courses]="refusedCourses" [searchString]="searchString" (editCourse)="editCourseFromList($event)" (removeCourse)="deleteCourseFromList($event)"></app-course-list>
+        <app-course-list (closeSettings)="hideToolbar()" (openSettings)="showToolbar()" *ngIf="tab == 1" [courses]="allCourses" [searchString]="searchString" (lockCourse)="lockCourseById($event)" (removeCourse)="deleteCourseFromList($event)"></app-course-list>
+<!--        <app-course-list *ngIf="approvedCourses?.length > 0 && tab == 2" [courses]="approvedCourses" [searchString]="searchString" (editCourse)="editCourseFromList($event)" (removeCourse)="deleteCourseFromList($event)"></app-course-list>-->
+<!--        <app-course-list *ngIf="refusedCourses?.length > 0 && tab == 3" [courses]="refusedCourses" [searchString]="searchString" (editCourse)="editCourseFromList($event)" (removeCourse)="deleteCourseFromList($event)"></app-course-list>-->
       </div>
 </div>
 </main>

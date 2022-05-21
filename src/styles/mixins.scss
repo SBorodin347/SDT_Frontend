@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+@mixin flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
 @mixin flex-center-start {
   @include flex-center;
   justify-content: flex-start;
@@ -31,9 +36,9 @@
 @mixin button {
   font-family: 'Inter', sans-serif;
   padding: 10px 16px;
+  line-height: 20px;
   border-radius: 8px;
   text-align: center;
-  line-height: 20px;
   font-size: 14px;
   text-decoration: none;
   user-select: none;
@@ -44,6 +49,7 @@
   white-space: nowrap;
   margin: 0;
   cursor: pointer;
+  -moz-osx-font-smoothing: auto;
 }
 
 @mixin sidebar-link{

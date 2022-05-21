@@ -1,10 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Injectable, Output, ViewChild} from '@angular/core';
 import {Course, COURSE_STATUS, CoursesList} from "../../models/course.model";
 import {CourseService} from "../../services/course/course.service";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {UserService} from "../../services/user/user.service";
 import {ROLE, UserList} from "../../models/user.model";
+import {SubjectListComponent} from "../../course-list/subject-list.component";
+import jsPDF from "jspdf";
+
+
 
 enum TAB {TAB1, TAB2,TAB3}
 
@@ -14,30 +18,62 @@ enum TAB {TAB1, TAB2,TAB3}
   styleUrls: ['./course-page.component.scss']
 })
 
-
 export class CoursePageComponent {
 
-  allCourses: CoursesList[] = [];
-  approvedCourses: CoursesList[] = [];
-  refusedCourses: CoursesList[] = [];
-  teachers: UserList[] = [];
-  activeSubject?: Course;
-  popup: boolean = false;
-  tab: number = 1;
+  allCourses: CoursesList[] = []
+  approvedCourses: CoursesList[] = []
+  refusedCourses: CoursesList[] = []
+  teachers: UserList[] = []
+  activeSubject?: Course
+  popup: boolean = false
+  tab: number = 1
+  toolbarVisible = false
   public searchString = ''
-
-  private subscription: Subscription = new Subscription();
+  private subscription: Subscription = new Subscription()
 
   constructor(private router: Router, private subjectService: CourseService, private userService: UserService) { }
 
   ngOnInit(): void{
-    this.currentPageUrl = this.router.url;
     this.refreshSubjects();
     this.refreshTeachers();
+    this.currentPageUrl = this.router.url;
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  @ViewChild(SubjectListComponent)
+  childComponentList: SubjectListComponent
+
+  @Output()
+  showToolbar(){
+    this.toolbarVisible = true;
+  }
+
+  @Output()
+  hideToolbar(){
+    this.toolbarVisible = false;
+  }
+
+  @ViewChild('htmlData') htmlData:ElementRef;
+
+  public openPDF(): void {
+
+  }
+
+  deleteCourse(){
+    if (confirm('Do you really want to delete this?')){
+      this.childComponentList.deleteCourses();
+      this.childComponentList.showRemovingNotification();
+      this.hideToolbar();
+    }
+  }
+
+  exportCourse(){
+    this.childComponentList.openPDF();
+    this.childComponentList.uncheck();
+    this.hideToolbar();
   }
 
   public currentPageUrl: string;
@@ -56,18 +92,6 @@ export class CoursePageComponent {
     this.subscription.add(this.subjectService.getSubjectsByStatus(COURSE_STATUS.REFUSED).subscribe(data => {
       this.refusedCourses = data;
     }));
-    this.subscription.add(this.subjectService.getSubjectsByStatus(COURSE_STATUS.APPROVED).subscribe(data => {
-      this.approvedCourses = data;
-    }));
-  }
-
-  getApprovedSubjects(): void{
-    this.subscription.add(this.subjectService.getSubjectsByStatus(COURSE_STATUS.APPROVED).subscribe(data => {
-      this.approvedCourses = data;
-    }));
-  }
-
-  getRefusedSubjects(): void{
     this.subscription.add(this.subjectService.getSubjectsByStatus(COURSE_STATUS.APPROVED).subscribe(data => {
       this.approvedCourses = data;
     }));
@@ -93,19 +117,16 @@ export class CoursePageComponent {
     }
   }
 
-  editCourseFromList(subjectId: number): void{
-    this.subscription.add(this.subjectService.getSubject(subjectId).subscribe(data => {
-      this.popup = true;
-      this.activeSubject = data;
+  lockCourseById(subjectId: number): void{
+    this.subscription.add(this.subjectService.lockSubjectById(subjectId).subscribe(data => {
+      this.refreshSubjects();
     }));
   }
 
   deleteCourseFromList(subjectId: number): void {
-    if (confirm('Are you sure?')) {
       this.subscription.add(this.subjectService.deleteSubject(subjectId).subscribe(data => {
         this.refreshSubjects();
       }));
-    }
   }
 
   public openPopup(){
