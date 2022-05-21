@@ -27,14 +27,15 @@
         <label>Credits
           <input class="input-primary" type="number" formControlName="credit"></label>
         <label>Status
-          <select  formControlName="status" name="Status">
-            <option></option>
+          <select  formControlName="status">
+            <option [ngValue]="c.id" *ngFor="let c of courses">{{c.status}}</option>
           </select>
         </label>
+
         <br>
         <div class="course-status" >
           <button *ngIf="id" class="btn-main">Edit</button>
-          <button *ngIf="!id" class="btn-main">Add</button>
+          <button *ngIf="!id" class="btn-main" (click)="add()">Add</button>
         </div>
       </div>
     </form>
