@@ -159,7 +159,7 @@ export class SubjectListComponent implements OnInit{
     this.resetSorts();
     this.sortByNameVisible = false;
     this.sortByNameType = 'asc';
-    this.list.sort(function(a,b){
+    this.courses.sort(function(a,b){
       return a.name.localeCompare(b.name);
     })
   }
@@ -167,7 +167,7 @@ export class SubjectListComponent implements OnInit{
     this.resetSorts();
     this.sortByNameVisible = false;
     this.sortByNameType = 'desc';
-    this.list.sort(function(a,b){
+    this.courses.sort(function(a,b){
       return b.name.localeCompare(a.name);
     })
   }
@@ -176,7 +176,7 @@ export class SubjectListComponent implements OnInit{
     this.resetSorts();
     this.sortByTeacherVisible = false;
     this.sortByTeacherType = 'asc';
-    this.list.sort(function(a,b){
+    this.courses.sort(function(a,b){
       return a.teacherLastName.localeCompare(b.teacherLastName);
     })
   }
@@ -184,7 +184,7 @@ export class SubjectListComponent implements OnInit{
     this.resetSorts();
     this.sortByTeacherVisible = false;
     this.sortByTeacherType = 'desc';
-    this.list.sort(function(a,b){
+    this.courses.sort(function(a,b){
       return b.teacherLastName.localeCompare(a.teacherLastName);
     })
   }
@@ -192,7 +192,7 @@ export class SubjectListComponent implements OnInit{
     this.resetSorts();
     this.sortByDateVisible = false;
     this.sortByDateType = 'asc';
-    this.list.sort((a, b) => {
+    this.courses.sort((a, b) => {
       return Date.parse(a.creationDate) - Date.parse(b.creationDate);
     })
   }
@@ -200,7 +200,7 @@ export class SubjectListComponent implements OnInit{
     this.resetSorts();
     this.sortByDateVisible = false;
     this.sortByDateType = 'desc';
-    this.list.sort((a, b) => {
+    this.courses.sort((a, b) => {
       return Date.parse(b.creationDate) - Date.parse(a.creationDate);
     })
   }
