@@ -1,29 +1,103 @@
-
 <div *ngIf="users?.length > 0">
+
   <table>
+    <col style="width: 30px;">
+    <col style="width: 200px">
+    <col style="width: 160px">
+    <col style="width: 160px">
+    <col style="width: 100px">
+    <col style="width: 80px">
+
+<!--  ...HEAD STARTS...  -->
     <thead>
-      <tr>
-        <th>
-          Id
-        </th>
-        <th>
-          First name
-        </th>
-        <th>
-          Last name
-        </th>
-      </tr>
+    <tr>
+
+<!--  COLUMN 1  -->
+      <th style="padding: 12px 0 12px 16px">
+        <label class="checkbox-custom">
+          <input [(ngModel)]="parentSelector" [value]="-1" (change)="onChange($event)"  type="checkbox">
+          <span></span>
+        </label>
+      </th>
+
+<!--  COLUMN 2  -->
+      <th>
+          <span [ngClass]="{'th-column-active': sortByNameVisible}" class="th-column" (click)="showNameSorting()">Last name
+          <svg class="icon-sort"><use xlink:href="#switcher"></use></svg></span>
+        <app-sort-modal *ngIf="sortByNameVisible" [sortType]="sortByNameType" (sortByAsc)="sortByNameAsc()" (sortByDesc)="sortByNameDesc()" ></app-sort-modal>
+      </th>
+
+<!--  COLUMN 3  -->
+      <th>
+        First name
+      </th>
+
+<!--  COLUMN 4  -->
+      <th>
+        Phone number
+      </th>
+
+<!--  COLUMN 5  -->
+      <th>
+        E-mail
+      </th>
+
+<!--  EMPTY COLUMN 6  -->
+      <th></th>
+
+<!-- HEAD ENDS  -->
+    </tr>
     </thead>
+
+<!--  ..CONTENT STARTS..  -->
     <tbody>
-    <tr *ngFor="let item of users">
-      <td>{{item.id}}</td>
-      <td>{{item.firstName}}</td>
-      <td>{{item.lastName}}</td>
-      <td >
-        <div style="background-color: #F5F5F5; width: 28px; height: 28px; display: flex; margin-left: auto;">
-        </div>
+    <tr [id]="item.id" [ngClass]="{'selected-row': item.select==true}" *ngFor="let item of users | userFilterByName:searchString | slice: (page-1) * pageSize : page * pageSize">
+
+<!--  COLUMN 1  -->
+      <td style="padding: 16px 0 16px 16px">
+        <label class="checkbox-custom">
+          <input [checked]="item.select" [value]="item.id" (change)="onChange($event)" type="checkbox" >
+          <span></span>
+        </label>
       </td>
+
+<!--  COLUMN 2  -->
+      <td>{{item.lastName}}</td>
+
+<!--  COLUMN 3  -->
+      <td>{{item.firstName}}</td>
+
+<!--  COLUMN 4  -->
+      <td>{{item.phone}}</td>
+
+<!--  COLUMN 5  -->
+      <td>{{item.email}}</td>
+
+<!--  EMPTY COLUMN 6  -->
+      <td></td>
+
     </tr>
     </tbody>
+<!--  ..CONTENT ENDS..  -->
   </table>
+
+<!--  PAGINATION  -->
+  <div *ngIf="users?.length > 0" class="pagination-section">
+    <div class="h4">
+      Page {{page}} of {{countOfPages()}}
+    </div>
+    <ngb-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="users.length"
+      [maxSize]="3"> <ng-template ngbPaginationPrevious></ng-template>
+      <ng-template class="pag-arrow" ngbPaginationNext><i style="margin-left: -4px; margin-right: -4px" class="crumb-arrow"></i></ng-template>
+    </ngb-pagination>
+  </div>
+
+</div>
+
+<!-- POPUP NOTIFICATIONS -->
+<div *ngIf="notificationRemoving" class="notification-modal" ><div class="icon-delete-block"><i class="trash-icon"></i></div>
+  <span style="margin-right: 16px" class="h3"> You have deleted {{deletedList.length}} {{userWordFormatter()}}</span>
 </div>

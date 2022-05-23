@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, Output, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user/user.service";
 import {ROLE, User, UserList} from "../../models/user.model";
 import {Subscription} from "rxjs";
+import {UserListComponent} from "../../user-list/user-list.component";
 
 @Component({
   selector: 'app-student-page',
@@ -12,7 +13,9 @@ import {Subscription} from "rxjs";
 export class StudentPageComponent {
 
   students: UserList[] = [];
-  activeStudent?: User;
+  public currentPageUrl: string;
+  public searchString = '';
+  toolbarVisible = false
 
   private subscription: Subscription = new Subscription();
 
@@ -27,47 +30,65 @@ export class StudentPageComponent {
     this.subscription.unsubscribe();
   }
 
-  public currentPageUrl: string;
+  @ViewChild(UserListComponent)
+  childComponentList: UserListComponent;
+
+  @Output()
+  showToolbar(){
+    this.toolbarVisible = true;
+  }
+
+  @Output()
+  hideToolbar(){
+    this.toolbarVisible = false;
+  }
+
+  @ViewChild('htmlData') htmlData:ElementRef;
+
+  public openPDF(): void {
+
+  }
+
+  deleteUser(){
+    if (confirm('Do you really want to delete this?')){
+      this.childComponentList.deleteUsers();
+      this.childComponentList.showRemovingNotification();
+      this.hideToolbar();
+    }
+  }
+
+  exportUser(){
+    this.childComponentList.openPDF();
+    this.childComponentList.uncheck();
+    this.hideToolbar();
+  }
+
   stringFormatter(str: string): string{
     return str.slice(0).charAt(1).toUpperCase() + str.slice(2).toLowerCase();
   }
 
   refreshStudents(): void{
     this.userService.getUsersByRoleName(ROLE.STUDENT).subscribe(data => {
+      console.log('Prislo:',data);
       this.students = data;
     });
+  }
+
+  add(student: User): void{
+    this.userService.createUser(student).subscribe(data => {
+      this.refreshStudents();
+    });
+  }
+
+  deleteStudentFromList(studentId: number): void {
+    this.subscription.add(this.userService.deleteUser(studentId).subscribe(data => {
+      this.refreshStudents();
+    }));
   }
 
   goCreate(): void{
     this.router.navigate(['/user']);
   }
 
-  // add(student: Student): void{
-  //   this.studentService.createStudent(student).subscribe(data => {
-  //     this.refreshStudents();
-  //   });
-  // }
-  //
-  // edit(student: Student): void{
-  //   if(student.id !== undefined){
-  //     this.studentService.updateStudent(student.id, student).subscribe(data => {
-  //       this.refreshStudents();
-  //     });
-  //   }
-  // }
-  //
-  // editStudentFromList(teacherId: number): void{
-  //   this.studentService.getStudent(teacherId).subscribe(data => {
-  //     this.activeStudent = data;
-  //   });
-  // }
-  //
-  // deleteStudentFromList(teacherId: number): void{
-  //   if(confirm('Are you sure?')){
-  //     this.studentService.deleteStudent(teacherId).subscribe(data => {
-  //       this.refreshStudents();
-  //     });
-  //   }
-  // }
 
 }

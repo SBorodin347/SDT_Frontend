@@ -68,18 +68,36 @@ const routes: Routes = [
   },
   {
     path: 'students',
-    canActivate: [AuthGuard],
-    component: StudentPageComponent
+    canActivate: [NgxPermissionsGuard],
+    component: StudentPageComponent,
+    data: {
+      permissions: {
+        only: [ROLE.ADMIN, ROLE.REFERENT],
+        redirectTo: '/'
+      }
+    }
   },
   {
     path: 'teachers',
-    canActivate: [AuthGuard],
-    component: TeacherPageComponent
+    canActivate: [NgxPermissionsGuard],
+    component: TeacherPageComponent,
+    data: {
+      permissions: {
+        only: [ROLE.ADMIN, ROLE.REFERENT],
+        redirectTo: '/'
+      }
+    }
   },
   {
     path: 'referents',
-    canActivate: [AuthGuard],
-    component: ReferentPageComponent
+    canActivate: [NgxPermissionsGuard],
+    component: ReferentPageComponent,
+    data: {
+      permissions: {
+        only: [ROLE.ADMIN, ROLE.REFERENT],
+        redirectTo: '/'
+      }
+    }
   },
   {
     path: 'organization',

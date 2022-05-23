@@ -31,6 +31,7 @@ import { ReferentPageComponent } from './pages/referent-page/referent-page.compo
 import { UserNewEditPageComponent } from './pages/user-new-edit-page/user-new-edit-page.component';
 import { UserFormComponent } from './forms/user-form/user-form.component';
 import { ProfilePageComponent} from "./pages/profile-page/profile-page.component";
+import {UserFilterByNamePipe} from "./shared/user-filter.pipe";
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ProfilePageComponent} from "./pages/profile-page/profile-page.component
         ReferentPageComponent,
         UserNewEditPageComponent,
         UserFormComponent,
+        UserFilterByNamePipe
     ],
   imports: [
     BrowserModule,
