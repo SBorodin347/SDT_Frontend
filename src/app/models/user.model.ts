@@ -9,8 +9,7 @@ export class User{
   phone: string;
   email: string;
   roles: string[];
-  select: boolean;
-
+  dateOfRegistration: Date;
   constructor(user: User) {
     this.id = user.id;
     this.username = user.username;
@@ -20,7 +19,7 @@ export class User{
     this.phone = user.phone;
     this.email = user.email;
     this.roles = user.roles;
-    this.select = user.select;
+    this.dateOfRegistration = user.dateOfRegistration;
   }
 }
 
@@ -37,18 +36,31 @@ export class UserList{
   id?: number;
   firstName: string;
   lastName: string;
-  phone: string;
-  email: string;
   roles: string[];
-  select: boolean;
-
   constructor(user: User) {
     this.id = user.id;
     this.firstName = user.firstName;
     this.lastName = user.lastName;
+    this.roles = user.roles;
+  }
+
+}
+
+export class StudentUser{
+  id?: number;
+  firstName: string;
+  lastName: string;
+  username: string;
+  phone: string;
+  email: string;
+  dateOfRegistration: Date;
+  constructor(user: StudentUser) {
+    this.id = user.id;
+    this.username = user.username;
+    this.firstName = user.firstName;
+    this.lastName = user.lastName;
     this.phone = user.phone;
     this.email = user.email;
-    this.roles = user.roles;
-    this.select = user.select;
+    this.dateOfRegistration = user.dateOfRegistration;
   }
 }

@@ -1,20 +1,19 @@
-<!--<div *ngIf="!courses || courses?.length === 0">-->
+<!--<div *ngIf="!courses || courses?.length == 0">-->
 <!--  List of subjects is empty.-->
 <!--</div>-->
 
 
 <div  *ngIf="courses?.length > 0">
 
-
   <table >
     <col style="width: 30px;">
-    <col style="width: 200px">
-    <col style="width: 160px">
-    <col style="width: 160px">
-    <col style="width: 100px">
-    <col style="width: 80px">
-    <col style="width: 80px">
-    <col style="width: 80px">
+    <col style="width: 170px">
+    <col style="width: 125px">
+    <col style="width: 125px">
+    <col style="width: 85px">
+    <col style="width: 85px">
+    <col style="width: 85px">
+    <col style="width: 125px">
 
 <!-- ...DESCRIPTION STARTS... -->
     <thead>
@@ -24,7 +23,7 @@
       <th style="padding: 12px 12px 12px 16px">
         <label class="checkbox-custom">
         <input [(ngModel)]="parentSelector" [value]="-1" (change)="onChange($event)"  type="checkbox">
-        <span ></span>
+        <span></span>
         </label>
       </th>
 
@@ -59,7 +58,7 @@
       <th>Status</th>
 
 <!-- EMPTY COLUMN 8 -->
-      <th></th>
+      <th>Students</th>
 
 <!-- ...DESCRIPTION ENDS... -->
     </tr>
@@ -71,10 +70,10 @@
         *ngFor="let item of courses | courseFilterByName:searchString | slice: (page-1) * pageSize : page * pageSize ">
 
 <!-- COLUMN 1 -->
-      <td style="padding: 12px 12px 12px 16px">
+      <td style="padding: 12px 12px 12px 16px; z-index: 10">
         <label class="checkbox-custom">
         <input [checked]="item.select" [value]="item.id" (change)="onChange($event)" type="checkbox">
-        <span></span>
+        <span ></span>
         </label>
       </td>
 
@@ -106,8 +105,9 @@
         </div>
       </td>
 
-<!-- EMPTY COLUMN 8 -->
+<!-- COLUMN 8 -->
       <td [routerLink]="'/courses/'+item.id">
+        {{item.subscribedStudents.length}}
       </td>
 
     </tr>
@@ -116,21 +116,22 @@
   </table>
 
 <!-- PAGINATION -->
-  <div *ngIf="courses?.length > 0" class="pagination-section">
-        <div class="h4">
-          Page {{page}} of {{countOfPages()}}
-        </div>
-    <ngb-pagination
-      [(page)]="page"
-      [pageSize]="pageSize"
-      [collectionSize]="courses.length"
-      [maxSize]="3"> <ng-template ngbPaginationPrevious></ng-template>
-      <ng-template class="pag-arrow" ngbPaginationNext><i style="margin-left: -4px; margin-right: -4px" class="crumb-arrow"></i></ng-template>
-    </ngb-pagination>
-  </div>
-</div>
+<!--  <div *ngIf="courses?.length > 0" class="pagination-section">-->
+<!--        <div class="h4">-->
+<!--          Page {{page}} of {{countOfPages()}}-->
+<!--        </div>-->
+<!--    <ngb-pagination-->
+<!--      [(page)]="page"-->
+<!--      [pageSize]="pageSize"-->
+<!--      [collectionSize]="courses.length"-->
+<!--      [maxSize]="3"> <ng-template ngbPaginationPrevious></ng-template>-->
+<!--      <ng-template class="pag-arrow" ngbPaginationNext><i style="margin-left: -4px; margin-right: -4px" class="crumb-arrow"></i></ng-template>-->
+<!--    </ngb-pagination>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!-- POPUP NOTIFICATIONS -->
 <div *ngIf="notificationRemoving" class="notification-modal" ><div class="icon-delete-block"><i class="trash-icon"></i></div>
   <span style="margin-right: 16px" class="h3"> You have deleted {{deletedList.length}} {{courseWordFormatter()}}</span>
+</div>
 </div>

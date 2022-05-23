@@ -1,6 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {COURSE_STATUS, CoursesList} from "../models/course.model";
-import {CoursePageComponent} from "../pages/course-page/course-page.component";
+import {COURSE_STATUS, CoursesList} from "../../models/course.model";
+import {CoursePageComponent} from "../../pages/course-page/course-page.component";
 import {Router} from "@angular/router";
 import jsPDF, {CellConfig} from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -43,7 +43,6 @@ export class SubjectListComponent implements OnInit{
   @Input()
   searchString;
 
-
   @Input()
   courses: CoursesList[] = [];
 
@@ -68,7 +67,6 @@ export class SubjectListComponent implements OnInit{
       return "course";
     }else return "courses";
   }
-
 
   private static _createHeadersForPdfTable(keys: string[]) {
     const result: CellConfig[] = [];
@@ -125,11 +123,12 @@ export class SubjectListComponent implements OnInit{
 
   public deleteCourses(){
     this.deletedList = this.courses.filter(function(course) {
-      return course.select == true;
+        return course.select == true && course.subscribedStudents.length == 0;
     });
     for(const c of this.deletedList){
-       this.removeCourse.emit(c.id);
+      this.removeCourse.emit(c.id);
     }
+    this.uncheck();
   }
 
   public lockCourses(){

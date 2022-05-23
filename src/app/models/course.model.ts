@@ -10,8 +10,9 @@ export class Course {
   status: COURSE_STATUS;
   creationDate: string;
   lastChangeDate: Date;
-  isLocked: boolean;
+  locked: boolean;
   teacherId: number;
+  subscribedStudents: number[];
   select: boolean;
 
   constructor(subject: Course) {
@@ -24,8 +25,9 @@ export class Course {
     this.status = subject.status;
     this.creationDate = subject.creationDate;
     this.lastChangeDate = subject.lastChangeDate;
-    this.isLocked = subject.isLocked;
+    this.locked = subject.locked;
     this.teacherId = subject.teacherId;
+    this.subscribedStudents = subject.subscribedStudents;
     this.select = subject.select;
   }
 }
@@ -40,8 +42,9 @@ export class CoursesList {
   status: COURSE_STATUS;
   creationDate: string;
   lastChangeDate: Date;
-  isLocked: boolean;
+  locked: boolean;
   teacherId: number;
+  subscribedStudents: number[];
   select: boolean;
 
   constructor(subject: CoursesList) {
@@ -54,8 +57,9 @@ export class CoursesList {
     this.status = subject.status;
     this.creationDate = subject.creationDate;
     this.lastChangeDate = subject.lastChangeDate;
-    this.isLocked = subject.isLocked;
+    this.locked = subject.locked;
     this.teacherId = subject.teacherId;
+    this.subscribedStudents = subject.subscribedStudents;
     this.select = subject.select;
   }
 

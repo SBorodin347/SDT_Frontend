@@ -14,8 +14,21 @@
 <!--     <button (click)="goCourses()" class="back-circle"><i class="img-arrow"></i></button>-->
 
      <span style="margin-right: 8px;" class="h1">{{detailedSubject.name}}</span>
+<div class="gap-12 flex-center">
 
-     <button *ngxPermissionsOnly="['ROLE_ADMIN', 'ROLE_REFERENT']" [routerLink]="['/courses', detailedSubject.id,'edit']" class="btn-secondary">Edit course</button>
+  <div *ngxPermissionsOnly="['ROLE_STUDENT']" >
+    <button *ngIf="isSubscribed==true" [disabled]="detailedSubject.locked" class="btn-secondary" (click)="unsubscribeFromCourse()">Unsubscribe</button>
+    <button *ngIf="isSubscribed==false" class="btn-main" [disabled]="detailedSubject.locked" (click)="subscribeForCourse()">Subscribe</button>
+
+  </div>
+  <button *ngxPermissionsOnly="['ROLE_ADMIN', 'ROLE_REFERENT']" [routerLink]="['/courses', detailedSubject.id,'edit']" class="btn-secondary">Edit course</button>
+
+  <button style="cursor: auto" class="tooltip btn-onlyicon">
+    <span class="tooltiptext">Subscribers</span>
+    <i class="users-icon"> </i> {{subscriptionCourses.length}} </button>
+
+</div>
+
    </div>
     <div style="display: flex; align-items: center; margin-bottom: 32px">
 
@@ -30,7 +43,32 @@
       <svg *ngIf="detailedSubject.status == subjectStatus.REFUSED" class="copy-icon">
         <use xlink:href="#nonechecked"></use>
       </svg>
+
+<!--      <label class="switch-wrap">-->
+<!--        <input type="checkbox" />-->
+<!--        <div class="switch"></div>-->
+<!--      </label>-->
     </div>
     <hr class="hr-custom" style="margin-bottom: 28px">
+
+    <div *ngxPermissionsOnly="[ROLE.ADMIN, ROLE.REFERENT]">
+    <div style="margin-bottom: 24px" class="flex-center-spaceBetween">
+      <div style="height: 40px" class="flex-center"> <i class="description-dot"></i> <span  class="h2">Subscriptions </span></div>
+      <div *ngIf="toolbarVisible"> <button (click)="removeStudent()" class=" btn-remove"><i class="trash-icon"></i>Remove</button> </div>
     </div>
+    <app-subscriptions-list
+      (closeSettings)="hideToolbar()"
+      (openSettings)="showToolbar()"
+      (removeSubscription)="deleteStudentFromCourse($event)"
+      [subscriptions]="subscriptionCourses">
+    </app-subscriptions-list>
+  </div>
+
+    <div *ngxPermissionsOnly="[ROLE.STUDENT]">
+      <div *ngIf="isSubscribed">
+        <div  style="height: 40px; margin-bottom: 24px" class="flex-center"> <i class="description-dot"></i> <span  class="h2">My activity</span></div>
+        <app-subscribed-course-info [currentSub]="subscriptionOfCurrentUser" > </app-subscribed-course-info>
+      </div>
+    </div>
+  </div>
 </main>

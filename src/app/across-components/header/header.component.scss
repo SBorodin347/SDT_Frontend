@@ -62,23 +62,21 @@ header {
 }
 
 
-.but{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.burger{
+  @include flex-center-center;
+  background: transparent;
   width: 34px;
   height: 34px;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
   &:hover{
-    //background-color: #F5F5F5;
-    background-color: #323233;
+    background-color: #FFFFFF;
   }
 }
 
-.active-menu{
-  background-color: #323233;
+.burger-active{
+  background-color: #FFFFFF;
 }
 
 .menu-icon{
@@ -95,7 +93,7 @@ header {
   overflow-y: auto;
   padding: 32px 32px 20px 32px;
   position: absolute;
-  right: 20px;
+  right: $padding-side - 12;
   top: ($height-header - 8px);
   border-radius: $border-radius;
   background-clip: padding-box;
@@ -115,7 +113,7 @@ header {
   }
   100% {
     opacity: 1;
-    right: 20px;
+    right: $padding-side - 12;
     transform: translate(0, 0);
   }
 }

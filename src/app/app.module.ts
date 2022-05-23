@@ -8,7 +8,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { MenuComponent } from './menu/menu.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { CourseFormComponent } from './forms/course-form/course-form.component';
-import { SubjectListComponent } from './course-list/subject-list.component';
+import { SubjectListComponent } from './tables/course-list/subject-list.component';
 import { TeacherPageComponent } from './pages/teacher-page/teacher-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { HeaderComponent } from './across-components/header/header.component';
@@ -31,7 +31,8 @@ import { ReferentPageComponent } from './pages/referent-page/referent-page.compo
 import { UserNewEditPageComponent } from './pages/user-new-edit-page/user-new-edit-page.component';
 import { UserFormComponent } from './forms/user-form/user-form.component';
 import { ProfilePageComponent} from "./pages/profile-page/profile-page.component";
-import {UserFilterByNamePipe} from "./shared/user-filter.pipe";
+import { SubscriptionsListComponent } from './tables/subscriptions-list/subscriptions-list.component';
+import { SubscribedCourseInfoComponent } from './sections/subscribed-course-info/subscribed-course-info.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import {UserFilterByNamePipe} from "./shared/user-filter.pipe";
         ReferentPageComponent,
         UserNewEditPageComponent,
         UserFormComponent,
-        UserFilterByNamePipe
+        SubscriptionsListComponent,
+        SubscribedCourseInfoComponent,
     ],
   imports: [
     BrowserModule,

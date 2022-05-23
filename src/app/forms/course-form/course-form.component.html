@@ -1,13 +1,13 @@
   <div class="h2">Course</div>
 <hr style="margin: 20px 0" class="hr-custom">
    <form [formGroup]="form">
-     <div class="inputs-section">
-       <label>Title </label>
+     <div style="margin-bottom: 36px" class="inputs-section">
+       <label>Title</label>
        <input placeholder="Title" class="input-primary" type="text" formControlName="name" >
        <br>
        <label>Teacher</label>
        <select  formControlName="teacherId" >
-         <option [hidden]="true" [disabled]="true" [ngValue]="null">Select a teacher...</option>
+         <option [hidden]="true" [disabled]="true" [ngValue]="null"> Select a teacher...</option>
          <option title="teacher" value="{{t.id}}" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
        </select>
      </div>
@@ -17,7 +17,7 @@
      <div style="width: 500px; margin: -32px; background: #FCFCFC; border-radius: 0 0 12px 12px; padding: 24px 32px 30px 32px">
        <div style="text-align: right;">
          <button class="btn-cancel" (click)="closeModal()">Cancel</button>
-         <button class="btn-main"  (click)="add()" >Continue</button>
+         <button  class="btn-main"  (click)="add()" >Continue</button>
 <!--         <button class="btn-main"  [disabled]="form.invalid" (click)="edit()" *ngIf="form.value.id !== null">Save Changes</button>-->
        </div>
      </div>

@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CourseService} from "../../services/course/course.service";
 import {Course, COURSE_STATUS} from "../../models/course.model";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../../services/user/user.service";
+import {Subscription} from "rxjs";
+import {SubscriptionModel, SubscriptionModelList} from "../../models/subscriptionModel";
+import {ROLE} from "../../models/user.model";
+import {SubscriptionsListComponent} from "../../tables/subscriptions-list/subscriptions-list.component";
 
 @Component({
   selector: 'app-course-details-page',
@@ -11,35 +15,90 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class CourseDetailsComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private subjectService: CourseService, private router: Router) {
-    this.createForm();
+  constructor(private activatedRoute: ActivatedRoute, private subjectService: CourseService, private router: Router, private userService: UserService) {
   }
 
   detailedSubject: Course;
+  subscribeInterface: SubscriptionModel;
+  subModels: SubscriptionModelList;
+  pageSize = 16
+  page = 1
   currentPageUrl: string;
+  subscriptionCourses: SubscriptionModelList[] = [];
+  subscriptionOfCurrentUser: SubscriptionModelList;
+  ROLE = ROLE;
+  isSubscribed: boolean = false;
+  toolbarVisible: boolean = false;
+  private subscription: Subscription = new Subscription()
+
+  @ViewChild(SubscriptionsListComponent)
+  childComponent: SubscriptionsListComponent
+
+  @Output()
+  showToolbar(){
+    this.toolbarVisible = true;
+  }
+
+  @Output()
+  hideToolbar(){
+    this.toolbarVisible = false;
+  }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((routerParam) => {
+   this.subscription.add(this.activatedRoute.params.subscribe((routerParam) => {
+      this.subscribeInterface = new SubscriptionModel(Number(routerParam.id), Number(localStorage.getItem('id')));
       this.subjectService.getSubject(routerParam.id).subscribe(data => {
         this.detailedSubject = data;
-        this.fillForm(data);
+        if(this.detailedSubject != undefined && this.detailedSubject.subscribedStudents != null){
+          for(let c of this.detailedSubject.subscribedStudents){
+            this.subjectService.getSubscription(routerParam.id, c).subscribe(data => {
+              this.subscriptionCourses.push(data);
+              if(c == this.subscribeInterface.studentId){
+                this.subscriptionOfCurrentUser = data;
+              }
+            })
+            if(c == this.subscribeInterface.studentId){
+              this.isSubscribed = true;
+            }
+          }
+        }
       });
-    })
+    }))
     this.currentPageUrl = this.router.url;
   }
 
-  form: FormGroup;
-
-  private createForm(): void{
-    this.form = new FormGroup({
-      hours: new FormControl(null, [Validators.required]),
-      credit: new FormControl(null, [Validators.max(30), Validators.required]),
+  subscribeForCourse() {
+    this.subjectService.subscribeForCourse(this.subscribeInterface).subscribe(data => {
+      this.subjectService.getSubscription(this.subscribeInterface.subjectId, this.subscribeInterface.studentId).subscribe(data => {
+        this.subscriptionCourses.push(data);
+        this.subscriptionOfCurrentUser = data;
+      })
     })
+    this.isSubscribed = true;
   }
 
-  private fillForm(subject: Course): void{
-    this.form.controls.hours.setValue(subject.hours);
-    this.form.controls.credit.setValue(subject.credit);
+  unsubscribeFromCourse() {
+    if(confirm('Do you really want to unsubscribe from the course?')){
+      this.subjectService.unsubscribeFromCourse(this.subscribeInterface).subscribe();
+      this.subscriptionCourses = this.subscriptionCourses.filter(n => n.studentId != this.subscribeInterface.studentId);
+      this.isSubscribed = false;
+    }
+  }
+
+  removeStudent(): void{
+    if(confirm('Do you really want to remove a student from the list?')){
+      this.childComponent.deleteFromCourse();
+      this.hideToolbar();
+    }
+  }
+
+  deleteStudentFromCourse(model: SubscriptionModel): void{
+      this.subjectService.unsubscribeFromCourse(model).subscribe();
+      this.subscriptionCourses = this.subscriptionCourses.filter(n => n.studentId != model.studentId)
+  }
+
+  public countOfPages(): number{
+    return Math.ceil(this.subscriptionCourses.length / this.pageSize);
   }
 
   public badge(status: COURSE_STATUS){
@@ -53,6 +112,8 @@ export class CourseDetailsComponent implements OnInit {
       return 'badge-cancel'
     }
   }
+
+
 
   tab = 1;
 

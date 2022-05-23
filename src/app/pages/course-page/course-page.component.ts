@@ -5,10 +5,7 @@ import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {UserService} from "../../services/user/user.service";
 import {ROLE, UserList} from "../../models/user.model";
-import {SubjectListComponent} from "../../course-list/subject-list.component";
-import jsPDF from "jspdf";
-
-
+import {SubjectListComponent} from "../../tables/course-list/subject-list.component";
 
 enum TAB {TAB1, TAB2,TAB3}
 
@@ -28,6 +25,7 @@ export class CoursePageComponent {
   popup: boolean = false
   tab: number = 1
   toolbarVisible = false
+  ROLE = ROLE;
   public searchString = ''
   private subscription: Subscription = new Subscription()
 
@@ -56,7 +54,6 @@ export class CoursePageComponent {
     this.toolbarVisible = false;
   }
 
-  @ViewChild('htmlData') htmlData:ElementRef;
 
   public openPDF(): void {
 
@@ -77,6 +74,7 @@ export class CoursePageComponent {
   }
 
   public currentPageUrl: string;
+
   stringFormatter(str: string): string{
     return str.slice(0).charAt(1).toUpperCase() + str.slice(2).toLowerCase();
   }

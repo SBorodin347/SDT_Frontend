@@ -40,19 +40,24 @@
 <!--     <button (click)="switchTab(2)" [ngClass]="{'button-tab-active': tab == 2}" class="button-tab">Approved</button>-->
 <!--     <button (click)="switchTab(3)" [ngClass]="{'button-tab-active': tab == 3}" class="button-tab">Refused<span *ngIf="refusedCourses?.length != 0" class="warning-circle">{{refusedCourses.length}}</span></button>-->
 <!--   </div>-->
-    <div style="gap: 12px" class=" flex-center-spaceBetween">
-      <div style="gap: 16px" *ngIf="toolbarVisible" class="showing flex-center-spaceBetween">
+    <div class="flex-center-spaceBetween">
+      <div *ngIf="toolbarVisible" class="gap-16 showing flex-center-spaceBetween">
         <button (click)="exportCourse()" class="btn-secondary">Export</button>
-        <div style="border-left: 1px solid #E3E3E3; width: 1px; height: 36px"></div>
-        <button (click)="deleteCourse()" class=" btn-remove"><i class="trash-icon"></i>Remove</button>
+        <div *ngxPermissionsOnly="[ROLE.ADMIN]" style="border-left: 1px solid #E3E3E3; width: 1px; height: 36px"></div>
+        <button *ngxPermissionsOnly="[ROLE.ADMIN]" (click)="deleteCourse()" class=" btn-remove"><i class="trash-icon"></i>Remove</button>
       </div>
-      <div *ngIf="!toolbarVisible" class="flex-center-spaceBetween">
-      <button (click)="openPopup()" style=" margin: 0; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
-        New course</button ><button class="btn-part"> <svg class="btn-part-icon"><use xlink:href="#arrow"></use></svg> </button></div>
-<!--    <div class="modal-btn">-->
-<!--    </div>-->
-    </div>
+      <div *ngxPermissionsOnly="[ROLE.ADMIN]">
+        <div  *ngIf="!toolbarVisible" class="flex-center-spaceBetween">
+          <button (click)="openPopup()" style=" margin: 0; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
+            New course</button ><button class="btn-part"> <svg class="btn-part-icon"><use xlink:href="#arrow"></use></svg> </button>
+        </div>
+        <!--    <div class="modal-btn">-->
+        <!--    </div>-->
+      </div>
+      <div *ngxPermissionsOnly="[ROLE.STUDENT]">
 
+      </div>
+    </div>
   </div>
       <div class="container">
         <app-course-list (closeSettings)="hideToolbar()" (openSettings)="showToolbar()" *ngIf="tab == 1" [courses]="allCourses" [searchString]="searchString" (lockCourse)="lockCourseById($event)" (removeCourse)="deleteCourseFromList($event)"></app-course-list>

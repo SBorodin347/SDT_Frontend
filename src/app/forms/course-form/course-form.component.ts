@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Course, CoursesList} from "../../models/course.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CoursePageComponent} from "../../pages/course-page/course-page.component";
 import {UserList} from "../../models/user.model";
 import {Router} from "@angular/router";
+
+
 
 @Component({
   selector: 'app-course-form',
