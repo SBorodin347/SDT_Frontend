@@ -144,3 +144,8 @@ input:checked + label:after {
 }
 
 
+.checkmark-icon{
+  content: url("~src/img/checkmark.svg");
+  width: 16px;
+  height: 16px;
+}

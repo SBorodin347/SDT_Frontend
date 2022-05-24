@@ -13,13 +13,13 @@
  <div class="breadcrumbs">
    <a class="crumb-link" routerLink="/">Home</a>
    <i class="crumb-arrow"></i>
-   <a routerLink="/courses" class="crumb-link crumb-link-active">{{stringFormatter(currentPageUrl)}}</a>
+   <a routerLink="/courses" class="crumb-link crumb-link-active">Courses</a>
  </div>
-<div class="flex-center-spaceBetween" style=" margin-bottom: 24px;">  <div class="h1">{{stringFormatter(currentPageUrl)}}</div> <div style="display:flex;"> <button style="margin-right: 8px;" class="btn-icon">
+<div class="flex-center-spaceBetween" style=" margin-bottom: 24px;">  <div class="h1">Courses</div> <div style="display:flex;"> <button style="margin-right: 8px;" class="btn-icon">
   <svg  class="btn-icon-svg">
     <use href="#cloud"></use>
   </svg>
-</button> <button (click)="openPDF()" class="btn-icon">
+</button> <button class="btn-icon">
   <svg class="btn-icon-svg">
     <use href="#download"></use>
   </svg>
@@ -68,3 +68,18 @@
 </main>
 
 
+<div *ngIf="successAdd" class="notification-modal" ><div class="icon-success-block">
+  <i class="checkmark-icon"></i>
+</div>
+  <span style="margin-right: 16px" class="h3">The course was successfully added</span>
+</div>
+
+
+<div *ngIf="successEdit" class="notification-modal" ><div class="icon-success-block">
+  <i class="checkmark-icon"></i>
+</div>
+  <span style="margin-right: 16px" class="h3">The course was successfully changed</span>
+</div>
+<div *ngIf="successRemove" class="notification-modal" ><div class="icon-delete-block"><i class="trash-icon"></i></div>
+  <span style="margin-right: 16px" class="h3"> The course was deleted</span>
+</div>

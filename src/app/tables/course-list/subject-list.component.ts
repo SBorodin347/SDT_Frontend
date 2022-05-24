@@ -18,9 +18,9 @@ export class SubjectListComponent implements OnInit{
   };
 
   ngOnInit(){
-    this.courses.map(((item, index)=> {
-      this.courses.push(Object.assign({},item,{select: false}))
-    }))
+    // this.courses.map(((item, index)=> {
+    //   this.courses.push(Object.assign({},item,{select: false}))
+    // }))
   }
 
   sortByNameVisible: boolean = false

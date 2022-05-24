@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@ng-bootstrap/ng-bootstrap": "^12.0.2",
+    "@ng-select/ng-select": "^8.1.1",
     "@popperjs/core": "^2.10.2",
     "@sebgroup/bootstrap": "^6.0.1",
     "@sebgroup/ng-components": "^1.0.0-beta.18",
@@ -29,11 +30,15 @@
     "bulma-responsive-tables": "^1.2.3",
     "html-to-pdfmake": "^2.3.11",
     "jspdf": "^2.5.1",
+    "mat-select-search": "^1.2.3",
+    "ng-custom-select": "^1.0.4",
     "ng2-select": "^2.0.0",
+    "ngx-clipboard": "^15.1.0",
     "ngx-permissions": "^13.0.1",
     "pdfmake": "^0.2.5",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "typehead": "0.0.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

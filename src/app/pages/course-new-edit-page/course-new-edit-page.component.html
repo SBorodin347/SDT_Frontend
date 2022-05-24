@@ -3,26 +3,141 @@
 
 <main>
   <div class="main-wrap">
+
     <div class="breadcrumbs">
       <a [routerLink]="'/'" class="crumb-link" >Home</a>
       <i class="crumb-arrow"></i>
       <a [routerLink]="'/courses'" class="crumb-link">Courses</a>
       <i class="crumb-arrow"></i>
-      <a   class="crumb-link crumb-link-active">New course</a>
+      <a   class="crumb-link crumb-link-active">{{getContext()}} course</a>
     </div>
-    <div style="margin-bottom: 16px" class="h1">New course</div>
+    <div style="margin-bottom: 24px" class="h1">{{getContext()}} course</div>
+
+
     <form [formGroup]="form">
-    <div  class="section-input-parts">
-      <div style="display: flex; align-items: center; margin-bottom: 8px"><i class="icon-done"></i> <div class="subtitle">Basic Information</div></div> <div></div>
-      <label>Title
-      <input class="input-primary" type="text" formControlName="name"></label>
-      <label>Teacher
-      <select  formControlName="teacherId">
-        <option [hidden]="true" [disabled]="true" [ngValue]="null">🕵️&nbsp; Select a teacher...</option>
-        <option  [ngValue]="t.id" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
-      </select></label>
+
+      <div class="form-template-grid">
+        <div  class="form-template-section-rows">
+          <div style="display: flex; align-items: center;"><div class="subtitle">Designation</div></div>
+          <div> <hr class="hr-custom hr-margins"></div>
+          <div>
+          <label>Title</label>
+            <input class="input-primary" [attr.disabled]="newCourse" type="text" formControlName="name">
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 16px">
+            <div>
+            <label>Abbreviation</label>
+              <input class="input-primary" type="text" formControlName="abbreviation"></div>
+            <div class="grid-temp-6-1">
+            <div>
+              <label>Course code</label>
+                <input class="input-primary" type="text" formControlName="subjectCode">
+                <i (click)="copyText()" *ngIf="editCourse" class="clipboard-icon"></i>
+              </div>
+              <button (click)="generateCourseCode()" [disabled]="editCourse || isGenerated" class="btn-secondary">Generate</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-template-section-rows">
+          <div style="display: flex; align-items: center;"><div class="subtitle">Ensuring</div></div>
+          <div> <hr class="hr-custom hr-margins"></div>
+          <div>
+          <label>Teacher</label>
+            <select  formControlName="teacherId">
+              <option [hidden]="true" [disabled]="true" [ngValue]="null">🕵️&nbsp; Select a teacher...</option>
+              <option [attr.disabled]="newCourse"  [ngValue]="t.id" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
+            </select>
+          </div>
+          <div>
+            <label>Status</label>
+            <select  formControlName="status">
+              <option [hidden]="true" [disabled]="true" [ngValue]="null"></option>
+              <option [ngValue]="STATUS.APPROVED">Approved course</option>
+              <option [ngValue]="STATUS.REFUSED">Refused course</option>
+              <option *ngIf="editCourse" [ngValue]="STATUS.CANCELLED">Cancelled course</option>
+            </select>
+          </div>
+        </div>
+
+        <div   class="form-template-section-rows" >
+          <div style="display: flex; align-items: center;"><div class="subtitle">Basic Information</div></div>
+          <div> <hr  class="hr-custom hr-margins"></div>
+
+          <div  style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 16px">
+            <div>
+              <label>Type</label>
+              <select  formControlName="subjectType">
+                <option [hidden]="true" [disabled]="true" [ngValue]="null"></option>
+                <option [ngValue]="TYPE.A">Compulsory course (A)</option>
+                <option [ngValue]="TYPE.B">Compulsory elective course (B)</option>
+                <option [ngValue]="TYPE.C">Optional course (C)</option>
+              </select>
+            </div>
+            <div>
+              <label>Semester</label>
+              <select  formControlName="semester">
+                <option [hidden]="true" [disabled]="true" [ngValue]="null"></option>
+                <option [ngValue]="SEMESTER.WINTER">Winter semester</option>
+                <option [ngValue]="SEMESTER.SUMMER">Summer semester</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div  style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 16px">
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 16px">
+            <div>
+            <label>Hours</label>
+              <input  class="input-primary" type="number" formControlName="hours">
+            </div>
+            <div>
+            <label>Credit</label>
+              <input class="input-primary" type="number" formControlName="credit">
+            </div>
+          </div>
+
+          <div>
+          <label>Language</label>
+            <select  formControlName="language">
+              <option [hidden]="true" [disabled]="true" [ngValue]="null"></option>
+              <option [ngValue]="LANGUAGE.SLOVAK">Slovak</option>
+              <option [ngValue]="LANGUAGE.ENGLISH">English</option>
+              <option [ngValue]="LANGUAGE.RUSSIAN">Russian</option>
+              <option [ngValue]="LANGUAGE.HUNGARIAN">Hungarian</option>
+              <option [ngValue]="LANGUAGE.CZECH">Czech</option>
+            </select>
+          </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="fortoggle">
+            <div style="display: flex; align-items: center;"><div class="subtitle">Access Settings</div></div>
+            <div> <hr  class="hr-custom hr-margins"></div>
+     <div class="flex-center-spaceBetween">
+       <span style="color: #787E8F" class="h3">Allow students to subscribe</span>
+       <input (change)="onChangeToggle($event)" class="toggle"  formControlName="accessible" type="checkbox" id="switch" />
+       <label class="toggle-label" for="switch">Toggle</label>
      </div>
+
+          </div>
+        </div>
+      </div>
+
+
     </form>
+
+  <div style="margin-top: 32px" class="flex-center-spaceBetween">
+
+    <button *ngIf="editCourse" (click)="deleteCourse()" class="btn-remove">Remove</button>
+    <div *ngIf="newCourse" ></div>
+    <div class="flex-center gap-12">
+      <button [routerLink]="'/courses'" class="btn-secondary">Cancel</button>
+      <button *ngIf="newCourse" (click)="createCourse()" class="btn-main">Create course</button>
+    <button *ngIf="editCourse" (click)="updateCourse()" class="btn-main">Update</button>
+    </div>
+  </div>
   </div>
 </main>
 

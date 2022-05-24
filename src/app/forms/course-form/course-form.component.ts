@@ -4,8 +4,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserList} from "../../models/user.model";
 import {Router} from "@angular/router";
 
-
-
 @Component({
   selector: 'app-course-form',
   templateUrl: './course-form.component.html',
@@ -15,6 +13,7 @@ export class CourseFormComponent {
 
   form: FormGroup;
   startedCourse: Course;
+  selected;
 
   @Output()
   closePopup = new EventEmitter<any>();
@@ -27,7 +26,7 @@ export class CourseFormComponent {
   courses: CoursesList[] = [];
 
   @Input()
-  teachers: UserList[] = [];
+  teachers = [];
 
   @Output()
   addCourse = new EventEmitter<Course>();
@@ -53,6 +52,9 @@ export class CourseFormComponent {
       this.router.navigate(['/course'],  { queryParams: { name: this.startedCourse.name,
           teacherId: this.startedCourse.teacherId } });
     }
+    document.body.classList.remove('overflow-hidden');
   }
+
+
 
 }

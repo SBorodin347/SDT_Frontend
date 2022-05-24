@@ -17,8 +17,8 @@
 <div class="gap-12 flex-center">
 
   <div *ngxPermissionsOnly="['ROLE_STUDENT']" >
-    <button *ngIf="isSubscribed==true" [disabled]="detailedSubject.locked" class="btn-secondary" (click)="unsubscribeFromCourse()">Unsubscribe</button>
-    <button *ngIf="isSubscribed==false" class="btn-main" [disabled]="detailedSubject.locked" (click)="subscribeForCourse()">Subscribe</button>
+    <button *ngIf="isSubscribed==true" [disabled]="!detailedSubject.accessible" class="btn-secondary" (click)="unsubscribeFromCourse()">Unsubscribe</button>
+    <button *ngIf="isSubscribed==false" class="btn-main" [disabled]="!detailedSubject.accessible || detailedSubject.status==STATUS.CANCELLED || detailedSubject.status==STATUS.REFUSED" (click)="subscribeForCourse()">Subscribe</button>
 
   </div>
   <button *ngxPermissionsOnly="['ROLE_ADMIN', 'ROLE_REFERENT']" [routerLink]="['/courses', detailedSubject.id,'edit']" class="btn-secondary">Edit course</button>
@@ -32,7 +32,7 @@
    </div>
     <div style="display: flex; align-items: center; margin-bottom: 32px">
 
-      <span  class="h4">Taught by</span> <div><img  class="teacher-avatar"src="https://www.fpv.umb.sk/app/accountJpegPhoto.php?ID=9457&width=202" ></div>
+      <span  class="h4">Taught by</span> <div><img  class="teacher-avatar" src="https://www.fpv.umb.sk/app/accountJpegPhoto.php?ID=9457&width=202" ></div>
       <span class="h3">{{detailedSubject.teacherFirstName + " " + detailedSubject.teacherLastName}}</span>
       <div class="vl"></div>
       <span  class="h4">Last update: {{detailedSubject.lastChangeDate}}</span>

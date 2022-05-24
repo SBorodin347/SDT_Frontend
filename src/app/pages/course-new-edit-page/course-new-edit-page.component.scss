@@ -1,6 +1,122 @@
+@import "src/styles/mixins";
+
 .icon-done{
-  content: url("~src/img/verif.svg");
+  content: url("~src/img/folders.svg");
   width: 20px;
   height: 20px;
   margin-right: 8px;
+}
+
+.toggle-label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 48px;
+  height: 24px;
+  background: #E8E8E8;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.toggle-label:after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.toggle:checked + label {
+  background: #2A81FA;
+}
+
+.toggle:checked + label:after {
+  left: calc(100% - 3px);
+  transform: translateX(-100%);
+}
+
+.toggle-label:active:after {
+  //width: 42px;
+}
+
+
+.grid-temp-6-1{
+ display: grid;
+  grid-template-columns: 6fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 14px;
+  align-items: end;
+}
+
+.fortoggle{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px;
+}
+
+//.clipboard{
+//  @include flex-center-center;
+//  position: absolute;
+//  width: 32px;
+//  height: 32px;
+//  border-radius: 8px;
+//  background-color: #fff;
+//  right: 0;
+//}
+
+i.clipboard-icon{
+  line-height: 26px;
+  position: relative;
+  z-index: 1;
+  bottom: 30px;
+  margin-bottom: -30px;
+  right: 12px;
+  float: right;
+  content: url("~src/img/clipboard.svg");
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.form-template-grid{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 28px;
+}
+
+.form-template-section-rows{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px;
+}
+
+.form-template-section-columns{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  gap: 24px;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px;
+}
+
+.hr-margins{
+  margin-top: -4px; margin-bottom: 4px; background-color: #F3F3F3;
 }

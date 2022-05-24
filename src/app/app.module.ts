@@ -33,36 +33,39 @@ import { UserFormComponent } from './forms/user-form/user-form.component';
 import { ProfilePageComponent} from "./pages/profile-page/profile-page.component";
 import { SubscriptionsListComponent } from './tables/subscriptions-list/subscriptions-list.component';
 import { SubscribedCourseInfoComponent } from './sections/subscribed-course-info/subscribed-course-info.component';
+import {UserFilterByNamePipe} from "./shared/user-filter.pipe";
+import {ClipboardModule} from "ngx-clipboard";
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        MenuComponent,
-        CoursePageComponent,
-        CourseFormComponent,
-        SubjectListComponent,
-        TeacherPageComponent,
-        StudentPageComponent,
-        HeaderComponent,
-        SidebarComponent,
-        LoginFormComponent,
-        LoginPageComponent,
-        OrganizationPageComponent,
-        CourseFilterByNamePipe,
-        ProfilePageComponent,
-        CourseDetailsComponent,
-        SecurityPageComponent,
-        SortModalComponent,
-        SortModalComponent,
-        CourseNewEditPageComponent,
-        UserListComponent,
-        ReferentPageComponent,
-        UserNewEditPageComponent,
-        UserFormComponent,
-        SubscriptionsListComponent,
-        SubscribedCourseInfoComponent,
-    ],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    CoursePageComponent,
+    CourseFormComponent,
+    SubjectListComponent,
+    TeacherPageComponent,
+    StudentPageComponent,
+    HeaderComponent,
+    SidebarComponent,
+    LoginFormComponent,
+    LoginPageComponent,
+    OrganizationPageComponent,
+    CourseFilterByNamePipe,
+    ProfilePageComponent,
+    CourseDetailsComponent,
+    SecurityPageComponent,
+    SortModalComponent,
+    SortModalComponent,
+    CourseNewEditPageComponent,
+    UserListComponent,
+    ReferentPageComponent,
+    UserNewEditPageComponent,
+    UserFormComponent,
+    SubscriptionsListComponent,
+    SubscribedCourseInfoComponent,
+    UserFilterByNamePipe
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -73,7 +76,8 @@ import { SubscribedCourseInfoComponent } from './sections/subscribed-course-info
     TableModule,
     NgbModule,
     NgxPermissionsModule.forRoot(),
-    NgxPermissionsRestrictStubModule
+    NgxPermissionsRestrictStubModule,
+    ClipboardModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

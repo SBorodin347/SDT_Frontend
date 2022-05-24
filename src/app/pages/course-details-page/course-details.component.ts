@@ -26,6 +26,7 @@ export class CourseDetailsComponent implements OnInit {
   currentPageUrl: string;
   subscriptionCourses: SubscriptionModelList[] = [];
   subscriptionOfCurrentUser: SubscriptionModelList;
+  STATUS = COURSE_STATUS;
   ROLE = ROLE;
   isSubscribed: boolean = false;
   toolbarVisible: boolean = false;

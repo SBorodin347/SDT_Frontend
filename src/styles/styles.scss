@@ -595,13 +595,18 @@ table tr:last-child td:last-child {
   @include input;
   width: 100%;
   box-shadow: 0 0 0 1px #F1F1F2 inset;
-  background: #F7F7F7;
+  background: #F5F5F5;
   margin: 8px 0 0 0;
   &:focus{
     background: #fff;
     box-shadow: 0 0 0 1px #2A81FA inset;
     transition: 0.2s;
   }
+}
+
+.input-primary-invalid{
+  background: #fff;
+  box-shadow: 0 0 0 1px red inset;
 }
 
 .focus{
@@ -621,7 +626,7 @@ select{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: #F7F7F7;
+  background: #F5F5F5;
   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat: no-repeat;
   background-position-x: 100% - 2;
@@ -631,8 +636,8 @@ select{
   border-radius: $border-radius;
   @include input;
   box-shadow: 0 0 0 1px #F1F1F2 inset ;
-  color: #C2C3C7;
-  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  color: $color-text;
   cursor: pointer;
   font-family: inherit;
   font-size: 14px;
@@ -640,9 +645,6 @@ select{
   outline: none;
 }
 
-select option:checked{
-  color: $color-text;
-}
 
 
 select option{
@@ -695,8 +697,8 @@ select option{
 
 .subtitle{
   font-family: 'Inter', sans-serif;
-  line-height: 20px;
-  font-size: 16px;
+  line-height: 18px;
+  font-size: 18px;
   font-weight: 500;
   color: $color-text;
 }
@@ -939,7 +941,10 @@ select option{
   font-weight: 500;
   transition: 0.3s;
   &:hover{
-    background-color: #FCFCFC;
+    background-color: #F8F8F8;
+  }
+  &:active{
+    background-color: #F3F3F3;
   }
   &:disabled{
     font-weight: 500;
@@ -947,6 +952,7 @@ select option{
     border: 1px solid #F5F5F5;
     background-color: #F5F5F5;
     cursor: not-allowed;
+    transition: 0s;
   }
 }
 
@@ -955,6 +961,14 @@ select option{
   width: 40px;
   height: 40px;
   background-color: #FFF0F2;
+  border-radius: 8px;
+}
+
+.icon-success-block{
+  @include flex-center-center;
+  width: 40px;
+  height: 40px;
+  background-color: #E7F6EC;
   border-radius: 8px;
 }
 

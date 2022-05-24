@@ -1,7 +1,7 @@
 import {Component, ElementRef, EventEmitter, Injectable, Output, ViewChild} from '@angular/core';
 import {Course, COURSE_STATUS, CoursesList} from "../../models/course.model";
 import {CourseService} from "../../services/course/course.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {UserService} from "../../services/user/user.service";
 import {ROLE, UserList} from "../../models/user.model";
@@ -27,14 +27,44 @@ export class CoursePageComponent {
   toolbarVisible = false
   ROLE = ROLE;
   public searchString = ''
+  successAdd: boolean = false;
+  successEdit: boolean = false;
+  successRemove: boolean = false;
   private subscription: Subscription = new Subscription()
 
-  constructor(private router: Router, private subjectService: CourseService, private userService: UserService) { }
+  constructor(private router: Router, private subjectService: CourseService, private userService: UserService, public activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void{
-    this.refreshSubjects();
-    this.refreshTeachers();
     this.currentPageUrl = this.router.url;
+    this.activatedRoute.queryParams.subscribe(params => {
+       if(params.creationState != undefined){
+         this.refreshSubjects();
+         this.successAdd = true;
+         this.router.navigate(['/courses']);
+         setTimeout(()=>{
+           this.successAdd = false;
+         }, 2000)
+       }
+      if(params.editionState != undefined){
+        this.refreshSubjects();
+        this.successEdit = true;
+        this.router.navigate(['/courses']);
+        setTimeout(()=>{
+          this.successEdit = false;
+        }, 2000)
+      }
+      if(params.removingState != undefined){
+        this.refreshSubjects();
+        this.successRemove = true;
+        setTimeout(()=>{
+          this.successRemove = false;
+          this.router.navigate(['/courses']);
+        }, 2000)
+      }else{
+        this.refreshSubjects();
+      }
+    })
+    this.refreshTeachers();
   }
 
   ngOnDestroy() {
