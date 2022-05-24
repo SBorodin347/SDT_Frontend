@@ -6,6 +6,7 @@ import {Subscription} from "rxjs";
 import {UserService} from "../../services/user/user.service";
 import {ROLE, UserList} from "../../models/user.model";
 import {SubjectListComponent} from "../../tables/course-list/subject-list.component";
+import {toJSDate} from "@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar";
 
 enum TAB {TAB1, TAB2,TAB3}
 
@@ -18,8 +19,6 @@ enum TAB {TAB1, TAB2,TAB3}
 export class CoursePageComponent {
 
   allCourses: CoursesList[] = []
-  approvedCourses: CoursesList[] = []
-  refusedCourses: CoursesList[] = []
   teachers: UserList[] = []
   activeSubject?: Course
   popup: boolean = false
@@ -32,40 +31,40 @@ export class CoursePageComponent {
   successRemove: boolean = false;
   private subscription: Subscription = new Subscription()
 
-  constructor(private router: Router, private subjectService: CourseService, private userService: UserService, public activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private subjectService: CourseService, private userService: UserService, public activatedRoute: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void{
-
-    this.currentPageUrl = this.router.url;
+    this.refreshSubjects();
+    this.refreshTeachers();
     this.activatedRoute.queryParams.subscribe(params => {
-       if(params.creationState != undefined){
-         this.refreshSubjects();
-         this.successAdd = true;
-         window.history.replaceState({}, '',`/courses`);
-         setTimeout(()=>{
-           this.successAdd = false;
-         }, 2000)
-       }
+      if(params.creationState != undefined){
+        this.successAdd = true;
+        window.history.replaceState({}, '',`/courses`);
+        setTimeout(()=>{
+          this.refreshSubjects();
+          this.successAdd = false;
+        }, 1000)
+      }
       if(params.editionState != undefined){
-        this.refreshSubjects();
         this.successEdit = true;
         window.history.replaceState({}, '',`/courses`);
         setTimeout(()=>{
+          this.refreshSubjects();
           this.successEdit = false;
-        }, 2000)
+        }, 1000)
       }
       if(params.removingState != undefined){
-        this.refreshSubjects();
         this.successRemove = true;
         window.history.replaceState({}, '',`/courses`);
         setTimeout(()=>{
+          this.refreshSubjects();
           this.successRemove = false;
-        }, 2000)
-      }else{
-        this.refreshSubjects();
+        }, 1000)
       }
     })
-    this.refreshTeachers();
+    this.currentPageUrl = this.router.url;
   }
 
   ngOnDestroy() {
@@ -85,10 +84,6 @@ export class CoursePageComponent {
     this.toolbarVisible = false;
   }
 
-
-  public openPDF(): void {
-
-  }
 
   deleteCourse(){
     if (confirm('Do you really want to delete this?')){
@@ -114,15 +109,11 @@ export class CoursePageComponent {
     this.tab = t;
   }
 
+  interval
+
   refreshSubjects(): void{
     this.subscription.add(this.subjectService.getSubjects().subscribe(data => {
       this.allCourses = data;
-    }));
-    this.subscription.add(this.subjectService.getSubjectsByStatus(COURSE_STATUS.REFUSED).subscribe(data => {
-      this.refusedCourses = data;
-    }));
-    this.subscription.add(this.subjectService.getSubjectsByStatus(COURSE_STATUS.APPROVED).subscribe(data => {
-      this.approvedCourses = data;
     }));
   }
 
