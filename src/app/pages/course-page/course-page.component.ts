@@ -35,12 +35,13 @@ export class CoursePageComponent {
   constructor(private router: Router, private subjectService: CourseService, private userService: UserService, public activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void{
+
     this.currentPageUrl = this.router.url;
     this.activatedRoute.queryParams.subscribe(params => {
        if(params.creationState != undefined){
          this.refreshSubjects();
          this.successAdd = true;
-         this.router.navigate(['/courses']);
+         window.history.replaceState({}, '',`/courses`);
          setTimeout(()=>{
            this.successAdd = false;
          }, 2000)
@@ -48,7 +49,7 @@ export class CoursePageComponent {
       if(params.editionState != undefined){
         this.refreshSubjects();
         this.successEdit = true;
-        this.router.navigate(['/courses']);
+        window.history.replaceState({}, '',`/courses`);
         setTimeout(()=>{
           this.successEdit = false;
         }, 2000)
@@ -56,9 +57,9 @@ export class CoursePageComponent {
       if(params.removingState != undefined){
         this.refreshSubjects();
         this.successRemove = true;
+        window.history.replaceState({}, '',`/courses`);
         setTimeout(()=>{
           this.successRemove = false;
-          this.router.navigate(['/courses']);
         }, 2000)
       }else{
         this.refreshSubjects();
