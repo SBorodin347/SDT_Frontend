@@ -7,6 +7,7 @@ import {Subscription} from "rxjs";
 import {SubscriptionModel, SubscriptionModelList} from "../../models/subscriptionModel";
 import {ROLE} from "../../models/user.model";
 import {SubscriptionsListComponent} from "../../tables/subscriptions-list/subscriptions-list.component";
+import {UserListComponent} from "../../user-list/user-list.component";
 
 @Component({
   selector: 'app-course-details-page',
@@ -44,6 +45,9 @@ export class CourseDetailsComponent implements OnInit {
   hideToolbar(){
     this.toolbarVisible = false;
   }
+
+  @ViewChild(SubscriptionsListComponent)
+  childComponentList: SubscriptionsListComponent;
 
   ngOnInit(): void {
    this.subscription.add(this.activatedRoute.params.subscribe((routerParam) => {
@@ -96,6 +100,12 @@ export class CourseDetailsComponent implements OnInit {
   deleteStudentFromCourse(model: SubscriptionModel): void{
       this.subjectService.unsubscribeFromCourse(model).subscribe();
       this.subscriptionCourses = this.subscriptionCourses.filter(n => n.studentId != model.studentId)
+  }
+
+  exportStudents(){
+    this.childComponentList.openPDF();
+    this.childComponentList.uncheck();
+    this.hideToolbar();
   }
 
   public countOfPages(): number{
