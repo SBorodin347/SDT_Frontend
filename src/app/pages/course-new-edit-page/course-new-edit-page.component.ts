@@ -141,18 +141,22 @@ export class CourseNewEditPageComponent implements OnInit {
   }
 
   createCourse(): void{
-    if(this.newCourse){
-      this.courseService.createSubject(this.form.value).subscribe();
+    if(this.form.valid){
+      if(this.newCourse){
+        this.courseService.createSubject(this.form.value).subscribe();
+      }
+      this.router.navigate(['/courses'],  { queryParams: { creationState: true} });
     }
-    this.router.navigate(['/courses'],  { queryParams: { creationState: true} });
   }
 
 
   updateCourse(): void{
-    if(this.editCourse){
-      this.courseService.updateSubject(this.id, this.form.value).subscribe();
+    if(this.form.valid){
+      if(this.editCourse){
+        this.courseService.updateSubject(this.id, this.form.value).subscribe();
+      }
+      this.router.navigate(['/courses'],  { queryParams: { editionState: true} });
     }
-    this.router.navigate(['/courses'],  { queryParams: { editionState: true} });
   }
 
   deleteCourse(): void{

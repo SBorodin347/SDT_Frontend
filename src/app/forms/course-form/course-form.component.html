@@ -3,10 +3,10 @@
    <form [formGroup]="form">
      <div style="margin-bottom: 36px" class="inputs-section">
        <label>Title</label>
-       <input placeholder="Title" class="input-primary" type="text" formControlName="name" [ngClass]="{'input-primary-invalid' : this.form.controls.name.touched && this.form.controls.name.invalid } ">
+       <input placeholder="Title" class="input-primary" type="text" formControlName="name" [ngClass]="{'input-primary-invalid' : this.form.controls.name.touched && this.form.controls.name.invalid || ( this.form.controls.name.invalid && invalid) } ">
        <br>
        <label>Teacher</label>
-       <select   formControlName="teacherId" [ngClass]="{'input-primary-invalid' : this.form.controls.teacherId.touched && this.form.controls.teacherId.invalid }" >
+       <select   formControlName="teacherId" [ngClass]="{'input-primary-invalid' : this.form.controls.teacherId.touched && this.form.controls.teacherId.invalid || ( this.form.controls.teacherId.invalid && invalid)}" >
          <option [hidden]="true" [disabled]="true" [ngValue]="null"> Select a teacher...</option>
          <option title="teacher" value="{{t.id}}" *ngFor="let t of teachers">{{t.firstName}}&nbsp;{{t.lastName}}</option>
        </select>

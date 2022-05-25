@@ -67,17 +67,17 @@ details {
 }
 
 .badge-approve{
-  //display: flex;
-  //align-items: center;
-  ////background-color: #E6F7EB;
-  ////background-color: #EBF9F0;
-  //padding: 6px 8px;
-  //border-radius: 6px;
-  //color: #585E73;
-  ////color: #21AB4A;
-  //font-size: 12px;
-  //font-weight: 400;
-  //border: 1px solid #F2F2F2;
+  display: flex;
+  align-items: center;
+  //background-color: #E6F7EB;
+  //background-color: #EBF9F0;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: #585E73;
+  //color: #21AB4A;
+  font-size: 12px;
+  font-weight: 400;
+  border: 1px solid #F2F2F2;
 }
 
 
@@ -314,7 +314,7 @@ table tr th{
 
 table tr td {
   white-space: nowrap;
-  //overflow: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   padding: 14px 18px;
   font-size: 14px;
@@ -813,9 +813,6 @@ select option{
   }
 }
 
-
-
-
 .grid{
   display: flex;
   align-items: flex-start;
@@ -837,7 +834,7 @@ select option{
   //background: #F7F7F8;
   border-radius: $border-radius;
   cursor: pointer;
-  //border: 1px solid #F0F0F0;
+  border: 1px solid #F0F0F0;
   //&:hover{/.
   //  transition: 0.2s;,cg fv
   //  -webkit-box-shadow: 0 15px 35px rgb(0 0 0 / 5%);

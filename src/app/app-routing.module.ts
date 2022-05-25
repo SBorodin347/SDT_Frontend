@@ -15,6 +15,7 @@ import {UserNewEditPageComponent} from "./pages/user-new-edit-page/user-new-edit
 import {NgxPermissionsGuard} from "ngx-permissions";
 import {ROLE} from "./models/user.model";
 import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
+import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
 
 const routes: Routes = [
   {
@@ -108,6 +109,11 @@ const routes: Routes = [
     path: 'security',
     canActivate: [AuthGuard],
     component: SecurityPageComponent
+  },
+  {
+    path: 'settings',
+    canActivate: [AuthGuard],
+    component: SettingsPageComponent
   }
 ]
 

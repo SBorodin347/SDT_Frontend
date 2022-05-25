@@ -45,7 +45,7 @@ export class CoursePageComponent {
         setTimeout(()=>{
           this.refreshSubjects();
           this.successAdd = false;
-        }, 1000)
+        }, 2000)
       }
       if(params.editionState != undefined){
         this.successEdit = true;
@@ -53,7 +53,7 @@ export class CoursePageComponent {
         setTimeout(()=>{
           this.refreshSubjects();
           this.successEdit = false;
-        }, 1000)
+        }, 2000)
       }
       if(params.removingState != undefined){
         this.successRemove = true;
@@ -61,7 +61,7 @@ export class CoursePageComponent {
         setTimeout(()=>{
           this.refreshSubjects();
           this.successRemove = false;
-        }, 1000)
+        }, 2000)
       }
     })
     this.currentPageUrl = this.router.url;

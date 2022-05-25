@@ -2,7 +2,79 @@
 <app-header ></app-header>
 <main>
 <div class="main-wrap">
-  Tu je hlavna
+
+
+  <div class="banner">
+
+<div style="display: flex">
+  <div class="duck-icon"> </div>
+  <div class="charakter"></div>
+</div>
+    <div style="margin-bottom: 32px" class="flex-column">
+      <div class="headline"> Hi, {{getFirstName()}}! </div>
+      <div  class="headline2">Welcome to educk</div>
+    </div>
+
+  </div>
+  <div style="margin-bottom: 16px" class="h1">Home</div>
+
+    <div *ngxPermissionsOnly="['ROLE_ADMIN','ROLE_REFERENT']" class="grid">
+      <div [routerLink]="'/courses'"  class="grow">
+        <div class="item-overview">
+          <div style="background: linear-gradient(219.02deg, #FFB405 -56.9%, #FFAA05 137.57%);
+box-shadow: inset 0px 2px 12px 1px rgba(255, 255, 255, 0.15);" class="icon-wrap">
+            <svg class="svg-icon color-purple">
+              <use href="#file"></use>
+            </svg>
+          </div>
+          <div class="column-grid">
+            <span class="h3">New course</span>
+            <span class="description">You can create it now</span>
+          </div>
+        </div>
+      </div>
+      <div   [routerLink]="'/user'" class="grow">
+        <div class="item-overview">
+          <div style="background: linear-gradient(219.02deg, #B44DFE -56.9%, #8C54B5 137.57%);
+box-shadow: inset 0px 2px 12px 1px rgba(255, 255, 255, 0.15);" class="icon-wrap">
+            <svg class="svg-icon">
+              <use xlink:href="#use"></use>
+            </svg>
+          </div>
+          <div class="column-grid">
+            <span class="h3">New user</span>
+            <span class="description">You can create it now</span>
+          </div>
+        </div>
+      </div>
+      <div class="grow">
+        <div class="item-overview ">
+          <div style="background-color: #F4F4F5;" class="icon-wrap">
+            <svg class="svg-icon color-green">
+              <use href="#stack"></use>
+            </svg>
+          </div>
+          <div class="column-grid">
+            <span class="h3">Departments</span>
+            <span class="description">Coming soon...</span>
+          </div>
+        </div>
+      </div>
+      <div class="grow">
+        <div class="item-overview item-disabled">
+          <div style="background-color: #F4F4F5" class="icon-wrap">
+            <svg id="x" class="svg-icon color-orange">
+              <use  href="#faculty"></use>
+            </svg>
+          </div>
+          <div class="column-grid">
+            <span class="h3">Faculties</span>
+            <span class="description">Coming soon...</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
 </div>
 </main>
 

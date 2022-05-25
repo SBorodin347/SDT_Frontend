@@ -7,29 +7,42 @@
 }
 
 .tooltip .tooltiptext {
+  white-space: nowrap;
   visibility: hidden;
-  width: 100px;
-  background-color: #272B31;
+  display: flex;
+  font-size: 12px;
+  background-color: #272B30;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
+  padding: 4px 12px;
   position: absolute;
   z-index: 1;
-  bottom: 50px;
   left: 50%;
   margin-left: -50px;
 }
 
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #272B31 transparent transparent transparent;
+//.tooltip .tooltiptext::after {
+//  content: "";
+//  position: absolute;
+//  top: 100%;
+//  left: 50%;
+//  margin-left: -5px;
+//  border-width: 5px;
+//  border-style: solid;
+//  border-color: #272B31 transparent transparent transparent;
+//}
+
+.locked-icon{
+  content: url("~src/img/lockicon.svg");
+  width: 15px;
+  height: 15px;
+}
+
+.approved-icon{
+  content: url("~src/img/checked.svg");
+  width: 16px;
+  height: 16px;
 }
 
 .tooltip:hover .tooltiptext {

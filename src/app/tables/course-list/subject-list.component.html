@@ -55,10 +55,10 @@
       <th>Credits</th>
 
 <!-- COLUMN 7 -->
-      <th>Status</th>
+      <th>Semester</th>
 
 <!-- EMPTY COLUMN 8 -->
-      <th>Students</th>
+      <th>Code</th>
 
 <!-- ...DESCRIPTION ENDS... -->
     </tr>
@@ -87,7 +87,12 @@
       <td [routerLink]="'/courses/'+item.id">{{item.creationDate}}</td>
 
 <!-- COLUMN 5 -->
-      <td [routerLink]="'/courses/'+item.id">{{item.hours}}</td>
+      <td [routerLink]="'/courses/'+item.id">
+        <div class="flex-center">
+          <div class="credit" >
+            {{item.hours}}h</div>
+        </div>
+      </td>
 
 <!-- COLUMN 6 -->
       <td [routerLink]="'/courses/'+item.id">
@@ -99,15 +104,16 @@
 
 <!-- COLUMN 7 -->
       <td [routerLink]="'/courses/'+item.id">
-        <div class="flex-center">
-        <div [ngClass]="badge(item.status)" class="course-status" >
-         {{capitalString(item.status)}}</div>
-        </div>
+        {{capitalString(item.semester)}}
+<!--        <div class="flex-center">-->
+<!--        <div [ngClass]="badge(item.status)" class="course-status" >-->
+<!--         {{capitalString(item.status)}}</div>-->
+<!--        </div>-->
       </td>
 
 <!-- COLUMN 8 -->
       <td [routerLink]="'/courses/'+item.id">
-        {{item.subscribedStudents.length}}
+        {{item.subjectCode}}
       </td>
 
     </tr>

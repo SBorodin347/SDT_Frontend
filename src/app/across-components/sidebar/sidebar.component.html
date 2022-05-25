@@ -57,7 +57,7 @@
       <span class="nav-title">Security</span>
     </a>
 
-    <a routerLink="/organization" [ngClass]="{ 'nav-link-active' : isActive('/manual')}"  class="nav-link">
+    <a routerLink="/organization" [ngClass]="{ 'nav-link-active' : activeLink == 'manual'}"  class="nav-link">
       <svg class="nav-icon">
         <use href="#manu"></use>
       </svg>
@@ -71,7 +71,7 @@
     </a>
   </nav>
   <nav class="nav-section">
-    <a class="nav-link">
+    <a routerLink="/settings" [ngClass]="{ 'nav-link-active' : activeLink == 'settings'}" class="nav-link">
       <svg class="nav-icon">
         <use href="#settings"></use>
       </svg>

@@ -145,4 +145,11 @@ export class CourseDetailsComponent implements OnInit {
     this.router.navigate(['/course']);
   }
 
+  capitalString(str: string){
+    if(str != null){
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+  }
+
+
 }

@@ -2,11 +2,11 @@
 
   <table>
     <col style="width: 30px;">
-    <col style="width: 200px">
     <col style="width: 160px">
     <col style="width: 160px">
-    <col style="width: 100px">
-    <col style="width: 80px">
+    <col style="width: 160px">
+    <col style="width: 160px">
+    <col style="width: 160px">
 
 <!--  ...HEAD STARTS...  -->
     <thead>
@@ -43,7 +43,9 @@
       </th>
 
 <!--  EMPTY COLUMN 6  -->
-      <th></th>
+      <th>
+        Date of registration
+      </th>
 
 <!-- HEAD ENDS  -->
     </tr>
@@ -62,10 +64,10 @@
       </td>
 
 <!--  COLUMN 2  -->
-      <td>{{item.lastName}}</td>
+      <td>{{item.firstName}}</td>
 
 <!--  COLUMN 3  -->
-      <td>{{item.firstName}}</td>
+      <td>{{item.lastName}}</td>
 
 <!--  COLUMN 4  -->
       <td>{{item.phone}}</td>
@@ -74,7 +76,7 @@
       <td>{{item.email}}</td>
 
 <!--  EMPTY COLUMN 6  -->
-      <td></td>
+      <td>{{item.dateOfRegistration}}</td>
 
     </tr>
     </tbody>
@@ -82,18 +84,18 @@
   </table>
 
 <!--  PAGINATION  -->
-  <div *ngIf="users?.length > 0" class="pagination-section">
-    <div class="h4">
-      Page {{page}} of {{countOfPages()}}
-    </div>
-    <ngb-pagination
-      [(page)]="page"
-      [pageSize]="pageSize"
-      [collectionSize]="users.length"
-      [maxSize]="3"> <ng-template ngbPaginationPrevious></ng-template>
-      <ng-template class="pag-arrow" ngbPaginationNext><i style="margin-left: -4px; margin-right: -4px" class="crumb-arrow"></i></ng-template>
-    </ngb-pagination>
-  </div>
+<!--  <div *ngIf="users?.length > 0" class="pagination-section">-->
+<!--    <div class="h4">-->
+<!--      Page {{page}} of {{countOfPages()}}-->
+<!--    </div>-->
+<!--    <ngb-pagination-->
+<!--      [(page)]="page"-->
+<!--      [pageSize]="pageSize"-->
+<!--      [collectionSize]="users.length"-->
+<!--      [maxSize]="3"> <ng-template ngbPaginationPrevious></ng-template>-->
+<!--      <ng-template class="pag-arrow" ngbPaginationNext><i style="margin-left: -4px; margin-right: -4px" class="crumb-arrow"></i></ng-template>-->
+<!--    </ngb-pagination>-->
+<!--  </div>-->
 
 </div>
 

@@ -248,6 +248,8 @@ export class SubjectListComponent implements OnInit{
     this.parentSelector = false;
   }
 
+
+
   onChange($event){
     const id = $event.target.value;
     const isChecked = $event.target.checked;

@@ -46,19 +46,20 @@
 
 
 .filter{
+  position: relative;
   //margin-bottom: 24px;
   display: flex;
   flex-direction: row;
-  padding: 0;
   //background-color: #FAFAFB;
   border-radius: 8px;
 }
 
 .icon {
+    margin: auto;
+    position: absolute;
+    top: 0;  bottom: 2px;
+  left: 12px;
   fill: $color-text;
-  position: absolute;
-  margin-left: 12px;
-  margin-top: 11px;
   width: 18px;
   height: 18px;
 }

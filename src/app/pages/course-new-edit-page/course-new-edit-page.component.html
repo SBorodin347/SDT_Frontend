@@ -22,7 +22,7 @@
           <div> <hr class="hr-custom hr-margins"></div>
           <div>
           <label>Title</label>
-            <input class="input-primary" [attr.disabled]="newCourse" type="text" formControlName="name">
+            <input [ngClass]="{'input-primary-invalid' : this.form.controls.name.touched && this.form.controls.name.invalid }" class="input-primary" [attr.disabled]="newCourse" type="text" formControlName="name">
           </div>
           <div style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 16px">
             <div>
@@ -31,7 +31,7 @@
             <div class="grid-temp-6-1">
             <div>
               <label>Course code</label>
-                <input class="input-primary" type="text" formControlName="subjectCode">
+                <input [ngClass]="{'input-primary-invalid' : this.form.controls.subjectCode.touched && this.form.controls.subjectCode.invalid }" class="input-primary" type="text" formControlName="subjectCode">
                 <i (click)="copyText()" *ngIf="editCourse" class="clipboard-icon"></i>
               </div>
               <button (click)="generateCourseCode()" [disabled]="editCourse || isGenerated" class="btn-secondary">Generate</button>
@@ -89,11 +89,11 @@
           <div style="display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 16px">
             <div>
             <label>Hours</label>
-              <input  class="input-primary" type="number" formControlName="hours">
+              <input  [ngClass]="{'input-primary-invalid' : this.form.controls.hours.touched && this.form.controls.hours.invalid }"  class="input-primary" type="number" formControlName="hours">
             </div>
             <div>
             <label>Credit</label>
-              <input class="input-primary" type="number" formControlName="credit">
+              <input [ngClass]="{'input-primary-invalid' : this.form.controls.credit.touched && this.form.controls.credit.invalid }" class="input-primary" type="number" formControlName="credit">
             </div>
           </div>
 

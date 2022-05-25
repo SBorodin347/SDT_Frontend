@@ -38,6 +38,7 @@ export class AuthService {
         this.setToken(response.headers.get("Authorization")),
          this.setUserRoles(),
           this.setUserId();
+        this.setUserFirstName();
       }
     ));
   }
@@ -59,6 +60,10 @@ export class AuthService {
 
   setUserId(): void{
     localStorage.setItem('id', this.user.id.toString());
+  }
+
+  setUserFirstName(): void{
+    localStorage.setItem('firstName', this.user.firstName);
   }
 
   getUserId(): number{

@@ -24,7 +24,7 @@
   <button *ngxPermissionsOnly="['ROLE_ADMIN', 'ROLE_REFERENT']" [routerLink]="['/courses', detailedSubject.id,'edit']" class="btn-secondary">Edit course</button>
 
   <button style="cursor: auto" class="tooltip btn-onlyicon">
-    <span class="tooltiptext">Subscribers</span>
+    <span style="bottom: 48px" class="tooltiptext">Subscribers</span>
     <i class="users-icon"> </i> {{subscriptionCourses.length}} </button>
 
 </div>
@@ -32,22 +32,26 @@
    </div>
     <div style="display: flex; align-items: center; margin-bottom: 32px">
 
-      <span  class="h4">Taught by</span> <div><img  class="teacher-avatar" src="https://www.fpv.umb.sk/app/accountJpegPhoto.php?ID=9457&width=202" ></div>
+      <span class="h4">Taught by</span> <div><img  class="teacher-avatar" src="https://www.fpv.umb.sk/app/accountJpegPhoto.php?ID=9457&width=202" ></div>
       <span class="h3">{{detailedSubject.teacherFirstName + " " + detailedSubject.teacherLastName}}</span>
       <div class="vl"></div>
       <span  class="h4">Last update: {{detailedSubject.lastChangeDate}}</span>
       <div class="vl"></div>
-      <svg *ngIf="detailedSubject.status == subjectStatus.APPROVED" class="copy-icon">
-        <use xlink:href="#checked"></use>
-      </svg>
+      <div *ngIf="detailedSubject.status == subjectStatus.APPROVED"  class="tooltip flex-center">
+        <span style="bottom: 24px; left: 100%" class="tooltiptext">{{capitalString(detailedSubject.status)}}</span>
+        <i  class="approved-icon"></i>
+      </div>
+      <div  class="tooltip flex-center">
+      <span style="bottom: 28px; left: 125%" class="tooltiptext">{{capitalString(detailedSubject.status)}}</span>
       <svg *ngIf="detailedSubject.status == subjectStatus.REFUSED" class="copy-icon">
         <use xlink:href="#nonechecked"></use>
       </svg>
-
-<!--      <label class="switch-wrap">-->
-<!--        <input type="checkbox" />-->
-<!--        <div class="switch"></div>-->
-<!--      </label>-->
+      </div>
+      <div *ngIf="!detailedSubject.accessible"  class="vl"></div>
+      <div *ngIf="!detailedSubject.accessible" class="tooltip flex-center">
+        <span style="bottom: 24px; left: -60%" class="tooltiptext">This course is locked</span>
+        <div style="gap: 8px" class="flex-center"><i  class="locked-icon"></i></div>
+      </div>
     </div>
     <hr class="hr-custom" style="margin-bottom: 28px">
 

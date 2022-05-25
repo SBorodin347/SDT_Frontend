@@ -35,6 +35,7 @@ import { SubscriptionsListComponent } from './tables/subscriptions-list/subscrip
 import { SubscribedCourseInfoComponent } from './sections/subscribed-course-info/subscribed-course-info.component';
 import {UserFilterByNamePipe} from "./shared/user-filter.pipe";
 import {ClipboardModule} from "ngx-clipboard";
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import {ClipboardModule} from "ngx-clipboard";
     UserFormComponent,
     SubscriptionsListComponent,
     SubscribedCourseInfoComponent,
-    UserFilterByNamePipe
+    UserFilterByNamePipe,
+    SettingsPageComponent
   ],
   imports: [
     BrowserModule,

@@ -14,4 +14,8 @@ export class MenuComponent {
   constructor() {
   }
 
+  getFirstName(): string{
+    return localStorage.getItem('firstName');
+  }
+
 }

@@ -4,14 +4,7 @@
   <section class="section-input">
     <div class="flex-center" style="margin-bottom: 8px"><i class="icon-role"></i><span class="subtitle">Type</span></div>
     <div class="radio-toolbar">
-      <input formControlName="roleId" (click)="switchRadio(1)" type="radio" id="admin"  [value]="1" >
-      <label for="admin">
-        <div class="flex-column">
-          <span class="h3">Manager</span>
-          <span class="description">Current admins: {{numberOfAdmins}}</span>
-        </div>
-       <div [ngClass]="{'radio-circle-active' : activeRadio == 1}" class="radio-circle"></div>
-      </label>
+
       <input formControlName="roleId" (click)="switchRadio(4)" type="radio" id="referent"  [value]="2" >
       <label for="referent">
         <div class="flex-column">
@@ -33,6 +26,15 @@
           <span class="description">Current teachers: {{numberOfStudents}}</span>
         </div>
         <div [ngClass]="{'radio-circle-active' : activeRadio == 3}" class="radio-circle"></div></label>
+
+      <input formControlName="roleId" (click)="switchRadio(1)" type="radio" id="admin"  [value]="1" >
+      <label for="admin">
+        <div class="flex-column">
+          <span class="h3">Administrator</span>
+          <span class="description">Current admins: {{numberOfAdmins}}</span>
+        </div>
+        <div [ngClass]="{'radio-circle-active' : activeRadio == 1}" class="radio-circle"></div>
+      </label>
     </div>
   </section>
 
@@ -40,27 +42,38 @@
   <section class="section-input-parts">
     <div class="flex-center" style="margin-bottom: 8px"><i class="icon-key"></i> <span class="subtitle">Privacy Information</span></div> <div></div>
       <label>Username
-      <input formControlName="username" placeholder="Username" class="input-primary" type="text"></label>
+      <input   [ngClass]="{'input-primary-invalid' : this.form.controls.username.touched && this.form.controls.username.invalid || ( this.form.controls.username.invalid && invalid) }" formControlName="username" placeholder="Username" class="input-primary" type="text"></label>
       <label>Password
-      <input formControlName="passwordHash" placeholder="Password" type="password" class="input-primary"></label>
+      <input
+        [ngClass]="{'input-primary-invalid' : this.form.controls.passwordHash.touched && this.form.controls.passwordHash.invalid || ( this.form.controls.passwordHash.invalid && invalid) }"
+        formControlName="passwordHash" placeholder="Password" type="password" class="input-primary"></label>
   </section>
 
   <!-- THIRD SECTION -->
   <section class="section-input-parts">
     <div class="flex-center" style="margin-bottom: 8px"><i class="icon-id"></i> <span class="subtitle">Personal Information</span></div> <div></div>
       <label>First name
-      <input formControlName="firstName" placeholder="First name" class="input-primary" type="text"></label>
+      <input
+        [ngClass]="{'input-primary-invalid' : this.form.controls.firstName.touched && this.form.controls.firstName.invalid || ( this.form.controls.firstName.invalid && invalid) }"
+        formControlName="firstName"
+        placeholder="First name" class="input-primary" type="text"></label>
       <label>Last name
-      <input formControlName="lastName" placeholder="Last name" type="text" class="input-primary"></label>
+      <input
+        [ngClass]="{'input-primary-invalid' : this.form.controls.lastName.touched && this.form.controls.lastName.invalid || ( this.form.controls.lastName.invalid && invalid) }"
+        formControlName="lastName" placeholder="Last name" type="text" class="input-primary"></label>
       <label>Phone number
-      <input formControlName="phone" placeholder="Phone number" type="text" class="input-primary"></label>
+      <input
+        [ngClass]="{'input-primary-invalid' : this.form.controls.phone.touched && this.form.controls.phone.invalid || ( this.form.controls.phone.invalid && invalid) }"
+        formControlName="phone" placeholder="Phone number" type="text" class="input-primary"></label>
       <label>Email
-      <input formControlName="email" placeholder="Email" type="text" class="input-primary"></label>
+      <input
+        [ngClass]="{'input-primary-invalid' : this.form.controls.email.touched && this.form.controls.email.invalid || ( this.form.controls.email.invalid && invalid) }"
+        formControlName="email" placeholder="Email" type="text" class="input-primary"></label>
   </section>
 
 <!-- CONTROL BUTTONS -->
  <div class="flex-center-spaceBetween">
-   <button class="btn-secondary">Cancel</button>
+   <button [routerLink]="'/'" class="btn-secondary">Cancel</button>
    <button (click)="add()" class="btn-main">Create</button>
  </div>
 

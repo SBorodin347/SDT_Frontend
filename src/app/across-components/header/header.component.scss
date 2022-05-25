@@ -186,6 +186,7 @@ header {
 }
 
 .filter{
+  position: relative;
   //margin-bottom: 24px;
   display: flex;
   flex-direction: row;
@@ -209,8 +210,9 @@ header {
 .icon {
   fill: #1B1D1F;
   position: absolute;
-  margin-left: 12px;
-  margin-top: 12px;
+  margin: auto;
+  top: 0;  bottom: 2px;
+  left: 12px;
   width: 18px;
   height: 18px;
 }

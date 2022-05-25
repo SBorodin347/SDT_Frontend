@@ -46,15 +46,19 @@ export class CourseFormComponent {
     })
   }
 
+  invalid: boolean = false;
+
   public add(): void{
     if(this.form.valid){
+      this.invalid = false;
       this.startedCourse = this.form.value;
       this.router.navigate(['/course'],  { queryParams: { name: this.startedCourse.name,
           teacherId: this.startedCourse.teacherId } });
+      document.body.classList.remove('overflow-hidden');
+    } else {
+      this.invalid = true;
     }
-    document.body.classList.remove('overflow-hidden');
   }
-
 
 
 }
