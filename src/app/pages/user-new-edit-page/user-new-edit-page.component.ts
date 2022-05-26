@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {NgxPermissionsService} from "ngx-permissions";
 
 @Component({
   selector: 'app-user-new-edit-page',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-new-edit-page.component.scss']
 })
 export class UserNewEditPageComponent implements OnInit {
+
 
   constructor() { }
 

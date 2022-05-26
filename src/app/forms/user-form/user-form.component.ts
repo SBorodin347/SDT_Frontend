@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ROLE, User} from "../../models/user.model";
 import {UserService} from "../../services/user/user.service";
 import {Subscription} from "rxjs";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -13,38 +13,40 @@ import {Router} from "@angular/router";
 })
 export class UserFormComponent implements OnInit {
 
-  private subscription: Subscription = new Subscription();
-  numberOfAdmins: number;
-  numberOfTeachers: number;
-  numberOfStudents: number;
-  numberOfReferents: number;
+  activeRadioButton: string = undefined;
+  invalid: boolean = false
   ROLE = ROLE;
+  form: FormGroup
+  private subscription: Subscription = new Subscription();
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private activeRouter: ActivatedRoute) {
     this.createForm();
   }
 
   ngOnInit(): void {
-    this.form.controls.roleId.setValue(2); //default radio
-    this.subscription.add(this.userService.getUsersByRoleName(ROLE.ADMIN).subscribe(data=>{
-        this.numberOfAdmins = data.length;
-    }));
-    this.subscription.add(this.userService.getUsersByRoleName(ROLE.TEACHER).subscribe(data=>{
-      this.numberOfTeachers = data.length;
-    }));
-    this.subscription.add(this.userService.getUsersByRoleName(ROLE.STUDENT).subscribe(data=>{
-      this.numberOfStudents = data.length;
-    }));
-    this.subscription.add(this.userService.getUsersByRoleName(ROLE.REFERENT).subscribe(data=>{
-      this.numberOfReferents = data.length;
-    }));
+    this.subscription.add(this.activeRouter.queryParams.subscribe( param => {
+      if(param.type == 'student'){
+        this.form.controls.roleId.setValue(4);
+        this.activeRadioButton = param.type
+      }
+      if(param.type == 'referent'){
+        this.form.controls.roleId.setValue(2);
+        this.activeRadioButton = param.type;
+      }
+      if(param.type == 'teacher'){
+        this.form.controls.roleId.setValue(3);
+        this.activeRadioButton = param.type;
+      }
+    }))
   }
 
   ngOnDestroy(): void{
     this.subscription.unsubscribe();
   }
 
-  form: FormGroup
+  switchRadio(radio): void{
+    this.activeRadioButton = radio;
+  }
 
   public createForm(){
     this.form = new FormGroup({
@@ -60,14 +62,7 @@ export class UserFormComponent implements OnInit {
     )
   }
 
-  activeRadio: number = 4;
-  switchRadio(radio): void{
-    this.activeRadio = radio;
-  }
-
-  invalid: boolean = false
-
-  add(){
+  public createUser(): void{
     if(this.form.valid){
       this.invalid = false;
       this.userService.createUser(this.form.value).subscribe();
@@ -87,12 +82,9 @@ export class UserFormComponent implements OnInit {
         })
       }
       this.form.reset();
-    }else {
+    } else {
       this.invalid = true;
     }
-
-
   }
-
 }
 

@@ -69,7 +69,6 @@ export class CourseDetailsComponent implements OnInit {
         }
       });
     }))
-    this.currentPageUrl = this.router.url;
   }
 
   subscribeForCourse() {
@@ -110,39 +109,6 @@ export class CourseDetailsComponent implements OnInit {
 
   public countOfPages(): number{
     return Math.ceil(this.subscriptionCourses.length / this.pageSize);
-  }
-
-  public badge(status: COURSE_STATUS){
-    if(status == COURSE_STATUS.APPROVED){
-      return 'badge-approve'
-    }
-    if(status == COURSE_STATUS.REFUSED){
-      return 'badge-refuse'
-    }
-    if(status == COURSE_STATUS.CANCELLED){
-      return 'badge-cancel'
-    }
-  }
-
-
-
-  tab = 1;
-
-  switchTab(t: number){
-    this.tab = t;
-  }
-
-  subjectStatus = COURSE_STATUS;
-  public goHome(){
-    this.router.navigate(['/']);
-  }
-
-  public goCourses(){
-    this.router.navigate(['/courses']);
-  }
-
-  public editSubject(){
-    this.router.navigate(['/course']);
   }
 
   capitalString(str: string){

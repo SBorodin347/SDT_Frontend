@@ -43,7 +43,13 @@ const routes: Routes = [
   },
   {
     path: 'courses/:id/edit',
-    canActivate: [AuthGuard],
+    canActivate: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: [ROLE.ADMIN, ROLE.REFERENT],
+        redirectTo: '/',
+      }
+    },
     component: CourseNewEditPageComponent
   },
   {

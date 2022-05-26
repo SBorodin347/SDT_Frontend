@@ -5,35 +5,39 @@
     <div class="flex-center" style="margin-bottom: 8px"><i class="icon-role"></i><span class="subtitle">Type</span></div>
     <div class="radio-toolbar">
 
-      <input formControlName="roleId" (click)="switchRadio(4)" type="radio" id="referent"  [value]="2" >
+      <input formControlName="roleId" (click)="switchRadio('referent')" type="radio" id="referent"  [value]="2" >
       <label for="referent">
         <div class="flex-column">
           <span class="h3">Referent</span>
-          <span class="description">Current referents: {{numberOfReferents}}</span>
+          <span class="description">Current referents: </span>
         </div>
-        <div [ngClass]="{'radio-circle-active' : activeRadio == 4}" class="radio-circle"></div></label>
-      <input formControlName="roleId" (click)="switchRadio(2)" type="radio" id="teacher"  [value]="3">
+        <div [ngClass]="{'radio-circle-active' : activeRadioButton == 'referent'}" class="radio-circle"></div></label>
+
+
+      <input formControlName="roleId" (click)="switchRadio('teacher')" type="radio" id="teacher"  [value]="3">
       <label for="teacher">
         <div class="flex-column">
           <span class="h3">Teacher</span>
-          <span class="description">Current teachers: {{numberOfTeachers}}</span>
+          <span class="description">Current teachers: </span>
         </div>
-        <div [ngClass]="{'radio-circle-active' : activeRadio == 2}" class="radio-circle"></div></label>
-      <input formControlName="roleId" (click)="switchRadio(3)" type="radio" id="student"  [value]="4" >
+        <div [ngClass]="{'radio-circle-active' : activeRadioButton == 'teacher'}" class="radio-circle"></div></label>
+
+
+      <input formControlName="roleId" (click)="switchRadio('student')" type="radio" id="student"  [value]="4" >
       <label for="student">
         <div class="flex-column">
           <span class="h3">Student</span>
-          <span class="description">Current teachers: {{numberOfStudents}}</span>
+          <span class="description">Current teachers: </span>
         </div>
-        <div [ngClass]="{'radio-circle-active' : activeRadio == 3}" class="radio-circle"></div></label>
+        <div [ngClass]="{'radio-circle-active' : activeRadioButton == 'student'}" class="radio-circle"></div></label>
 
-      <input formControlName="roleId" (click)="switchRadio(1)" type="radio" id="admin"  [value]="1" >
+      <input formControlName="roleId" (click)="switchRadio('admin')" type="radio" id="admin"  [value]="1" >
       <label for="admin">
         <div class="flex-column">
           <span class="h3">Administrator</span>
-          <span class="description">Current admins: {{numberOfAdmins}}</span>
+          <span class="description">Current admins: </span>
         </div>
-        <div [ngClass]="{'radio-circle-active' : activeRadio == 1}" class="radio-circle"></div>
+        <div [ngClass]="{'radio-circle-active' :  activeRadioButton == 'admin'}" class="radio-circle"></div>
       </label>
     </div>
   </section>
@@ -74,7 +78,7 @@
 <!-- CONTROL BUTTONS -->
  <div class="flex-center-spaceBetween">
    <button [routerLink]="'/'" class="btn-secondary">Cancel</button>
-   <button (click)="add()" class="btn-main">Create</button>
+   <button (click)="createUser()" class="btn-main">Create</button>
  </div>
 
 </form>

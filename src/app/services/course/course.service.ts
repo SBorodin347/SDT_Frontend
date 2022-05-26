@@ -28,8 +28,8 @@ export class CourseService {
     return this.http.get<SubscriptionModelList>(`${this.apiUrl}/subscribe/${subjectId}/${studentId}`);
   }
 
-  createSubject(subject: Course): Observable<Course>{
-    return this.http.post<Course>(`${this.apiUrl}`, subject);
+  createSubject(subject: Course): Observable<number>{
+    return this.http.post<number>(`${this.apiUrl}`, subject);
   }
 
   updateSubject(subjectId: number, subject: Course): Observable<Course>{

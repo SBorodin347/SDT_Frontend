@@ -86,10 +86,9 @@ export class TeacherPageComponent {
     }));
   }
 
-  goCreate(): void{
-    this.router.navigate(['/user']);
+  addStudentQuery(): void{
+    this.router.navigate(['/user'], {queryParams: {type: 'teacher'}});
   }
-
 
 
 }

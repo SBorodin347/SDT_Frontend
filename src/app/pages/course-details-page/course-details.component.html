@@ -4,9 +4,9 @@
 
   <div *ngIf="detailedSubject!=null" class="main-wrap">
     <div class="breadcrumbs">
-      <a (click)="goHome()" class="crumb-link" >Home</a>
+      <a [routerLink]="'/'" class="crumb-link" >Home</a>
       <i class="crumb-arrow"></i>
-      <a (click)="goCourses()" class="crumb-link">Courses</a>
+      <a [routerLink]="'/courses'"  class="crumb-link">Courses</a>
       <i class="crumb-arrow"></i>
       <a  [href]="currentPageUrl" class="crumb-link crumb-link-active">{{detailedSubject.name}}</a>
     </div>
@@ -26,7 +26,6 @@
   <button style="cursor: auto" class="tooltip btn-onlyicon">
     <span style="bottom: 48px" class="tooltiptext">Subscribers</span>
     <i class="users-icon"> </i> {{subscriptionCourses.length}} </button>
-
 </div>
 
    </div>
@@ -37,13 +36,13 @@
       <div class="vl"></div>
       <span  class="h4">Last update: {{detailedSubject.lastChangeDate}}</span>
       <div class="vl"></div>
-      <div *ngIf="detailedSubject.status == subjectStatus.APPROVED"  class="tooltip flex-center">
+      <div *ngIf="detailedSubject.status == STATUS.APPROVED"  class="tooltip flex-center">
         <span style="bottom: 24px; left: 100%" class="tooltiptext">{{capitalString(detailedSubject.status)}}</span>
         <i  class="approved-icon"></i>
       </div>
       <div  class="tooltip flex-center">
       <span style="bottom: 28px; left: 125%" class="tooltiptext">{{capitalString(detailedSubject.status)}}</span>
-      <svg *ngIf="detailedSubject.status == subjectStatus.REFUSED" class="copy-icon">
+      <svg *ngIf="detailedSubject.status == STATUS.REFUSED" class="copy-icon">
         <use xlink:href="#nonechecked"></use>
       </svg>
       </div>

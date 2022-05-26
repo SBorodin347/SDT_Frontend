@@ -43,8 +43,8 @@
           <button (click)="deleteUser()" class=" btn-remove"><i class="trash-icon"></i>Remove</button>
         </div>
         <div *ngIf="!toolbarVisible" class="flex-center-spaceBetween">
-          <button [routerLink]="'/user'" style=" margin: 0; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
-            New user</button ><button class="btn-part"> <svg class="btn-part-icon">
+          <button (click)="addReferentQuery()" style=" margin: 0; border-radius: 8px 0 0 8px; border-right: 1px solid #4390F7" class="btn-main">
+            New referent</button ><button class="btn-part"> <svg class="btn-part-icon">
           <use xlink:href="#arrow"></use>
         </svg> </button>
         </div>

@@ -4,6 +4,7 @@ import {UserService} from "../../services/user/user.service";
 import {ROLE, User, UserList} from "../../models/user.model";
 import {Subscription} from "rxjs";
 import {UserListComponent} from "../../user-list/user-list.component";
+import {query} from "@angular/animations";
 
 @Component({
   selector: 'app-referent-page',
@@ -43,11 +44,6 @@ export class ReferentPageComponent {
     this.toolbarVisible = false;
   }
 
-  @ViewChild('htmlData') htmlData:ElementRef;
-
-  public openPDF(): void {
-
-  }
 
   deleteUser(){
     if (confirm('Do you really want to delete this?')){
@@ -86,6 +82,8 @@ export class ReferentPageComponent {
     }));
   }
 
-
+  addReferentQuery(): void{
+      this.router.navigate(['/user'], {queryParams: {type: 'referent'}});
+  }
 
 }
