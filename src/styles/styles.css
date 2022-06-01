@@ -53,6 +53,17 @@ details {
   display: block;
 }
 
+.badge-approve {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: #585E73;
+  font-size: 12px;
+  font-weight: 400;
+  border: 1px solid #F2F2F2;
+}
+
 .badge-cancel {
   background-color: #F5F5F5;
   padding: 6px 8px;
@@ -303,6 +314,7 @@ table tr th {
 
 table tr td {
   white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   padding: 14px 18px;
   font-size: 14px;
@@ -786,6 +798,7 @@ select option {
   align-items: center;
   border-radius: 8px;
   cursor: pointer;
+  border: 1px solid #F0F0F0;
 }
 
 .item-disabled {
