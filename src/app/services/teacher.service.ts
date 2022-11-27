@@ -7,7 +7,7 @@ import {Teacher, TeacherList} from "../models/teacher.model";
   providedIn: 'root'
 })
 export class TeacherService {
-  private apiUrl = 'http://localhost:8080/api/teachers';
+  private apiUrl = 'http://backend:8080/api/teachers';
 
   constructor(private http: HttpClient) { }
 

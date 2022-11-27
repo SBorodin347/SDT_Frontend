@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Student, StudentList} from "../models/student.model";
+// @ts-ignore
+import {Student, StudentList} from "./models/student.model";
 import {AuthService} from "./authentication/auth.service";
 
 @Injectable({
@@ -11,7 +12,7 @@ export class StudentService {
 
   private token;
 
-  private apiUrl = 'http://localhost:8080/api/students';
+  private apiUrl = 'http://backend:8080/api/students';
 
   constructor(private http: HttpClient, private auth: AuthService) {
     this.token = this.auth.getToken();

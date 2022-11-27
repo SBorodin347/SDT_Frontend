@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PasswordUpdate, User, UserList} from "../../models/user.model";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import {PasswordUpdate, User, UserList} from "../../models/user.model";
 
 export class UserService{
 
-  private apiUrl = 'http://localhost:8080/api/users';
+  private apiUrl = 'http://backend:8080/api/users';
   constructor(private http: HttpClient) { }
 
   getUsersByRoleName(role: string): Observable<UserList[]>{

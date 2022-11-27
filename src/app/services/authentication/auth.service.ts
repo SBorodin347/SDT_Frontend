@@ -4,13 +4,15 @@ import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {User} from "../../models/user.model";
 import {Router} from "@angular/router";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8080/api/authentication';
+  private apiUrl = 'http://backend:8080/api/authentication';
+  // private apiUrl = environment.backendUrl + '/authentication';
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -32,6 +34,7 @@ export class AuthService {
       'Content-Type':  'application/json',
       'Authorization': 'Basic ' + btoa(user.username +':'+ user.password)
     });
+    console.log('aaa:' + this.apiUrl);
     return this.http.post<any>(this.apiUrl, null, {headers, observe: 'response'}).pipe(
       tap(response =>{
         this.user = response.body,

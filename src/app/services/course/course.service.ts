@@ -8,7 +8,7 @@ import {SubscriptionModel, SubscriptionModelList} from "../../models/subscriptio
   providedIn: 'root'
 })
 export class CourseService {
-  private apiUrl = 'http://localhost:8080/api/subjects';
+  private apiUrl = 'http://backend:8080/api/subjects';
 
   constructor(private http: HttpClient) { }
 
